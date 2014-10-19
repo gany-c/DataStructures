@@ -1,6 +1,6 @@
-package DS.lists;
+package lists;
 
-import DS.base.IntWrapper;
+import base.IntWrapper;
 
 
 
@@ -21,7 +21,7 @@ return queue;
 
 }
 
-private int exit(int[] queue,DS.base.IntWrapper enter,DS.base.IntWrapper exit)
+private int exit(int[] queue,base.IntWrapper enter,base.IntWrapper exit)
 {
 
 if(enter.getValue()==exit.getValue())

@@ -1,6 +1,6 @@
-package DS.lists;
+package lists;
 
-import DS.base.IntWrapper;
+import base.IntWrapper;
 
 public class StackArray{
 

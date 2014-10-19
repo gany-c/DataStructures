@@ -1,7 +1,7 @@
-package DS.tree;
+package tree;
 
-import DS.base.TreeNode;
-import DS.base.UtilityStack;
+import base.TreeNode;
+import base.UtilityStack;
 
 public class TreePrune {
 	

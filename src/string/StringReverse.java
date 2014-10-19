@@ -1,4 +1,4 @@
-package DS.string;
+package string;
 
 public class StringReverse{
 

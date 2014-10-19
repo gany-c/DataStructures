@@ -1,4 +1,4 @@
-package DS.misc;
+package misc;
 
 import java.util.Random;
 
@@ -227,9 +227,9 @@ public class CardUtils {
 
 	private static void displayCards(Object[] cards) {
 	
-	if(cards==null||cards.length==0)
+	if(cards==null||carlength==0)
 		System.out.println("empty deck of cards");
-	else for(int i=0;i<cards.length;i++)
+	else for(int i=0;i<carlength;i++)
 			System.out.print(" "+cards[i]);
 	System.out.println();
 	

@@ -1,4 +1,4 @@
-package DS.misc;
+package misc;
 
 
 public class TestPrivate {

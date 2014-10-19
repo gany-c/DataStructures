@@ -1,4 +1,4 @@
-package DS.base;
+package base;
 
 public class DoubleNode {
 

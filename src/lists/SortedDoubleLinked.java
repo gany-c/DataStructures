@@ -1,6 +1,6 @@
-package DS.lists;
+package lists;
 
-import DS.base.DoubleNode;
+import base.DoubleNode;
 
 public class SortedDoubleLinked{
 

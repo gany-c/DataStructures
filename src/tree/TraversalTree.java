@@ -1,8 +1,8 @@
-package DS.tree;
+package tree;
 
 import java.util.HashMap;
 
-import DS.base.TreeNode;
+import base.TreeNode;
 
 public class TraversalTree {
 	

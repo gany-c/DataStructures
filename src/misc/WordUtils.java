@@ -1,4 +1,4 @@
-package DS.misc;
+package misc;
 
 import java.util.Iterator;
 
@@ -7,18 +7,18 @@ public class WordUtils {
 	
 	public static java.util.List findCompound(String[] inputWords) throws RuntimeException
 	{
-		if(inputWords==null||inputWords.length==0)
+		if(inputWords==null||inputWorlength==0)
 			return null;
 		
 		java.util.List output = new java.util.ArrayList();
 		java.util.HashMap countMap = new java.util.HashMap();
 		
 		
-		for(int curPos=0;curPos<inputWords.length;curPos++)
+		for(int curPos=0;curPos<inputWorlength;curPos++)
 		{
 			String curWord = (String)inputWords[curPos];			
 			
-			for(int i=0;i<inputWords.length;i++)
+			for(int i=0;i<inputWorlength;i++)
 			{
 				String compareWord = (String)inputWords[i];
 				if(compareWord==null||i==curPos)

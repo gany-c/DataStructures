@@ -1,10 +1,10 @@
-package DS.tree;
+package tree;
 
 import java.util.HashSet;
 
-import DS.base.IntWrapper;
-import DS.base.TreeNode;
-import DS.base.UtilityStack;
+import base.IntWrapper;
+import base.TreeNode;
+import base.UtilityStack;
 
 public class StaticTree{
 

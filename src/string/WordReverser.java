@@ -1,6 +1,6 @@
-package DS.string;
+package string;
 
-import DS.base.UtilityStack;
+import base.UtilityStack;
 
 public class WordReverser{
 

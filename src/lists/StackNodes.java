@@ -1,6 +1,6 @@
-package DS.lists;
+package lists;
 
-import DS.base.ListNode;
+import base.ListNode;
 
 public class StackNodes{
 

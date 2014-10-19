@@ -1,4 +1,4 @@
-package DS.heap;
+package heap;
 
 public class HeapStruct {
 
