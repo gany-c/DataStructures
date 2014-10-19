@@ -7,18 +7,18 @@ public class WordUtils {
 	
 	public static java.util.List findCompound(String[] inputWords) throws RuntimeException
 	{
-		if(inputWords==null||inputWorlength==0)
+		if(inputWords==null||inputWords.length==0)
 			return null;
 		
 		java.util.List output = new java.util.ArrayList();
 		java.util.HashMap countMap = new java.util.HashMap();
 		
 		
-		for(int curPos=0;curPos<inputWorlength;curPos++)
+		for(int curPos=0;curPos<inputWords.length;curPos++)
 		{
 			String curWord = (String)inputWords[curPos];			
 			
-			for(int i=0;i<inputWorlength;i++)
+			for(int i=0;i<inputWords.length;i++)
 			{
 				String compareWord = (String)inputWords[i];
 				if(compareWord==null||i==curPos)
