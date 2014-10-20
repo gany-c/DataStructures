@@ -1,8 +1,5 @@
 package lists;
 
-import base.IntWrapper;
-
-
 public class CircularQueue{
 	
  String[] queue = null;
@@ -80,6 +77,7 @@ public static void main(String[] args)
 	CircularQueue q = new CircularQueue(5);
 	//can write only 4 items - 1 buffer space is needed to differentiate between
 	//empty and full.
+	//http://stackoverflow.com/questions/25944351/full-empty-buffer-distinction-in-circular-queue
 	
 	q.get();
 	
