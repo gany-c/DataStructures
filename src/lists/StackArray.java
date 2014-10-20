@@ -1,19 +1,21 @@
 package lists;
 
-import base.IntWrapper;
 
 public class StackArray{
+	
+private String[] container = null;	
+private int top = -1;
 
-private int[] createStack(int size, IntWrapper top)
+public  StackArray(int size)
 {
- if((size<1)||(top==null))
+ if(size<1)
  {
-	return null; 
+
  }
   else
  {
-   top.setValue(-1);
-   return(new int[size]);
+   top = -1;
+  container = new String[size];
  }
 }
 
@@ -21,36 +23,78 @@ private int[] createStack(int size, IntWrapper top)
 //wrapper is needed to hold top, otherwise the function will have toreturn two values
 //new top and popped value. 
 
-private int pop(int[] stack, IntWrapper top)
+public String pop()
 {
-  if((top.getValue()<0)||(stack==null))
+  if((top<0)||(container==null))
   {
     System.out.println("Stack is empty");
-    return Integer.MIN_VALUE;
+    return null;
   }
   else
   {
-   int out = stack[top.getValue()];
-   top.setValue(top.getValue()-1);
+   String out = container[top];
+   container[top] = null;
+   top--;
    return out;   
   }
 }
 
 //this function could just retun the updated top, but you already have a wrapper, 
 //so use it.
-private void push(int[] stack, IntWrapper top, int newVal)
+public void push(String newVal)
 {
-   if((stack==null)||(top.getValue()>=stack.length-1))
+   if((container==null)||(top>=container.length-1))
    {
      System.out.println("No space to insert");
    } 
    else 
    {
-	int newTop = top.getValue()+1;
-	stack[newTop] = newVal;
-	top.setValue(newTop);
+	top++;
+	container[top] = newVal;
+	
 
    }
+}
+
+public void display(){
+	
+	for(String item:container){
+		System.out.print(item+", ");
+	}
+	System.out.println("-- top = "+this.top);
+	
+}
+
+public static void main(String[] args)
+{
+	
+	StackArray q = new StackArray(5);
+
+	
+	q.pop();
+	
+	q.push("a");
+	q.push("b");
+	q.push("c");
+	
+	q.display();
+	
+	System.out.println("pop -------"+q.pop());
+	
+	q.display();
+	
+	q.push("d");
+	q.push("e");
+	q.push("f");
+	
+	q.display();
+	
+	System.out.println("pop -------"+q.pop());
+	q.push("g");
+
+	
+	q.display();
+	
 }
 
 } 
