@@ -2,19 +2,21 @@ package lists;
 
 import base.DoubleNode;
 
-public class SortedDoubleLinked{
+public class OrderedDoublyLinkedList{
 
-
-private DoubleNode createList()
+DoubleNode headerNode;
+	
+	
+public OrderedDoublyLinkedList()
 {
-DoubleNode headerNode = new DoubleNode();
-headerNode.setValue(Integer.MIN_VALUE);
-return headerNode;
+	headerNode = new DoubleNode();
+	headerNode.setValue(Integer.MIN_VALUE);
+
 }
 
 /* Start at the dummy header node and check if the link to the next node needs to be broken */
 
-private void insertNode(DoubleNode headerNode, int value)
+public void insert(int value)
 {
 
 	DoubleNode newNode = new DoubleNode();
@@ -50,7 +52,7 @@ private void insertNode(DoubleNode headerNode, int value)
 }
 
 
-private void deleteNode(DoubleNode headerNode, int value)
+public void delete(int value)
 {
 
 	DoubleNode curr = headerNode.getNext();
@@ -78,20 +80,44 @@ private void deleteNode(DoubleNode headerNode, int value)
 	}
 }
 
-public void displayList(DoubleNode headerNode)
+public void display()
 {
 	DoubleNode curr = headerNode.getNext();
 	System.out.println(" Start ");
 	while(curr!=null)
 	{
 		System.out.print(" "+curr.getValue());
+		curr = curr.getNext();
 	}
-	System.out.println(" Stop ");
+	System.out.println("\n Stop ");
 }
-/*
-See comments for single List 
-*/
+
+
 
 public static void main(String[] args)
-{}
+{
+	OrderedDoublyLinkedList oList = new OrderedDoublyLinkedList();
+	
+	oList.insert(300);
+	oList.insert(342);
+	oList.insert(33);
+	oList.insert(789);
+	oList.insert(1);
+	oList.insert(5);
+	oList.insert(3);
+	oList.insert(210);
+	oList.insert(100);
+	
+	oList.display();
+	
+	oList.delete(99);
+	oList.delete(1);
+	oList.delete(33);
+	
+	oList.display();
+	
+	oList.insert(-23);
+	
+	oList.display();
+}
 }
