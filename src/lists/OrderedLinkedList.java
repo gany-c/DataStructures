@@ -2,21 +2,21 @@ package lists;
 
 import base.ListNode;
 
-public class SortedLinkedList{
+public class OrderedLinkedList{
+	
+ListNode headerNode = null;
 
-private ListNode initList(){
+public OrderedLinkedList(){
 
-ListNode headerNode = new ListNode();
-headerNode.setValue(Integer.MIN_VALUE);
-headerNode.setNext(null);
+	headerNode = new ListNode();
+	headerNode.setValue(Integer.MIN_VALUE);
+	headerNode.setNext(null);
 
-
-return headerNode;
 }
 /*
 Insert before current node when it exceeds in value or becomes null.
 */
-private void insertNode(ListNode headerNode, int value)
+public void insert( int value)
 {
 	ListNode newNode = new ListNode();
 	newNode.setValue(value);
@@ -42,7 +42,7 @@ private void insertNode(ListNode headerNode, int value)
 
 }
 
-private void deleteNode(ListNode headerNode,int value)
+private void delete(int value)
 {
 	ListNode prev = headerNode;
 	ListNode curr = headerNode.getNext();
@@ -52,12 +52,13 @@ private void deleteNode(ListNode headerNode,int value)
 
 		if(curr==null)
 		{
-			System.out.println("\n Value not found");
+			System.out.println("\n Value not found = "+value);
 			break;
 		}
 		else if(curr.getValue()==value)
 		{
-			prev.setNext(curr.getNext()); 			
+			prev.setNext(curr.getNext()); 
+			break;
 		}
 
 		prev = prev.getNext();
@@ -68,14 +69,14 @@ private void deleteNode(ListNode headerNode,int value)
 
 }
 
-private void displayList(ListNode headerNode)
+private void display()
 {
 	System.out.println("\n Starting list display");
 	ListNode curr = headerNode.getNext();
 	
 	while(curr!=null)
 	{
-		System.out.println(" "+curr.getValue());
+		System.out.print(" "+curr.getValue());
 		curr = curr.getNext();
 	}
 
@@ -91,6 +92,29 @@ Ans: No, the delete starts with headerNode.getNext() anyway.
 */
 public static void main(String[] args)
 {
+	OrderedLinkedList oList = new OrderedLinkedList();
+	
+	oList.insert(300);
+	oList.insert(342);
+	oList.insert(33);
+	oList.insert(789);
+	oList.insert(1);
+	oList.insert(5);
+	oList.insert(3);
+	oList.insert(210);
+	oList.insert(100);
+	
+	oList.display();
+	
+	oList.delete(99);
+	oList.delete(1);
+	oList.delete(33);
+	
+	oList.display();
+	
+	oList.insert(-23);
+	
+	oList.display();
 
 }
 
