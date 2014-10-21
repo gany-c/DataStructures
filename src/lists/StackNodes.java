@@ -8,18 +8,18 @@ public class StackNodes{
 The header node with dummy data is necessary because a lack of it will require the pop method to return both the popped value
 and the updated header.
 */
+	ListNode top = null;
 
-
-private ListNode createStack()
+public StackNodes()
 {
- ListNode top = new ListNode();
+ top = new ListNode();
  top.setValue(Integer.MIN_VALUE);
  top.setNext(null);
 
- return top;
+
 }
 
-private void push(ListNode top,int value)
+public void push(int value)
 {
 ListNode newNode = new ListNode();
 newNode.setValue(value);
@@ -29,23 +29,25 @@ top.setNext(newNode);
 
 }
 
-private int pop(ListNode top)
+public int pop()
 {
 	ListNode out = top.getNext();
 	if(out==null)
 	{
-	System.out.println("Stack Empty");
-	return Integer.MIN_VALUE;
+		System.out.println("Stack Empty");
+		return Integer.MIN_VALUE;
 	}
 	else
 	{
-	 top.setNext(out.getNext());
-	 return out.getValue();	
+		 top.setNext(out.getNext());
+		 return out.getValue();	
 	}
 }
 
 public static void main(String[] args)
 {
+	
+	
 }
 
 
