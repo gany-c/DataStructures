@@ -46,7 +46,45 @@ public int pop()
 
 public static void main(String[] args)
 {
+
+	StackNodes q = new StackNodes();
+
 	
+	q.pop();
+	
+	q.push(1);
+	q.push(34);
+	q.push(7);
+	
+	q.display();
+	
+	System.out.println("pop -------"+q.pop());
+	
+	q.display();
+	
+	q.push(22);
+	q.push(31);
+	q.push(42);
+	
+	q.display();
+	
+	System.out.println("pop -------"+q.pop());
+	q.push(67);
+
+	
+	q.display();	
+	
+}
+
+private void display() {
+	
+	ListNode node = top.getNext();
+	while(node!=null)
+	{
+		System.out.print(node.getValue()+",");
+		node = node.getNext();
+	}
+	System.out.println();
 	
 }
 
