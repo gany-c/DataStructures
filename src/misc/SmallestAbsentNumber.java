@@ -1,3 +1,7 @@
+package misc;
+import java.util.Set;
+import java.util.HashSet;
+
 /*
 
 1. First approach: Start from 0 and keep checking if the number is there.
@@ -16,3 +20,59 @@ if not return (init +1) else recursively call for list and second minimum. - But
 6. Repeat 4, but in the same array. If the copying point holds another number smaller than k, then copy recursively.
 
 */
+
+public class SmallestAbsentNumber{
+
+	
+	public static int find(int[] input)
+	{
+		if(input==null|| input.length == 0)
+			return 0; 
+	
+		int smallest = Integer.MAX_VALUE;
+
+		
+		Set<Integer> numSet = new HashSet<Integer>();
+		
+		for(int i: input)
+		{
+			if(i < smallest)
+				smallest = i;
+
+				
+			numSet.add(i);	
+		}
+		
+		if(smallest != 1)
+			return 1;
+		else
+		{
+			int smallestMissing = Integer.MAX_VALUE;
+		
+			for(int i: input)
+			{
+				if(!numSet.contains(i+1))
+				{
+					if((i+1) < smallestMissing)
+						smallestMissing = i +1;
+				}
+					
+			
+			}
+			
+			return smallestMissing;
+		}	
+		
+	
+	}
+
+
+	public static void main(String[] args){
+	
+		System.out.println("Hi");
+		
+		System.out.println(find(new int[]{2,7,8,1,200,232,3}));
+	}
+
+
+}
