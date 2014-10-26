@@ -30,9 +30,9 @@ interface TwoSum {
 
 public class Summer implements TwoSum{
 
-   private List storeList = new ArrayList(); 
+   private List<Integer> storeList = new ArrayList<Integer>(); 
    
-   private Set storeSet = new HashSet();
+   private Set<Integer> storeSet = new HashSet<Integer>();
 
    public void store(int input){
 
@@ -41,17 +41,36 @@ public class Summer implements TwoSum{
 
    }
    
-   public boolean test(int val){
+   public boolean test(int val)
+   {
    
      for(int i = 0; i < storeList.size(); i++)
      {
-         int diff = val - (Integer)storeList.get(i);
+         int diff = val - storeList.get(i);
          
          if(storeSet.contains(diff))
              return true;
      }
      
      return false;
+   }
+   
+   public static void main(String[] args){
+	   
+	   Summer summer = new Summer();
+	   
+	   summer.store(1);
+	   summer.store(-2);
+	   summer.store(3);
+	   summer.store(6);
+	   
+	   System.out.println(summer.test(4));
+	   System.out.println(summer.test(-1));
+	   System.out.println(summer.test(9));
+	   
+	   System.out.println(summer.test(10));
+	   System.out.println(summer.test(5));
+	   System.out.println(summer.test(0));
    }
  
 }
