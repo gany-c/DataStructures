@@ -1,6 +1,11 @@
 package tree;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Set;
+import java.util.Stack;
+import java.util.Queue;
 
 import base.IntWrapper;
 import base.TreeNode;
@@ -9,8 +14,15 @@ import base.UtilityStack;
 public class StaticTree{
 
 // The tree does not need a header over the root, because we are //dealing only with traversal functions, the root itself does not //change.
+	
+private TreeNode root = null;
 
-private TreeNode createTree(int[] source,int index)
+public StaticTree(int[] source,int index){
+	 
+	this.root = createTree(source, index);
+}
+
+private static TreeNode createTree(int[] source,int index)
 {
   if((source==null)||(source.length==0))
 	return null;
@@ -36,51 +48,51 @@ private TreeNode createTree(int[] source,int index)
   } 
 }
 
- private void preOrder(TreeNode root)
+ public static void preOrder(TreeNode input)
  {
-	if(root == null)
+	if(input == null)
 		return;
 	else
 	{
-		System.out.println(root.getValue());
-		preOrder(root.getLeft());
-		preOrder(root.getRight());
+		System.out.println(input.getValue());
+		preOrder(input.getLeft());
+		preOrder(input.getRight());
 	}	
  } 
 
- private void inOrder(TreeNode root)
+ public static void inOrder(TreeNode input)
  {
-	if(root == null)
+	if(input == null)
 		return;
 	else
 	{
 		
-		inOrder(root.getLeft());
-		System.out.println(root.getValue());
-		inOrder(root.getRight());
+		inOrder(input.getLeft());
+		System.out.println(input.getValue());
+		inOrder(input.getRight());
 	}	
  }
 
-private void postOrder(TreeNode root)
+public static void postOrder(TreeNode input)
  {
-	if(root == null)
+	if(input == null)
 		return;
 	else
 	{
 		
-		postOrder(root.getLeft());
-		postOrder(root.getRight());
-		System.out.println(root.getValue());		
+		postOrder(input.getLeft());
+		postOrder(input.getRight());
+		System.out.println(input.getValue());		
 	}	
  } 
  
-private void IterativePreOrder(TreeNode root)
+public void IterativePreOrder()
 {
 	if(root == null)
 		 return;
 	else
 	{
-  	UtilityStack stack = new UtilityStack();
+  	Stack<TreeNode> stack = new Stack<TreeNode>();
   	stack.push(root);
   	while(true)
   	{
@@ -102,13 +114,13 @@ private void IterativePreOrder(TreeNode root)
 }
 
 
-private void IterativeInOrder(TreeNode root)
+public void IterativeInOrder()
 {
 	if(root == null)
  		return;
 	else
 	{
- 	 UtilityStack stack = new UtilityStack();
+	 Stack<TreeNode> stack = new Stack<TreeNode>();
  	 pushLefts(stack,root);
  	 while(true)
  	 {
@@ -125,15 +137,15 @@ private void IterativeInOrder(TreeNode root)
 	}
 }
 
-private void IterativePostOrder(TreeNode root)
+public void IterativePostOrder()
 {
 	if(root == null)
  		return;
 	else
 	{
-  		UtilityStack stack = new UtilityStack();
- 	      pushLefts(stack,root);
-  		HashSet rightExplored = new HashSet();
+		Stack<TreeNode> stack = new Stack<TreeNode>();
+ 	    pushLefts(stack,root);
+  		Set<TreeNode> rightExplored = new HashSet<TreeNode>();
 
  		while(true)
             {
@@ -158,7 +170,7 @@ private void IterativePostOrder(TreeNode root)
 	}
 }
 
-private void pushLefts(UtilityStack stack, TreeNode node)
+private void pushLefts(Stack<TreeNode> stack, TreeNode node)
 {
 	while(node!=null)
 	{
@@ -167,34 +179,34 @@ private void pushLefts(UtilityStack stack, TreeNode node)
 	} 
 }
 
-private static TreeNode inorderSuccessor(TreeNode root, TreeNode target,IntWrapper status)
+public static TreeNode inorderSuccessor(TreeNode input, TreeNode target,IntWrapper status)
 {
-	if(root == null)
+	if(input == null)
 		return null;
 	
 	TreeNode output = null;
-	if(root.getLeft()!=null)
+	if(input.getLeft()!=null)
 	{
-		output = inorderSuccessor(root.getLeft(), target,status);
+		output = inorderSuccessor(input.getLeft(), target,status);
 		if(output!=null)
 			return output;
 	}
 	
 	if(status.getValue()==1)
-		return root;
+		return input;
 	else 
 	{	
-		if(root==target)
+		if(input==target)
 			status.setValue(1);
 		
-		if(root.getRight()!=null)
-			return inorderSuccessor(root.getRight(), target,status);
+		if(input.getRight()!=null)
+			return inorderSuccessor(input.getRight(), target,status);
 		else
 			return null;
 	}
 }
 
-private static int maxHeight(TreeNode root){
+public static int maxHeight(TreeNode root){
 	
 	if(root.getLeft()==null&&root.getRight()==null)
 		return 0;
@@ -218,7 +230,7 @@ private static int maxHeight(TreeNode root){
 	}
 }
 
-static TreeNode createMirror(TreeNode root){
+public static TreeNode createMirror(TreeNode root){
 	
 	if(root==null)
 		return null;
@@ -232,6 +244,57 @@ static TreeNode createMirror(TreeNode root){
 		
 		return output;
 	}
+}
+
+public void zigZagStart(){
+
+	Queue<TreeNode> start = new LinkedList<TreeNode>();
+	start.add(root);
+	StaticTree.zigZag(start,true);
+}
+
+
+private static void zigZag (Queue<TreeNode> q,boolean leftFirst){
+
+	
+	Stack<TreeNode> temp = new Stack<TreeNode>();
+	
+	
+	while(!q.isEmpty())
+	{
+		TreeNode node = q.poll();
+	
+		System.out.println(node.getValue());	
+	
+		 if(node.getLeft() != null && leftFirst)
+		     temp.push(node.getLeft());
+	     
+		 if(node.getRight()!=null);
+	      temp.push(node.getRight());  
+	      
+	    if(node.getLeft() != null && !leftFirst)
+	     temp.push(node.getLeft());   
+	    
+	    
+	
+	}
+	
+	if(!temp.isEmpty())
+	{
+		Queue<TreeNode> nextQueue = new LinkedList<TreeNode>();
+		 
+		while(!temp.isEmpty()){
+			nextQueue.add(temp.pop());
+		}
+
+		zigZag(nextQueue,!leftFirst);
+	}
+}
+
+
+public static void main(String[] args){
+	
+	System.out.println("Hi");
 }
 
 
