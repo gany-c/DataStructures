@@ -1,6 +1,6 @@
 package tree;
 
-import java.util.Collections;
+
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
@@ -9,7 +9,7 @@ import java.util.Queue;
 
 import base.IntWrapper;
 import base.TreeNode;
-import base.UtilityStack;
+
 
 public class StaticTree{
 
@@ -135,6 +135,13 @@ public void IterativeInOrder()
  		}
   	}
 	}
+}
+public void bFS(){
+	
+}
+
+public void dFS(){
+	
 }
 
 public void IterativePostOrder()

@@ -1,17 +1,21 @@
 package misc;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 
 public class WordUtils {
 	
-	public static java.util.List findCompound(String[] inputWords) throws RuntimeException
+	public static List<String> findCompound(String[] inputWords) throws RuntimeException
 	{
 		if(inputWords==null||inputWords.length==0)
 			return null;
 		
-		java.util.List output = new java.util.ArrayList();
-		java.util.HashMap countMap = new java.util.HashMap();
+		List<String> output = new ArrayList<String>();
+		HashMap<String,Integer> countMap = new HashMap<String,Integer>();
 		
 		
 		for(int curPos=0;curPos<inputWords.length;curPos++)
@@ -38,8 +42,8 @@ public class WordUtils {
 			
 		}
 		
-		java.util.Set keySet = countMap.keySet();
-		Iterator it = keySet.iterator();
+		Set<String> keySet = countMap.keySet();
+		Iterator<String> it = keySet.iterator();
 		
 		while(it.hasNext())
 		{

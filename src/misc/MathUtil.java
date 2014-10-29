@@ -77,5 +77,15 @@ public class MathUtil {
 		   System.out.println(powWow(9,3));
 		   
 	   }
+	   
+	   public static int fib(int i){
+		return i;
+		   
+	   }
+	   
+	   public static int fibIterative(int i){
+		return i;
+		   
+	   }
 
 }
