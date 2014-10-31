@@ -75,16 +75,60 @@ public class MathUtil {
 		   
 		   System.out.println(pow(9,3));
 		   System.out.println(powWow(9,3));
+		   //--------------
+		   System.out.println("Fib Start");
+		   System.out.println(fib(4));
+		   System.out.println(fibIterative(4));
+		   
+		   System.out.println(fib(13));
+		   System.out.println(fibIterative(13));
+		   System.out.println(fib(14));
+		   System.out.println(fibIterative(14));
+		   
+		   
 		   
 	   }
 	   
-	   public static int fib(int i){
-		return i;
+	   public static int fib(int n){
+		   if(n <1)
+		   {
+			   System.out.println("enter a value greater than 0");
+			   return -1;
+
+		   }
+
+		   if(n==1)
+		       return 0;
+		   else if(n==2)
+		       return 1;
+		   else return (fib(n-1)+fib(n-2));
 		   
 	   }
 	   
-	   public static int fibIterative(int i){
-		return i;
+	   public static int fibIterative(int n){
+		   if(n <1)
+		   {
+			   System.out.print("Please enter a value greater than 0");
+			   return 0;
+		   }
+
+		   if(n==1)
+		       return 0;
+		   else if(n==2)
+		       return 1;
+		    
+		   int prev = 1; 
+		   int prevprev = 0;  
+		       
+		   int sum = 0;
+		       
+		   for(int i =3; i <= n ;i++)
+		   {    
+		       sum = prev + prevprev;
+		       prevprev = prev;
+		      prev = sum;
+		   }   
+	   return sum;
 		   
 	   }
 
