@@ -142,10 +142,13 @@ public class MathUtil {
 	    * Naive approach: call isSquareOfSumOf3digitHalves for all numbers between 100,000
 	    * and 1,000,000.
 	    * 
+	    * Another naive approach would be taking all possible 3 digit pairs - computing their
+	    * sums and then their squares. This would again involve 2 nested loops -900 * 1000 times.
+	    * 
 	    * Better approach: All the sums have to boil down to 100 - 999, if their squares have to
 	    * be 6 digit numbers.
 	    * 
-	    * Check isSquareOfSumOf3digitHalves only on their squares.
+	    * Check isSquareOfSumOf3digitHalves only on their squares. i.e. on 100 to 999
 	    * 
 	    * Note: all 3 digit numbers can be candidate sums of the 6 digit pairs. Because the second pair can be 
 	    * set to 000. e.g. 123,000 - 100,000 - 999,000
