@@ -1,5 +1,7 @@
 package misc;
 
+import java.util.List;
+
 public class MathUtil {
 	
 	   
@@ -130,6 +132,18 @@ public class MathUtil {
 		   }   
 	   return sum;
 		   
+	   }
+	   
+	   public static List<Integer> findAll6DigitSquares(){
+		   return null;
+	   }
+	   
+	   public static List<Integer> findAll6DigitNumSquareOfSumOf3digitHalves(){
+		    return null;
+	   }
+	   
+	   public static boolean isSquareOfSumOf3digitHalves(int n){
+		   return false;
 	   }
 
 }
