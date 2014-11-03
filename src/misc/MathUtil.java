@@ -138,6 +138,19 @@ public class MathUtil {
 		   return null;
 	   }
 	   
+	   /*
+	    * Naive approach: call isSquareOfSumOf3digitHalves for all numbers between 100,000
+	    * and 1,000,000.
+	    * 
+	    * Better approach: All the sums have to boil down to 100 - 999, if their squares have to
+	    * be 6 digit numbers.
+	    * 
+	    * Check isSquareOfSumOf3digitHalves only on their squares.
+	    * 
+	    * Note: all 3 digit numbers can be candidate sums of the 6 digit pairs. Because the second pair can be 
+	    * set to 000. e.g. 123,000 - 100,000 - 999,000
+	    * 
+	    */
 	   public static List<Integer> findAll6DigitNumSquareOfSumOf3digitHalves(){
 		    return null;
 	   }
