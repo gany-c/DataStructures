@@ -1,5 +1,6 @@
 package misc;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MathUtil {
@@ -87,7 +88,15 @@ public class MathUtil {
 		   System.out.println(fib(14));
 		   System.out.println(fibIterative(14));
 		   
+		   //------------
 		   
+		   List<Integer> strangeSq = findAll6DigitNumSquareOfSumOf3digitHalves();
+		   System.out.println("Comedy Squares are:-");
+		   for(Integer sq:strangeSq)
+		   {
+			   System.out.print(sq+", ");
+			   System.out.println();
+		   }
 		   
 	   }
 	   
@@ -134,9 +143,7 @@ public class MathUtil {
 		   
 	   }
 	   
-	   public static List<Integer> findAll6DigitSquares(){
-		   return null;
-	   }
+
 	   
 	   /*
 	    * Naive approach: call isSquareOfSumOf3digitHalves for all numbers between 100,000
@@ -155,11 +162,35 @@ public class MathUtil {
 	    * 
 	    */
 	   public static List<Integer> findAll6DigitNumSquareOfSumOf3digitHalves(){
-		    return null;
+		    List<Integer> allSq = findAll6DigitSquares();
+		    
+		    List<Integer> output = new ArrayList<Integer>();
+		    for(Integer sq: allSq)
+		    	if(isSquareOfSumOf3digitHalves(sq))
+		    		output.add(sq);
+		    
+		    return output;
 	   }
 	   
-	   public static boolean isSquareOfSumOf3digitHalves(int n){
-		   return false;
+	   private static boolean isSquareOfSumOf3digitHalves(int n){
+		   
+		   if(n < 100000 || n >999999)
+		  	   return false;
+		   else
+		   {
+			  int term =  n/1000 + n%1000;
+			  return n==term*term;
+		   }
+			  
+	   }
+	   
+	   private static List<Integer> findAll6DigitSquares(){
+		   List<Integer> output = new ArrayList<Integer>();
+		   
+		   for(int i=100; i<1000;i++)
+			   output.add(i*i);
+		   
+		   return output;
 	   }
 
 }
