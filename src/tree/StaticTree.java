@@ -17,9 +17,9 @@ public class StaticTree{
 	
 private TreeNode root = null;
 
-public StaticTree(int[] source,int index){
+public StaticTree(int[] source){
 	 
-	this.root = createTree(source, index);
+	this.root = createTree(source, 0);
 }
 
 private static TreeNode createTree(int[] source,int index)
@@ -31,7 +31,7 @@ private static TreeNode createTree(int[] source,int index)
 	TreeNode out = new TreeNode();
 	out.setValue(source[index]);
 	
-	int leftIndex = 2*index;
+	int leftIndex = 2*index+1;
 	int rightIndex = leftIndex+1;
 
 	if(leftIndex<source.length)
@@ -141,6 +141,26 @@ public void bFS(){
 }
 
 public void dFS(){
+	
+	System.out.println("Starting Depth First Search");
+	Stack<TreeNode> stack = new Stack<TreeNode>();
+	stack.push(this.root);
+	
+	while(!stack.isEmpty()){
+		
+		TreeNode node = stack.pop();
+		System.out.print(node.getValue()+", ");
+		
+		
+		if(node.getRight()!=null)
+			stack.push(node.getRight());
+		
+		if(node.getLeft()!=null)
+			stack.push(node.getLeft());
+
+		
+	}
+	
 	
 }
 
@@ -302,6 +322,9 @@ private static void zigZag (Queue<TreeNode> q,boolean leftFirst){
 public static void main(String[] args){
 	
 	System.out.println("Hi");
+	
+	StaticTree tree = new StaticTree(new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15});
+	tree.dFS();
 }
 
 
