@@ -138,11 +138,28 @@ public void IterativeInOrder()
 }
 public void bFS(){
 	
+	System.out.println("\n Starting Breadth First Search");
+	Queue<TreeNode> q = new LinkedList<TreeNode>();
+	q.add(this.root);
+	
+	while(!q.isEmpty()){
+		
+		TreeNode node = q.poll();
+		System.out.print(node.getValue()+", ");
+
+		if(node.getLeft()!=null)
+			q.add(node.getLeft());		
+		
+		if(node.getRight()!=null)
+			q.add(node.getRight());
+				
+	}
+	
 }
 
 public void dFS(){
 	
-	System.out.println("Starting Depth First Search");
+	System.out.println("\n Starting Depth First Search");
 	Stack<TreeNode> stack = new Stack<TreeNode>();
 	stack.push(this.root);
 	
@@ -325,6 +342,7 @@ public static void main(String[] args){
 	
 	StaticTree tree = new StaticTree(new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15});
 	tree.dFS();
+	tree.bFS();
 }
 
 
