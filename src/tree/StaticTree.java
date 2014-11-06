@@ -335,6 +335,11 @@ private static void zigZag (Queue<TreeNode> q,boolean leftFirst){
 	}
 }
 
+//deep clone
+public TreeNode clone(){
+	return null;
+}
+
 
 public static void main(String[] args){
 	
