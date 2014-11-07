@@ -17,6 +17,10 @@ public class StaticTree{
 	
 private TreeNode root = null;
 
+private StaticTree(TreeNode node){
+	this.root = node;
+}
+
 public StaticTree(int[] source){
 	 
 	this.root = createTree(source, 0);
@@ -336,18 +340,55 @@ private static void zigZag (Queue<TreeNode> q,boolean leftFirst){
 }
 
 //deep clone
-public TreeNode clone(){
-	return null;
+public StaticTree clone(){
+	
+	StaticTree cloneTree = new StaticTree(deepClone(this.root));
+	return cloneTree;
+}
+
+private void reset(TreeNode node) {
+
+
+	node.setValue(0);
+	
+	if(node.getLeft()!=null)
+		reset(node.getLeft());
+	
+	if(node.getRight()!=null)
+		reset(node.getRight());
+	
+
 }
 
 
+private TreeNode deepClone(TreeNode node) {
+
+	TreeNode newNode = new TreeNode();
+	newNode.setValue(node.getValue());
+	
+	if(node.getLeft()!=null)
+		newNode.setLeft(deepClone(node.getLeft()));
+	
+	if(node.getRight()!=null)
+		newNode.setRight(deepClone(node.getRight()));
+	
+	return newNode;
+}
+
 public static void main(String[] args){
 	
-	System.out.println("Hi");
+	System.out.println("Hi----------");
 	
 	StaticTree tree = new StaticTree(new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15});
 	tree.dFS();
 	tree.bFS();
+	
+	StaticTree tree2 = tree.clone();
+	tree.reset(tree.root);
+	
+	tree.bFS();
+	
+	tree2.bFS();
 }
 
 
