@@ -23,14 +23,16 @@ public class PatternSearcher {
 		
 		//System.out.println(pattern+" "+patIndex+" "+input+" "+inpIndex);
 
-		if(pattern.charAt(patIndex)!=input.charAt(inpIndex))
-			return false;
-		else
-		{
+		if(pattern.charAt(patIndex)==input.charAt(inpIndex)||pattern.charAt(patIndex)=='?')
+		{	
 			if(patIndex == pattern.length()-1)
 				return true;
 			else
 				return subString(pattern, patIndex+1, input, inpIndex+1);
+		}	
+		else
+		{
+			return false;
 		}
 	}
 
@@ -43,6 +45,8 @@ public class PatternSearcher {
 		System.out.println(find("mahi","himan"));
 		System.out.println(find("himanhowareyou","himan"));
 		System.out.println(find("himan","somethingandallhimanhowareyou"));
+		System.out.println(find("h?man","somethingandallhimanhowareyou"));
+		System.out.println(find("h?m?n","somethingandallhemonhowareyou"));
 	}
 	 
 	
