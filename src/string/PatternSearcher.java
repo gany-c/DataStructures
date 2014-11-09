@@ -29,7 +29,22 @@ public class PatternSearcher {
 				return true;
 			else
 				return subString(pattern, patIndex+1, input, inpIndex+1);
-		}	
+		}
+		else if(pattern.charAt(patIndex)=='*')
+		{
+			if(patIndex == pattern.length()-1)
+				return true;
+			else
+			{
+				int remainingPatLength = pattern.length() - patIndex;
+				
+				for(int i = inpIndex; i <= input.length() - remainingPatLength;i++)
+					if(subString(pattern,patIndex+1,input,i))
+						return true;
+				
+				return false;
+			}
+		}
 		else
 		{
 			return false;
@@ -47,6 +62,8 @@ public class PatternSearcher {
 		System.out.println(find("himan","somethingandallhimanhowareyou"));
 		System.out.println(find("h?man","somethingandallhimanhowareyou"));
 		System.out.println(find("h?m?n","somethingandallhemonhowareyou"));
+		System.out.println(find("s*llh","somethingandallhemonhowareyou"));
+		System.out.println(find("s*z","somethingandallhemonhowareyou"));
 	}
 	 
 	
