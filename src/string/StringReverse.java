@@ -2,7 +2,7 @@ package string;
 
 public class StringReverse{
 
-private String reverse(String input)
+public static String reverse(String input)
 {
  if(input==null)
 	return null;
@@ -29,15 +29,26 @@ private String reverse(String input)
     end--;
   }
  
-  String out = "";
+  StringBuilder out = new StringBuilder();
   
   for(int i=0;i<holder.length;i++)
   {
-     out = out + holder[i];
+     out = out.append(holder[i]);
     //reccomended string buffer 
    }
-  return out;
+  return out.toString();
  }
+}
+
+public static void main(String[] args){
+	String sentence = "The quick brown fox jumped over the lazy dog";
+	System.out.println(reverse(sentence));
+	
+	System.out.println(reverse("Defibrilator"));
+	
+	System.out.println(reverse("Pounce Menacing"));
+	
+	System.out.println(reverse("Long          Pause"));
 }
 
 
