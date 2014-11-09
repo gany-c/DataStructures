@@ -1,71 +1,41 @@
 package string;
 
-import base.UtilityStack;
+import java.util.Stack;
+
+
 
 public class WordReverser{
 
-private String removeTrailingSpaces(String input)
-{
-	if(input!=null)
-		return input.trim();
-	else
-		return null;
-}
-
-private String removeStartingSpaces(String input)
-{
-	if(input==null)
-		return null;
-	else
-	{
-		int stringLength = input.length();
-		int copyStart = 0;
-
-		
-
-		for(copyStart = 0;copyStart<stringLength;copyStart++)
-		{
-			if(input.charAt(copyStart)!=' ')
-				break;
-		}
-
-		String output = "";
-		for(int i = copyStart;i<stringLength;i++)
-		{		
-			output = output + input.charAt(i);
-		}
-
-		return output;	
-		
-	}
-}
-
-private UtilityStack getTokens(String input)
+/*
+ * writing the tokenizer is the key..
+ */
+private static Stack<String> getTokens(String input)
 {
  if(input == null)
 	return null;
  else
  {
    int stringLength = input.length();
-   UtilityStack output = new UtilityStack();
+   Stack<String> output = new Stack<String>();
 
-   String token = "";
+   StringBuilder token = new StringBuilder();
    for(int i =0;i<stringLength;i++)
    {
-     if(token.charAt(i)!=' ')
+     if(input.charAt(i)!=' ')
      {
-	token = token + ' ';
-        
-	if(i==stringLength-1)
-	{
-          output.push(token);
-	  break;
+      
+    	token = token.append(input.charAt(i));
+		if(i>=stringLength-1)
+		{
+		  if(!token.toString().isEmpty())	
+			  output.push(token.toString());
+          break;
         }
       } 
       else
-     {
-        output.push(token);
-	token = "";
+      {
+        output.push(token.toString());
+        token = new StringBuilder();
 
      }  
    } 
@@ -75,37 +45,46 @@ private UtilityStack getTokens(String input)
 
 
 
-private String reverseWords(String input)
+public static String reverseWords(String input)
 {
 
-if(input==null){
-	return null;
-}
+	if(input==null)
+	{
+		return null;
+	}
+	
+	input = input.trim();
+	
+	Stack<String> stack = getTokens(input);
+	StringBuilder output = new StringBuilder();
+	
+	while(!stack.isEmpty())
+	{
+	  String token = (String)stack.pop();
 
-input = removeTrailingSpaces(input);
-input = removeStartingSpaces(input);
+	    output = output.append(token +" ");
+	    
 
-UtilityStack stack = getTokens(input);
-String output = "";
-
-while(true)
-{
-  String token = (String)stack.pop();
-  if(token == null)
-  {
-	break;
-   }
-  else
-  {
-    output = output + token +" ";
-    
-   }
-}
-
-if(output.equals(""))
-	return null;
-else
-	return output.trim();
+	}
+	
+	if(output.length() ==0)
+		return null;
+	else
+		return output.toString();
 
 }
+
+public static void main(String[] args){
+	
+	String sentence = "The quick brown fox jumped over the lazy dog";
+	System.out.println(reverseWords(sentence));
+	
+	System.out.println(reverseWords("Defibrilator"));
+	
+	System.out.println(reverseWords("Pounce Menacing"));
+	
+	System.out.println(reverseWords("Long          Pause"));
+	
+}
+
 }
