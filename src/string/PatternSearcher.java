@@ -2,81 +2,47 @@ package string;
 
 public class PatternSearcher {
 	
-	public static boolean find(String pattern, String input,int patIndex,int inpIndex)
+	public static boolean find(String pattern, String input)
 	{
-		if(pattern.charAt(patIndex)=='?')
-		{	
+		if(pattern==null||pattern.isEmpty()||input==null||input.isEmpty()||pattern.length()>input.length())
+			return false;
+		else
+		{
 			
-			return matchSingleChar(pattern,input,patIndex,inpIndex);
-					
-		}
-		else if(pattern.charAt(patIndex)=='*')
-		{
-			if(patIndex==pattern.length()-1)
-				return true;				
-			else
-			{
-				
-				if(inpIndex<input.length()-1)
-				{
-					boolean found = false;
-					
-					for(int i= inpIndex;i<input.length();i++)
-						if(find(pattern,input,patIndex,inpIndex))
-							found = true;
-					
-					return found;
-				}
-				else if(allStars(pattern,patIndex+1))
-						return true;
-				else			
-						return false;			
-			}		
-		}
-		else if(pattern.charAt(patIndex)!=input.charAt(inpIndex))
-		{
+			//if both are of equal lenght the loop should run at least once.
+			for(int i =0;i <=input.length()-pattern.length();i++){
+				if(subString(pattern,0,input,i))
+					return true;
+			}
+			
 			return false;
 		}
-		else
-		{
-			return matchSingleChar(pattern,input,patIndex,inpIndex);		
-		}
-		
-	
 	}
 	
-
-
-	private static boolean matchSingleChar(String pattern, String input,
-			int patIndex, int inpIndex) 
-	{
-
+	private static boolean subString(String pattern, int patIndex, String input, int inpIndex) {
 		
-		if(patIndex==pattern.length()-1)
-			return true;			
+		//System.out.println(pattern+" "+patIndex+" "+input+" "+inpIndex);
+
+		if(pattern.charAt(patIndex)!=input.charAt(inpIndex))
+			return false;
 		else
 		{
-			if(inpIndex<input.length()-1)
-			{
-				return find(pattern,input,patIndex,inpIndex);
-			}
-			else if(allStars(pattern,patIndex+1))
-					return true;
+			if(patIndex == pattern.length()-1)
+				return true;
 			else
-					return false;		
-		}	
-		
-		
+				return subString(pattern, patIndex+1, input, inpIndex+1);
+		}
 	}
 
-
-
-	private static boolean allStars(String pattern, int startPoint) {
+	public static void main(String[] args){
 		
-		for(int i= startPoint;i<pattern.length();i++)
-			if(pattern.charAt(i)!='*')
-				return false;
-		return true;
+
+		
+		System.out.println(find("himan","himan"));
+		System.out.println(find("man","himan"));
+		System.out.println(find("mahi","himan"));
+		System.out.println(find("himanhowareyou","himan"));
+		System.out.println(find("himan","somethingandallhimanhowareyou"));
 	}
 	 
 	
