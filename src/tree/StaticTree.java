@@ -17,7 +17,7 @@ public class StaticTree{
 	
 private TreeNode root = null;
 
-private StaticTree(TreeNode node){
+public StaticTree(TreeNode node){
 	this.root = node;
 }
 

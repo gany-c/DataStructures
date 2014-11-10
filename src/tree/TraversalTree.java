@@ -1,19 +1,20 @@
 package tree;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import base.TreeNode;
 
 public class TraversalTree {
 	
-	private static TreeNode createTree(int[] preorder,int[] inorder,int start, int end)
+	public static TreeNode createTree(int[] preorder,int[] inorder)
 	{
-		HashMap preorderPosMap = getPosMap(preorder);
+		Map<Integer,Integer> preorderPosMap = getPosMap(preorder);
 		
-		return createTree(preorderPosMap,inorder,start, end);
+		return createTree(preorderPosMap,inorder,0, inorder.length-1);
 	}
 
-	private static TreeNode createTree(HashMap preorderPosMap, int[] inorder,
+	private static TreeNode createTree(Map<Integer,Integer> preorderPosMap, int[] inorder,
 			int start, int end) {
 		
 		int rootLocation = lowestPreOrderPos(preorderPosMap,inorder,start,end);
@@ -39,7 +40,7 @@ public class TraversalTree {
 		return node;
 	}
 
-	private static int lowestPreOrderPos(HashMap preorderPosMap, int[] inorder,int start, int end) {
+	private static int lowestPreOrderPos(Map<Integer,Integer> preorderPosMap, int[] inorder,int start, int end) {
 		int min = Integer.MAX_VALUE;
 		int minpos = -1;
 		
@@ -57,9 +58,9 @@ public class TraversalTree {
 		return minpos;
 	}
 
-	private static HashMap getPosMap(int[] preorder) {
+	private static Map<Integer,Integer> getPosMap(int[] preorder) {
 		
-		HashMap posMap = new HashMap();
+		Map<Integer,Integer> posMap = new HashMap<Integer,Integer>();
 		
 		for(int i=0;i<preorder.length;i++)
 		{
@@ -68,6 +69,18 @@ public class TraversalTree {
 		}
 		
 		return posMap ;
+	}
+	
+	public static void main(String[] args){
+		
+		int[] inorderList = new int[]{8, 4, 9, 2, 10, 5, 11, 1, 12, 6, 13, 3, 14, 7, 15};
+		int[] preorderList = new int[]{1, 2, 4, 8, 9, 5, 10, 11, 3, 6, 12, 13, 7, 14, 15};
+		
+		TreeNode node = createTree(preorderList,inorderList);
+		
+		StaticTree tree = new StaticTree(node);
+		tree.bFS();
+		
 	}
 
 }
