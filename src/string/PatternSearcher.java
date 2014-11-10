@@ -9,7 +9,7 @@ public class PatternSearcher {
 		else
 		{
 			
-			//if both are of equal lenght the loop should run at least once.
+			//if both are of equal length the loop should run at least once.
 			for(int i =0;i <=input.length()-pattern.length();i++){
 				if(subString(pattern,0,input,i))
 					return true;
@@ -64,6 +64,11 @@ public class PatternSearcher {
 		System.out.println(find("h?m?n","somethingandallhemonhowareyou"));
 		System.out.println(find("s*llh","somethingandallhemonhowareyou"));
 		System.out.println(find("s*z","somethingandallhemonhowareyou"));
+		System.out.println(find("*how","somethingandallhemonhowareyou"));
+		System.out.println(find("meth*how","somethingandallhemonhowareyou"));
+		System.out.println(find("meth*i","somethingandallhemonhowareyou"));
+		System.out.println(find("*","somethingandallhemonhowareyou"));
+		System.out.println(find("??","somethingandallhemonhowareyou"));
 	}
 	 
 	
