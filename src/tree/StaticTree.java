@@ -290,20 +290,31 @@ public static int maxHeight(TreeNode root){
 	}
 }
 
-public static TreeNode createMirror(TreeNode root){
+private TreeNode createMirror(TreeNode input){
 	
-	if(root==null)
+	if(input==null)
 		return null;
 	else
 	{
 		TreeNode output = new TreeNode();
-		output.setValue(root.getValue());
+		output.setValue(input.getValue());
 		
-		output.setLeft(createMirror(root.getRight()));
-		output.setRight(createMirror(root.getLeft()));
+		output.setLeft(createMirror(input.getRight()));
+		output.setRight(createMirror(input.getLeft()));
 		
 		return output;
 	}
+}
+
+public StaticTree getMirror(){
+	
+	if(this.root == null)
+		return null;
+	else
+	{
+		return new StaticTree(createMirror(this.root));
+	}
+		
 }
 
 public void zigZagStart(){
@@ -434,6 +445,13 @@ public static void main(String[] args){
 	
 	System.out.println("\n Inorder Successor of  ----------14");
 	System.out.println(tree2.inorderSuccessor(14));	
+	
+	StaticTree tree3 = tree2.getMirror();
+	System.out.println("\n BFS of new tree  ----------");
+	tree3.bFS();
+	System.out.println("\n BFS of old tree  ----------");
+	tree2.bFS();
+	
 }
 
 
