@@ -58,7 +58,7 @@ private static TreeNode createTree(int[] source,int index)
 		return;
 	else
 	{
-		System.out.println(input.getValue());
+		System.out.print(input.getValue()+", ");
 		preOrder(input.getLeft());
 		preOrder(input.getRight());
 	}	
@@ -72,7 +72,7 @@ private static TreeNode createTree(int[] source,int index)
 	{
 		
 		inOrder(input.getLeft());
-		System.out.println(input.getValue());
+		System.out.print(input.getValue()+", ");
 		inOrder(input.getRight());
 	}	
  }
@@ -86,11 +86,11 @@ public static void postOrder(TreeNode input)
 		
 		postOrder(input.getLeft());
 		postOrder(input.getRight());
-		System.out.println(input.getValue());		
+		System.out.print(input.getValue()+", ");		
 	}	
  } 
  
-public void IterativePreOrder()
+public void iterativePreOrder()
 {
 	if(root == null)
 		 return;
@@ -98,46 +98,42 @@ public void IterativePreOrder()
 	{
   	Stack<TreeNode> stack = new Stack<TreeNode>();
   	stack.push(root);
-  	while(true)
+  	while(!stack.isEmpty())
   	{
  		TreeNode node = (TreeNode)stack.pop();
- 
- 		if(node==null)
- 			 break;
- 		else
- 		{
-   			System.out.println(node.getValue());
+
+   			System.out.print(node.getValue()+", ");
+   			
+   			if(node.getRight()!=null)
+   				stack.push(node.getRight()); 
+   			
   			if(node.getLeft()!=null)
   				stack.push(node.getLeft());
 
-   			if(node.getRight()!=null)
-   				stack.push(node.getRight()); 
- 		}
+
+ 		
       }
 	}
 }
 
 
-public void IterativeInOrder()
+public void iterativeInOrder()
 {
 	if(root == null)
  		return;
 	else
 	{
-	 Stack<TreeNode> stack = new Stack<TreeNode>();
- 	 pushLefts(stack,root);
- 	 while(true)
- 	 {
- 		TreeNode node = (TreeNode)stack.pop();
-		 if(node==null)
-  			break;
- 		else
- 		{
-   			System.out.println(node.getValue());
-  			if(node.getRight()!=null)
- 				 pushLefts(stack,node.getRight());
- 		}
-  	}
+		 Stack<TreeNode> stack = new Stack<TreeNode>();
+	 	 pushLefts(stack,root);
+	 	 while(!stack.isEmpty())
+	 	 {
+	 		TreeNode node = (TreeNode)stack.pop();
+	
+	   			System.out.print(node.getValue()+", ");
+	  			if(node.getRight()!=null)
+	 				 pushLefts(stack,node.getRight());
+	 		
+	  	}
 	}
 }
 public void bFS(){
@@ -185,7 +181,10 @@ public void dFS(){
 	
 }
 
-public void IterativePostOrder()
+/**
+ * Excellently done
+ */
+public void iterativePostOrder()
 {
 	if(root == null)
  		return;
@@ -195,26 +194,23 @@ public void IterativePostOrder()
  	    pushLefts(stack,root);
   		Set<TreeNode> rightExplored = new HashSet<TreeNode>();
 
- 		while(true)
-            {
+ 		while(!stack.isEmpty())
+        {
 			TreeNode node = (TreeNode)stack.pop();
- 			if(node==null)
-  				break;
- 			else
- 			{   
-   				if((node.getRight()!=null)&&(!rightExplored.contains(node)))
-    				{
-  					stack.push(node);
-             			pushLefts(stack,node.getRight());
-  					rightExplored.add(node);
-           			}
-   				else
-    				{
-  					System.out.println(node.getValue());
-     				} 
-    
- 			}
-  		}
+ 
+			if((node.getRight()!=null)&&(!rightExplored.contains(node)))
+			{
+				stack.push(node);
+         		pushLefts(stack,node.getRight());
+				rightExplored.add(node);
+   			}
+			else
+			{
+				System.out.print(node.getValue()+", ");
+			} 
+	
+			
+        }
 	}
 }
 
@@ -227,30 +223,46 @@ private void pushLefts(Stack<TreeNode> stack, TreeNode node)
 	} 
 }
 
-public static TreeNode inorderSuccessor(TreeNode input, TreeNode target,IntWrapper status)
-{
-	if(input == null)
-		return null;
+private boolean targetFound = false;
+private int successor = Integer.MIN_VALUE;
+
+public int  inorderSuccessor(int target){
 	
-	TreeNode output = null;
+	this.targetFound = false;
+	this.successor = Integer.MIN_VALUE;
+	
+	if(this.root != null)
+		inorderSuccessor(this.root,target);
+	
+	return this.successor;
+ 
+}
+
+private void inorderSuccessor(TreeNode input,int target)
+{
+
 	if(input.getLeft()!=null)
 	{
-		output = inorderSuccessor(input.getLeft(), target,status);
-		if(output!=null)
-			return output;
+		inorderSuccessor(input.getLeft(),target);
+
 	}
 	
-	if(status.getValue()==1)
-		return input;
+	if(successor!=Integer.MIN_VALUE)
+		return;	
+	else if(this.targetFound){
+		this.successor =  input.getValue();
+		return;
+	}	
 	else 
 	{	
-		if(input==target)
-			status.setValue(1);
+		
+		
+		if(input.getValue()==target)
+			this.targetFound = true;
 		
 		if(input.getRight()!=null)
-			return inorderSuccessor(input.getRight(), target,status);
-		else
-			return null;
+			 inorderSuccessor(input.getRight(), target);
+
 	}
 }
 
@@ -380,15 +392,48 @@ public static void main(String[] args){
 	System.out.println("Hi----------");
 	
 	StaticTree tree = new StaticTree(new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15});
+	
+	System.out.println("\n DFS----------");
 	tree.dFS();
+	System.out.println("\n BFS----------");
 	tree.bFS();
 	
 	StaticTree tree2 = tree.clone();
 	tree.reset(tree.root);
-	
+	System.out.println("\n after reset----------");
 	tree.bFS();
-	
+	System.out.println("\n cloned tree----------");
 	tree2.bFS();
+	
+	System.out.println("\n PreOrder ----------");
+	StaticTree.preOrder(tree2.root);
+	
+	System.out.println("\n Iterative PreOrder ----------");
+	tree2.iterativePreOrder();
+	
+	System.out.println("\n Inorder ----------");
+	StaticTree.inOrder(tree2.root);
+	
+	System.out.println("\n Iterative Inorder ----------");
+	tree2.iterativeInOrder();
+	
+	System.out.println("\n Post Order ----------");
+	StaticTree.postOrder(tree2.root);	
+	
+	System.out.println("\n Iterative Post Order ----------");
+	tree2.iterativePostOrder();	
+	
+	System.out.println("\n Inorder Successor of  ----------11");
+	System.out.println(tree2.inorderSuccessor(11));	
+	
+	System.out.println("\n Inorder Successor of  ----------13");
+	System.out.println(tree2.inorderSuccessor(13));	
+	
+	System.out.println("\n Inorder Successor of  ----------15");
+	System.out.println(tree2.inorderSuccessor(15));
+	
+	System.out.println("\n Inorder Successor of  ----------14");
+	System.out.println(tree2.inorderSuccessor(14));	
 }
 
 
