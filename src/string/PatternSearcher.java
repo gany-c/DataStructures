@@ -1,6 +1,15 @@
 package string;
 
+/**
+ * 
+ * @author Ramanan
+ * 
+ * Check if one string contains another
+ * the pattern may include * and ?
+ *
+ */
 public class PatternSearcher {
+
 	
 	public static boolean find(String pattern, String input)
 	{
@@ -8,7 +17,23 @@ public class PatternSearcher {
 			return false;
 		else
 		{
-			
+			/**
+			 * While searching for patterns inside you slide the smaller along the length of the longer.
+			 * So, where do you stop the index?
+			 * 
+			 * The difference in postions between the start and stop is always
+			 * (length-1)-0 = length-1
+			 * 
+			 * so when the end of the smaller list is at longer.length-1 i.e. has reached the longer's end
+			 * the smaller's start will be at
+			 * longer.length-1 -(smaller.length-1).
+			 * so the last valid postion of the smaller array's beginning is 
+			 * longer.length - shorter.length
+			 * 
+			 * so the index moves from 0 to longer.length - shorter.length.
+			 * 
+			 * 
+			 */
 			//if both are of equal length the loop should run at least once.
 			for(int i =0;i <=input.length()-pattern.length();i++){
 				if(subString(pattern,0,input,i))
