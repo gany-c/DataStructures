@@ -266,27 +266,31 @@ private void inorderSuccessor(TreeNode input,int target)
 	}
 }
 
-public static int maxHeight(TreeNode root){
+public int maxHeight(){
+	return maxHeight(this.root);
+}
+
+private int maxHeight(TreeNode in){
 	
-	if(root.getLeft()==null&&root.getRight()==null)
+	if(in.getLeft()==null&&in.getRight()==null)
 		return 0;
-	else if(root.getLeft()!=null&&root.getRight()!=null)
+	else if(in.getLeft()!=null&&in.getRight()!=null)
 	{
-		int leftHeight = maxHeight(root.getLeft());
-		int rightHeight = maxHeight(root.getRight());
+		int leftHeight = maxHeight(in.getLeft());
+		int rightHeight = maxHeight(in.getRight());
 		
 		if(leftHeight>rightHeight)
 			return leftHeight +1;
 		else 
 			return rightHeight +1;
 	}
-	else if(root.getLeft()!=null)
+	else if(in.getLeft()!=null)
 	{
-		return maxHeight(root.getLeft())+1;		
+		return maxHeight(in.getLeft())+1;		
 	}
 	else
 	{
-		return maxHeight(root.getRight())+1;	
+		return maxHeight(in.getRight())+1;	
 	}
 }
 
@@ -451,6 +455,8 @@ public static void main(String[] args){
 	tree3.bFS();
 	System.out.println("\n BFS of old tree  ----------");
 	tree2.bFS();
+	System.out.println("\n height of tree ----------");
+	System.out.println(tree2.maxHeight());
 	
 }
 
