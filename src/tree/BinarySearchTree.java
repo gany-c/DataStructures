@@ -3,17 +3,18 @@ package tree;
 import base.TreeNode;
 
 
-public class BinaryTree {
+public class BinarySearchTree {
 	
-	TreeNode root;
-	
-	public BinaryTree(int[] source){
-		
-		this.root = null;
-	}
+	TreeNode root = null;
+
 
 	public void insert(int value){
 		insertNode(root,value);
+	}
+	
+	public boolean search(int value){
+		
+		return false;
 	}
 	
 	private void insertNode(TreeNode input,int value)
@@ -29,7 +30,7 @@ public class BinaryTree {
 			else
 			    insertNode(input.getLeft(),value);	
 		}
-		else
+		else if(value>input.getValue())
 		{
 			if(input.getRight()==null)
 				input.setRight(createNode(value));
@@ -37,6 +38,9 @@ public class BinaryTree {
 			    insertNode(input.getRight(),value);	
 			
 		}
+		else
+			return;
+		//don't insert duplicates
 	}
 
 	private  TreeNode createNode(int value) {
