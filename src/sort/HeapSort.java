@@ -84,6 +84,18 @@ public class HeapSort {
 		return input;
 	}
 	
+	/**
+	 * 
+	 * @param input
+	 * @param index
+	 * @param end
+	 * 
+	 * very simple :)
+	 * 
+	 * just correct within the heap boundry
+	 * and swap with greater of the two children
+	 * if both of them are greater than the parent.
+	 */
 	private void correctHeapDown(int[] input, int index, int end) {
 		
 		int left = 2*index+1;
