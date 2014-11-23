@@ -4,7 +4,7 @@ package lists;
 public interface LinkedList<T> {
 	
 
-	public void add(T node);
+	public void add(int val);
 
 	
 	public void delete(int value);
