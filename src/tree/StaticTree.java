@@ -157,6 +157,36 @@ public void bFS(){
 	
 }
 
+public void printLevels(){
+	
+	System.out.println("\n Printing tree levels");
+	Queue<TreeNode> thisLevel = new LinkedList<TreeNode>();
+	thisLevel.add(this.root);
+	
+	Queue<TreeNode> nextLevel = new LinkedList<TreeNode>();
+	
+	while (!thisLevel.isEmpty())
+	{
+		TreeNode node = thisLevel.poll();
+		System.out.print(node.getValue()+", ");
+		
+		if(node.getLeft()!=null)
+			nextLevel.add(node.getLeft());
+		
+		if(node.getRight()!=null)
+			nextLevel.add(node.getRight());
+		
+		if(thisLevel.isEmpty())
+		{
+			System.out.println();
+			thisLevel = nextLevel;
+			nextLevel =  new LinkedList<TreeNode>();
+		}
+		
+	}
+	
+}
+
 public void dFS(){
 	
 	System.out.println("\n Starting Depth First Search");
@@ -178,6 +208,30 @@ public void dFS(){
 		
 	}
 	
+	
+}
+
+public void printPathToLeaves(){
+	if(this.root == null)
+		return;
+	else printPathToLeaves(this.root, "");
+}
+
+private void printPathToLeaves(TreeNode node,String path) {
+
+	path = path + "-"+node.getValue();
+	
+	if(node.getLeft()==null && node.getRight()==null)
+	{
+		System.out.println(path);
+		return;
+	}
+		
+	if(node.getLeft()!=null)
+		printPathToLeaves(node.getLeft(),path);
+	
+	if(node.getRight()!=null)
+		printPathToLeaves(node.getRight(),path);
 	
 }
 
@@ -457,6 +511,10 @@ public static void main(String[] args){
 	tree2.bFS();
 	System.out.println("\n height of tree ----------");
 	System.out.println(tree2.maxHeight());
+	System.out.println("\n printing tree by levels ----------");
+	tree2.printLevels();
+	System.out.println("\n printing paths to leaves ----------");
+	tree2.printPathToLeaves();
 	
 }
 
