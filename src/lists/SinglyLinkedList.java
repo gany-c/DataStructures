@@ -133,6 +133,8 @@ public class SinglyLinkedList implements LinkedList<ListNode>{
 
 
 
+	//even after you move the node to the new list, the pointers may refer to old node lists
+	//watch out for that, end nodes' next pointers should be explicitly set to null;
 	@Override
 	public void sort() {
 		
