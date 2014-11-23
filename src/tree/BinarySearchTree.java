@@ -7,6 +7,52 @@ public class BinarySearchTree {
 	
 	private TreeNode header = new TreeNode();
 	
+	
+	int rank = 0;
+	boolean rankCrossed = false;
+	int target = 0;
+	
+	public int getRank(int input){
+
+		if(this.header ==null || this.header.getRight() == null)
+			return Integer.MIN_VALUE;
+		
+		this.target = input;
+		this.rank = 0;
+		this.rankCrossed = false;
+		
+		getRank(this.header.getRight());
+		
+		return this.rank;
+		
+	}
+	
+	
+	private void getRank(TreeNode node) {
+		
+		if(node.getLeft()!=null)
+			getRank(node.getLeft());
+		
+		if(this.rankCrossed)
+			return;
+		
+		if(node.getValue() < this.target)
+		{
+			this.rank++;
+			
+			if(node.getRight() != null)
+				getRank(node.getRight());
+		}
+		
+		else if (node.getValue() >= this.target)
+		{
+			this.rankCrossed = true;
+			return;
+		}
+		
+	}
+
+
 	private int count = 0;
 	private int targetCount = 0;
 	private int result = Integer.MIN_VALUE;
@@ -336,6 +382,12 @@ public class BinarySearchTree {
 		System.out.println("\n 4st smallest number = "+bst.findIthSmallest(4));
 		bst.insert(5);
 		System.out.println("\n 1st smallest number = "+bst.findIthSmallest(1));
+		bst.preOrder();
+		
+		System.out.println("\n Rank of 6 = "+bst.getRank(6));
+		System.out.println("\n Rank of 22 = "+bst.getRank(22));
+		
+		System.out.println("\n Rank of 1000 = "+bst.getRank(1000));
 		
 		
 		
