@@ -94,8 +94,9 @@ public class FactorUtil {
 		System.out.println(u.findPrimeFactors(366));
 		System.out.println(u.findPrimeFactors(360));
 		System.out.println(u.findPrimeFactors(213));
-		System.out.println(u.findPrimeFactors(Integer.MAX_VALUE));
+		System.out.println(u.findPrimeFactors(144));		
 		System.out.println(u.findPrimeFactors(214748364));
+		System.out.println(u.findPrimeFactors(Integer.MAX_VALUE));
 		
 		
 
