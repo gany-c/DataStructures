@@ -5,9 +5,50 @@ import base.TreeNode;
 
 public class BinarySearchTree {
 	
-	TreeNode header = new TreeNode();
+	private TreeNode header = new TreeNode();
+	
+	private int count = 0;
+	private int targetCount = 0;
+	private int result = Integer.MIN_VALUE;
+	
+	public  int findIthSmallest(int i){
+		
+		if(this.header ==null || this.header.getRight() == null)
+			return Integer.MIN_VALUE;
+		
+		this.count = 1;
+		this.targetCount = i;
+		this.result = Integer.MIN_VALUE;
+		
+		findIthSmallest(this.header.getRight());
+		
+		return this.result;
+	}
 
 	
+	private void findIthSmallest(TreeNode node) {
+		
+		if(node.getLeft() != null)
+			findIthSmallest(node.getLeft());
+		
+		if(this.count < this.targetCount)
+		{
+			this.count++;
+			if(node.getRight()!=null)
+				findIthSmallest(node.getRight());
+		}
+		else if(this.count == this.targetCount)
+		{
+			this.result = node.getValue();
+			this.count++;
+			return;
+		}
+		else
+			return;
+		
+	}
+
+
 	public BinarySearchTree(){
 		header.setValue(Integer.MIN_VALUE);
 		//A header node above the root is needed because the root itself 
@@ -199,7 +240,10 @@ public class BinarySearchTree {
 	
 	int inorderPrev = Integer.MIN_VALUE;
 	boolean orderViolated = false;
-	
+	/**
+	 * Create the inorder traversal and check if order is violated
+	 * @return
+	 */
 	public boolean isValid(){
  
 		if(this.header == null||this.header.getRight()==null)
@@ -286,6 +330,12 @@ public class BinarySearchTree {
 		temp.setRight(wrongNode);
 		
 		System.out.println("\n BST properties preserved? = "+bst.isValid());
+		
+		temp.setRight(null);
+		System.out.println("\n 1st smallest number = "+bst.findIthSmallest(1));
+		System.out.println("\n 4st smallest number = "+bst.findIthSmallest(4));
+		bst.insert(5);
+		System.out.println("\n 1st smallest number = "+bst.findIthSmallest(1));
 		
 		
 		
