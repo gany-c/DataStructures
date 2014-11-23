@@ -1,7 +1,9 @@
 package misc;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MathUtil {
 	
@@ -100,6 +102,10 @@ public class MathUtil {
 		   
 	   }
 	   
+	   private static Map<Integer,Integer> fibMap = new HashMap<Integer,Integer>();
+	   
+	   
+	   
 	   public static int fib(int n){
 		   if(n <1)
 		   {
@@ -112,7 +118,20 @@ public class MathUtil {
 		       return 0;
 		   else if(n==2)
 		       return 1;
-		   else return (fib(n-1)+fib(n-2));
+		   else {
+			   Integer prev = fibMap.get(n-1);
+			   if(prev == null)
+				   prev = fib(n-1);
+			 
+			   Integer prevPrev = fibMap.get(n-2);
+			   if(prevPrev == null)
+				   prevPrev = fib(n-2);
+			   
+			   int out = prev + prevPrev;
+			   fibMap.put(n, out);	 
+			   
+			   return (out);
+		   }
 		   
 	   }
 	   
