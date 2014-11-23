@@ -197,6 +197,45 @@ public class BinarySearchTree {
 		return node;
 	} 
 	
+	int inorderPrev = Integer.MIN_VALUE;
+	boolean orderViolated = false;
+	
+	public boolean isValid(){
+ 
+		if(this.header == null||this.header.getRight()==null)
+			return true;
+		
+		inorderPrev = Integer.MIN_VALUE;
+		orderViolated = false;
+		
+		isValid(this.header.getRight());
+		
+		return !orderViolated;
+		
+	}
+	
+	private void isValid(TreeNode node) {
+		
+		if(node.getLeft()!=null)
+			isValid(node.getLeft());
+
+		if(orderViolated)
+			return;
+		
+		if(inorderPrev > node.getValue())
+		{
+			orderViolated =true;
+			return;
+		}
+		else 
+			inorderPrev = node.getValue();
+		
+		if(node.getRight()!=null)
+			isValid(node.getRight());
+		
+	}
+
+
 	public static void main(String[] args){
 		
 		BinarySearchTree bst = new BinarySearchTree();
@@ -233,6 +272,21 @@ public class BinarySearchTree {
 		
 		bst.insert(105);
 		bst.preOrder();
+		
+		System.out.println("\n BST properties preserved? = "+bst.isValid());
+		
+		TreeNode wrongNode = new TreeNode();
+		wrongNode.setValue(0);
+		
+		TreeNode temp = bst.header;
+		
+		while(temp.getRight()!=null)
+			temp = temp.getRight();
+		
+		temp.setRight(wrongNode);
+		
+		System.out.println("\n BST properties preserved? = "+bst.isValid());
+		
 		
 		
 	}
