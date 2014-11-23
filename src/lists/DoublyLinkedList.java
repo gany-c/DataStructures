@@ -33,7 +33,7 @@ public class DoublyLinkedList implements LinkedList<DoubleNode> {
 		
 	}
 	
-	
+	//having a header node makes the deletes less complicated.
 	public DoublyLinkedList(){
 		 head = new DoubleNode();
 		 head.setValue(Integer.MIN_VALUE);
