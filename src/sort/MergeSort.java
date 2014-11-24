@@ -48,6 +48,13 @@ public class MergeSort {
 		
 	}
 	
+	public static void display(int[] hi)
+	{
+		System.out.println("\n---displaying---");
+		for(int i=0;i<hi.length;i++)
+			System.out.print(hi[i]+	" ");
+	}
+	
 	public static void main(String args[])
 	{
 		int[] random = new int[]{100,99,63, 42,56,77,0,-1};
@@ -55,8 +62,7 @@ public class MergeSort {
 		MergeSort sorter = new MergeSort();
 		sorter.sort(random);
 		
-		for(int i=0;i<random.length;i++)
-			System.out.print(random[i]+" ");
+		display(random);
 	}
 
 }
