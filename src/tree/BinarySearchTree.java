@@ -388,6 +388,7 @@ public class BinarySearchTree {
 		System.out.println("\n Rank of 22 = "+bst.getRank(22));
 		
 		System.out.println("\n Rank of 1000 = "+bst.getRank(1000));
+		System.out.println("\n Rank of 4 = "+bst.getRank(4));
 		
 		
 		
