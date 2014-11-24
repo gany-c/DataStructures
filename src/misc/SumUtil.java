@@ -5,6 +5,14 @@ import java.util.Set;
 
 import base.DupSet;
 
+/**
+ * 
+ * @author Ramanan
+ * Calculate the 2 sum pairs and if any of the pair items is greater than 2, 
+ * recursively calculate for that item
+ * 
+ */
+
 public class SumUtil {
 	
 	public Set<DupSet> findAllSumSets(int n){
