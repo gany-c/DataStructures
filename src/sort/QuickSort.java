@@ -2,6 +2,13 @@ package sort;
 
 public class QuickSort {
 	
+	/**
+	 *  Picturize this list and write
+	 *  5, 1, 2, 3, 6, 4, 7, 8, 9, 10
+	 * @param a
+	 * @param lo
+	 * @param hi
+	 */
 	public static void sort(int[] a, int lo, int hi)
 	{
 //		System.out.println("lo, hi = "+lo+", "+hi);
