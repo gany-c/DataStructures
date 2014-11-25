@@ -148,6 +148,7 @@ public class BinarySearchTree {
 		}
 		else
 		{
+			//shouldn't this be return false?
 			if(input.getLeft() == null)
 				return true;
 			else return search(input.getLeft(),value);

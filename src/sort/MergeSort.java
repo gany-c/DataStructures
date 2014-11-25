@@ -33,7 +33,7 @@ public class MergeSort {
 		while(i<=midPos-start&&j<=temp.length-1)
 		{
 			
-			System.out.println(i+" "+midPos+" "+j+" "+end);
+			//System.out.println(i+" "+midPos+" "+j+" "+end);
 			
 			if(temp[i]<=temp[j])
 				input[tempos++] = temp[i++];
@@ -63,6 +63,21 @@ public class MergeSort {
 		sorter.sort(random);
 		
 		display(random);
+		
+		int[] hi = new int[]{-22,123,63,85,231,23,44, 846, 1, -345,0, 84,1103,-33 };
+		//even or odd size is one of the issues
+		sorter.sort(hi);
+		display(hi);
+		
+		hi = new int[]{63,85,231,23,44, 846, 1, -3,0, 84,1103 };
+		//even or odd size is one of the issues
+		sorter.sort(hi);
+		display(hi);
+		
+		hi = new int[]{22,33,44,55,66, 77, 88, 99,100,111 };
+		//even or odd size is one of the issues
+		sorter.sort(hi);
+		display(hi);
 	}
 
 }
