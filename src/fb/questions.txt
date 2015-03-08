@@ -1,0 +1,10 @@
+1. Given a revision system like git, it has a list of checkins / revisions and after some revision things went bad. You are given a function isGood(revision), you have to find out which revision was the source - Did this, was a simple binary search.
+
+2. Given a list of positive and negative integers, push all the zeros to the end - Do this in linear time, without using any additional storage - Got this, but didn't catch edge cases - end already has more that one consecutive zero, adjustment for this pushes the pointer out, and order of conditions while doing these two.
+
+3. I'm given  the prices of a stock for 1 year for each day. Find the best pair of days to buy and sell  - do this in Linear time : totally screwed this up, still don't know the answer.
+
+4. next ...find all permutations of a string ...for e.g. abc has 6 per which aew
+abc -> acb 
+bac-> bca
+cab-> cba
