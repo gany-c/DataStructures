@@ -5,7 +5,12 @@ import java.util.Arrays;
 enum State{
 	STARTED,MIN_FOUND,MAX_FOUND,CANDIDATE_MIN_FOUND;
 }
-
+/**
+ * this is just a period's data
+you have to find out the best days to buy and sell in retrospect, but do it linear time
+ * @author Ramanan
+ *
+ */
 public class StockUtil {
 	//actually ends up finding the best prices, not best days i.e. not the indexes
 	public int[] findBestDays(int[] prices){
