@@ -82,6 +82,14 @@ public class ListUtil {
 
 	private int[] binSearch(int[] input, int num) {
 		
+
+		
+		if(num < input[0])
+			return new int[]{-1,0};
+		
+		if(num > input[input.length-1])
+			return new int[]{input.length-1,input.length};		
+		
 		int[] bounds = new int[2];
 		
 		int start =0, end = input.length-1;
@@ -89,11 +97,9 @@ public class ListUtil {
 		int mid = (start + end)/2;
 		
 		while(start < end)
-		{
-			System.out.println("Start and End are = "+start+", "+end);
+		{			
 			mid = (start + end)/2;
-			
-			System.out.println("mid = "+mid);
+						
 			
 			if(input[mid]==num||end-start ==1)
 				break;
@@ -129,6 +135,22 @@ public class ListUtil {
                45, 48, 50, 53, 55, 56}, 35, 4);
 		
 		System.out.println(Arrays.toString(output));
+		
+		
+		output = lu.findKClosest(new int[] {12, 16, 22, 30, 35, 39, 42, 
+	               45, 48, 50, 53, 55, 56}, 35, 9);
+			
+			System.out.println(Arrays.toString(output));
+		
+		output = lu.findKClosest(new int[] {12, 16, 22, 30, 35, 39, 42, 
+	               45, 48, 50, 53, 55, 56}, 6, 4);
+			
+		System.out.println(Arrays.toString(output));
+		
+		output = lu.findKClosest(new int[] {12, 16, 22, 30, 35, 39, 42, 
+	               45, 48, 50, 53, 55, 56}, 600, 7);
+			
+		System.out.println(Arrays.toString(output));		
 
 	}
 
