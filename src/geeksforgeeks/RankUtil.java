@@ -40,18 +40,21 @@ public class RankUtil {
 		
 		while(i<j){
 			
-			
+			//scroll to the very last element if possible, otherwise to the first greater element
 			while((i<=j) && input[i]<=input[start])
 				i++;
 			
+			//in whatever the first counter hasn't explored go to the first smaller element
 			while( (i<j) &&input[j]>=input[start] )
 				j--;
 			
+			//if greater and lesser pairs are found on the way swap them.
 			if(i < j)
 				swap(input,i,j);
 			
 		}
 		
+		//if the pivot position has a lesser element, swap
 		if(input[start] > input[i-1])
 			swap(input,start,i-1);
 		
