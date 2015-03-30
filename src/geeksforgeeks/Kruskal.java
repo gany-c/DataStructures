@@ -12,7 +12,12 @@ import java.util.Queue;
 
 
 
-
+/**
+ * Kruskal starts as a set of disjointed forests (could be)
+ * and then merges together.
+ * @author Ramanan
+ *
+ */
 
 public class Kruskal {
 	
@@ -87,7 +92,11 @@ public class Kruskal {
 		
 	}
 	
-
+	/**
+	 * check all the disjointed graphs
+	 * @param input
+	 * @return
+	 */
 	private boolean isCyclic(Set<Edge> input) {
 		
 		List<Node> nList= getExpNodes(input);
@@ -115,7 +124,12 @@ public class Kruskal {
 	}
 
 
-
+	/**
+	 * Check one disjointed graph from its root
+	 * @param root
+	 * @param traverseList
+	 * @return
+	 */
 	private boolean isCyclic(Node root, List<Node> traverseList) {
 		
 		System.out.println("root for cyclic check = "+root);
@@ -136,6 +150,7 @@ public class Kruskal {
 			{
 				System.out.println("2. "+node+"'s edge being traversed = "+e);
 				
+				//seeing an older node over the same edge is not a cycle
 				if(visitedEdges.contains(e))
 					continue;
 				else
@@ -152,6 +167,9 @@ public class Kruskal {
 					
 					System.out.println("4.  next node = "+nextNode);
 					
+					/**
+					 * Check these conditions properly
+					 */
 					if(traverseList.contains(nextNode)||candidNodes.contains(nextNode))
 					{	
 						System.out.println(nextNode+" found in the already explored list "+Arrays.toString(traverseList.toArray()));
