@@ -7,6 +7,24 @@ public class Edge implements Comparable<Edge>{
 	public Node v1;
 	
 	public Node v2;
+	
+	
+	
+	@Override
+	public String toString() {
+		return "Edge [weight=" + weight + ", v1=" + v1.id + ", v2=" + v2.id + "]";
+	}
+
+	public Edge clone()
+	{
+		Edge newEdge = new Edge();
+		newEdge.weight = this.weight;
+		newEdge.v1 = new Node();
+		newEdge.v1.id = this.v1.id;
+		newEdge.v2 = new Node();
+		newEdge.v2.id = this.v2.id;
+		return newEdge;
+	}
 
 	@Override
 	public int compareTo(Edge o) {

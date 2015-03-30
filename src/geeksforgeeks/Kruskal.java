@@ -1,12 +1,13 @@
 package geeksforgeeks;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-
 import java.util.Queue;
 
 
@@ -25,12 +26,23 @@ public class Kruskal {
 		
 		Set<Edge> sortedEdges = getSortedEdges(in);
 		
+		
+		
+		System.out.println("sorted set of Edges = "+Arrays.toString(sortedEdges.toArray()));
+		
 		for(Edge edge:sortedEdges)
 		{
-			output.add(edge);
-			addEdge(nodesOnly,edge);
+			System.out.println("edge used = "+edge);
 			
-			if(isCyclic(output))
+			
+			addEdge(nodesOnly,edge);
+			output.add(edge);
+			
+			boolean cyclic = isCyclic(output);
+			
+			System.out.println("cycle created = "+cyclic);
+			
+			if(cyclic)
 			{
 				output.remove(edge);
 				removeEdge(nodesOnly,edge);
@@ -51,28 +63,43 @@ public class Kruskal {
 		
 	}	
 		
-	private void addEdge(List<Node> nodesOnly, Edge edge) {
-		for(Node nodeIn:nodesOnly){
+	private void addEdge(List<Node> currentMST, Edge edge) {
+		
+		System.out.println("size of currentMST =  "+currentMST.size());
+		
+		for(Node nodeIn:currentMST){
 			
-			if(nodeIn.equals(edge.v1)||nodeIn.equals(edge.v2))
+			if(nodeIn.equals(edge.v1))
+			{
 				nodeIn.edges.add(edge);
+				edge.v1 = nodeIn;
+				System.out.println("Edge "+edge+" added as V1 to Node "+nodeIn);
+			}
+			
+			if(nodeIn.equals(edge.v2))
+			{
+				nodeIn.edges.add(edge);
+				edge.v2 = nodeIn;
+				System.out.println("Edge "+edge+" added as V2 to Node "+nodeIn);
+			}			
+				
 		}
 		
 	}
 	
-			
-
 
 	private boolean isCyclic(Set<Edge> input) {
 		
 		List<Node> nList= getExpNodes(input);
+		System.out.println("nodes in the current spanning tree = "+Arrays.toString(nList.toArray()));
+		
 		
 		while(!nList.isEmpty())
 		{
 			
-			Node node = nList.get(0);
-			List<Node> traverseList = new ArrayList<Node>();
+			Node node = nList.get(0);			
 			
+			List<Node> traverseList = new ArrayList<Node>();			
 			
 			if(isCyclic(node,traverseList))
 				return true;
@@ -91,21 +118,30 @@ public class Kruskal {
 
 	private boolean isCyclic(Node root, List<Node> traverseList) {
 		
+		System.out.println("root for cyclic check = "+root);
+		
 		Set<Edge> visitedEdges = new HashSet<Edge>();
 		Queue<Node> candidNodes = new LinkedList<Node>();
 		
 		candidNodes.add(root);
 		
-		while(!candidNodes.isEmpty()){
-			
+		while(!candidNodes.isEmpty())
+		{			
 			Node node = candidNodes.poll();
+			
+			System.out.println("1. Node traversed for cyclic check = "+node);
+			traverseList.add(node);	
 			
 			for(Edge e:node.edges)
 			{
+				System.out.println("2. "+node+"'s edge being traversed = "+e);
+				
 				if(visitedEdges.contains(e))
 					continue;
 				else
 				{
+					System.out.println("3. "+e+" has not been seen before");
+					
 					visitedEdges.add(e);
 					Node nextNode = null;
 					
@@ -114,18 +150,23 @@ public class Kruskal {
 					else
 						nextNode = e.v1;
 					
-					if(traverseList.contains(nextNode))
+					System.out.println("4.  next node = "+nextNode);
+					
+					if(traverseList.contains(nextNode)||candidNodes.contains(nextNode))
+					{	
+						System.out.println(nextNode+" found in the already explored list "+Arrays.toString(traverseList.toArray()));
 						return true;
+					}	
 					else
+					{
+						System.out.println(nextNode+" not found in the already explored list "+Arrays.toString(traverseList.toArray()));
 						candidNodes.add(nextNode);
-			
-				}	
+					}
+									
+				}			
 				
-				
-			}
+			}			
 			
-			traverseList.add(node);
-	
 		}
 		
 		
@@ -155,6 +196,7 @@ public class Kruskal {
 			
 			Node newN = new Node();
 			newN.id = node.id;
+			out.add(newN);
 		}
 		
 		return out;
@@ -166,15 +208,76 @@ public class Kruskal {
 		
 		for(Node inNode:in){
 			
-			output.addAll(inNode.edges);
+			for(Edge e:inNode.edges)
+			{
+				output.add(e.clone());
+			}
 			
 		}
 		
 		return output;
 	}
+	
+	private static List<Node> setupData(){
+		
+		Node node1 = new Node();
+		node1.id = 100;
+		
+		Node node2 = new Node();
+		node2.id = 200;
+		
+		Node node3 = new Node();
+		node3.id = 300;
+		
+		Edge e1 = new Edge();
+		e1.weight = 1;
+		e1.v1 = node1;
+		e1.v2 = node2;
+		
+		Edge e2 = new Edge();
+		e2.weight =2;
+		e2.v1 = node2;
+		e2.v2 = node3;
+		
+		Edge e3 = new Edge();
+		e3.weight =3;
+		e3.v1 = node3;
+		e3.v2 = node1;		
+		
+		node1.edges.add(e1);
+		node1.edges.add(e3);
+		
+		node2.edges.add(e1);
+		node2.edges.add(e2);
+		
+		node3.edges.add(e2);
+		node3.edges.add(e3);
+		
+		List<Node> output = new ArrayList<Node>();
+		output.add(node1);
+		output.add(node2); 
+		output.add(node3);
+		
+		return output;
+		
+	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		Kruskal k = new Kruskal();
+		
+		List<Node> input = setupData();
+		
+		Set<Edge> out = k.minSpanTree(input);
+		
+		System.out.println("-----------");
+		for(Edge e:out){
+			
+			System.out.print(e.weight+"  ");
+		}
+		System.out.println("-----------");
+		
+		
 
 	}
 

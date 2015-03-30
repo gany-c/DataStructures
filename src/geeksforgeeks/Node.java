@@ -8,6 +8,13 @@ public class Node{
 	public int id;
 	 
 	public  List<Edge> edges = new ArrayList<Edge>();
+	
+	
+
+	@Override
+	public String toString() {
+		return "Node [id=" + id + "]";
+	}
 
 	@Override
 	public int hashCode() {
