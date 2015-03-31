@@ -144,7 +144,8 @@ public class Kruskal {
 			Node node = candidNodes.poll();
 			
 			System.out.println("1. Node traversed for cyclic check = "+node);
-			traverseList.add(node);	
+			traverseList.add(node);	// Each time a node is pulled out of the queue
+			//you add it to traverse list
 			
 			for(Edge e:node.edges)
 			{
