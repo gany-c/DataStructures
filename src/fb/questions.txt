@@ -28,4 +28,12 @@ cab-> cba
 16. http://www.geeksforgeeks.org/backtracking-set-3-n-queen-problem/
 17. http://www.geeksforgeeks.org/backttracking-set-5-m-coloring-problem/
 18. http://www.geeksforgeeks.org/backttracking-set-4-subset-sum/
+
+---------------------Elementum--------------------------
+
+1. Given a list of Strings and 2 words in the List, find the closest separation between those two words 
+i.e. they may appear multiple times 
+
+Ans:- linear is possible, as you traverse, compare the 2 latest occurences of w1 and w2, 
+compare that separation with saved min
  
