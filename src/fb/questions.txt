@@ -38,6 +38,7 @@ return a set of tuples such that the overlapping ranges are merged.
 4. external sort for top 1k items from 1 million integers, which won't fit into memory.
 5. A class which has an add method and display last 10 method, implement it without threading issues.
 6. what is new about java 8
+7. based on 1, find the duration with max overlap
 
 
  
