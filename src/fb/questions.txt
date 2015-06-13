@@ -28,4 +28,16 @@ cab-> cba
 16. http://www.geeksforgeeks.org/backtracking-set-3-n-queen-problem/
 17. http://www.geeksforgeeks.org/backttracking-set-5-m-coloring-problem/
 18. http://www.geeksforgeeks.org/backttracking-set-4-subset-sum/
+
+--------------------Illumina --------------------------
+
+1. Given a set of range tuples [1,5] [2, 7] [8,13]
+return a set of tuples such that the overlapping ranges are merged.
+2. Difference between PUT and POST - caching
+3. Javascript - This and no return in a constructor.
+4. external sort for top 1k items from 1 million integers, which won't fit into memory.
+5. A class which has an add method and display last 10 method, implement it without threading issues.
+6. what is new about java 8
+
+
  
