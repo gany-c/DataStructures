@@ -49,4 +49,10 @@ i.e. they may appear multiple times
 Ans:- linear is possible, as you traverse, compare the 2 latest occurences of w1 and w2, 
 compare that separation with saved min
 
+
+
+RabbitMq - protocol?
+Kafka - how do you implement guarantee delivery
+Cassandra - sorting by keys is fine, but how does the translation from key to file address actually happen. Will aaab really physically sit after aaaa
+Apple's queue in the cloud for pushing messages to phones - Apple APNS, Android GCMß
  
