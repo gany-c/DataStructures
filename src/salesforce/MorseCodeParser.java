@@ -1,6 +1,7 @@
 package salesforce;
 
 import java.io.BufferedReader;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -9,6 +10,30 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+
+/***
+ * 
+ * @author Ramanan
+ * 
+ * I think a trie based approach will be better
+ * 
+ * 1. Construct the trie based on Dictionairy words
+ * 1.a. head node and then at each level left for. right for dash.
+ * 1.b. when a path arrives to an end, store the word at the node.
+ *  
+ * While traversing move to each child based on input word. 
+ * If you reach a node and run out of symbols
+ * if there are any words stored at that node return them
+ * 
+ * if there is nothing stored, return the nearest stored word.
+ * each time you encounter a stored word reset a counter to 0.
+ * each time you move to a child without stored word increment it by 1
+ * if you have come to an node with end of symbols, you can search the descendants until 
+ * your height becomes more than the count.
+ * 
+ * May be some more cases.
+ *
+ */
 
 class DictEnt  implements Comparable<DictEnt>{
 
