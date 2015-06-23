@@ -55,4 +55,19 @@ RabbitMq - protocol?
 Kafka - how do you implement guarantee delivery
 Cassandra - sorting by keys is fine, but how does the translation from key to file address actually happen. Will aaab really physically sit after aaaa
 Apple's queue in the cloud for pushing messages to phones - Apple APNS, Android GCMß
+
+
+---------------Uber--------------------
+
+/* 
+
+message = "Lets say we are given this very long message. We have decided to split this message up ourselves into num_chars chunks. Additionally we want to append helpful information at the end of the message telling the client what part of the message this is, so (1/2), (2/2) etc. Finally, we need to make sure that we do not break up words when splitting the message. Good luck!"
+
+num_chars = 140
+ function (mess, num_chars)
+   return [message1, message2]
+ */
+ 
+ 
+ 
  
