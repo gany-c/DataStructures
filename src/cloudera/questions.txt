@@ -1,0 +1,121 @@
+1. REMEMBER: Both the head and the tail of the queue move in the same direction.
+2. How will you make a queue thread safe?
+3. What is a semaphore? and what is the value you need to initialize it to.
+
+public class Queue{
+
+private int[] store = null;
+int headPos = 0;
+int tailPos = 0;
+
+pubic Queue(int size){
+
+if(size <= 0)
+    throw new Execption("invalid size");
+    
+store = new int[size];
+
+}
+
+
+public synchronized void add(int input){
+
+    //check for fullness ---------
+    if((tailPos +1)%(store.length) == headPos))
+    {
+        throw new Exception("queue full");
+        //the element behind headPos will always be empty    
+    }    
+    //---------
+
+    store[tailPos] = input;
+    tailPos = (tailPos +1)%(store.length);
+}
+
+//todo: check for emptiness
+public synchronized int remove(){
+
+//--------------
+    if(headPos == tailPos)
+    {
+        throw new Exception("queue empty");
+    }
+//--------------    
+    
+    
+    int output = store[headPos];
+    
+    headPos = (headPos+1)% store.length;
+        
+    return output;        
+        
+
+}
+
+0, 1, 2, 3, 4,
+
+100, 200, 156, 212
+
+headPos = 0, tailPos =0
+add 100
+headPos = 0, tailPos =1;
+add 200
+headPos = 0, tailPos =2
+
+...
+
+after 212
+
+headPos =0, tailPos = 4
+
+// call removes after this
+
+remove 100
+headPos =1, tailPos = 4
+remove 200,
+headPos = 2, tailPos =4
+
+..
+
+after 212 , both headPos and tailPos will be at 4. will hit the emptiness condition.
+
+ReaderThread {
+
+  run() {
+   while(true) {
+    sleeps(randomSecs);
+    q.remove()
+   }
+  }
+
+
+WriterThread {
+
+  run() {
+   while(true) {
+    sleeps(randomSecs);
+    q.add(randInt)
+   }
+  }
+
+
+
+
+2 3 0 0 1
+
+0 4 0 5 2
+
+0 0 0 0 6
+------------------
+
+0 1 2 3 4
+
+1 0 2
+
+public int findMax(int[][] matrix){
+
+
+
+
+
+    
