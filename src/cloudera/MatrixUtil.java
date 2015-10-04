@@ -1,5 +1,13 @@
 package cloudera;
 
+/**
+ * 
+ * @author Ramanan
+ * 
+ * A matrix is split into islands, by a sea of zeroes :)
+ * Find the island with the largest sum
+ *
+ */
 public class MatrixUtil {
 	
 	public int findSumOfLargestIsland(int[][] input){
