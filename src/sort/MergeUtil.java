@@ -1,11 +1,20 @@
 package sort;
-
+/**
+ * 
+ * @author Ramanan
+ * 
+ */
 public class MergeUtil {
 	
 	public void inplaceMerge(int[] in,int bIndex){
 		
 	}
 	
+	/**
+	 * Mistakes were in cut-and-paste, used smallArray instead of bigArray and vice versa
+	 * @param bigArray
+	 * @param smallArray
+	 */
 	public void reverseMerge(int[] bigArray,int[] smallArray){
 		
 		if(bigArray==null||bigArray.length==0||smallArray==null||smallArray.length==0)
