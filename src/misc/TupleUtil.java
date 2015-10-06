@@ -12,6 +12,10 @@ import java.util.Stack;
  * Given tuples that represent ranges, merge overlapping tuples.
  * [1,5] [2, 7] [8,13]
  * 
+ * A variation of this problem is where you are given a set of intervals
+ * or processes with start and end times and you have to find when they 
+ * overlap
+ * 
  */
 public class TupleUtil {
 	
