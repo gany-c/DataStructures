@@ -6,6 +6,16 @@ package cloudera;
  * 
  * A matrix is split into islands, by a sea of zeroes :)
  * Find the island with the largest sum
+ * 
+ * A more accurate version of this code is in the comments below.
+ * The recursive function i.e. getSum is wrong in that it doesn't 
+ * check upwards
+ * 
+ *  This will fail if the island is U shaped with right bar of the U shorter 
+ *  than the left bar
+ *  
+ *  Uncommented code tries and fails with diagonal connections too
+ *  Commented code has just non vertical and horizontal connections.
  *
  */
 public class MatrixUtil {
@@ -103,3 +113,74 @@ public class MatrixUtil {
 	}
 
 }
+
+
+
+/* 
+
+
+
+/**
+Given a 2d grid map of '1's (land) and '0's (water), count the number of islands. 
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. 
+You may assume all four edges of the grid are all surrounded by water
+
+
+
+Q: count the number of islands
+  
+11110
+11010
+11000
+00000
+
+1 all the "1"s are connected
+
+11000
+11000
+00100
+00011
+
+output: 3
+
+  
+ public int countNumIslands(int[][] input){
+  
+  if(input==null||input.lenght==0)
+    return 0;
+  
+  int numIslands = 0;
+  boolean[][] visited = new boolean[input.length][input[0].length];
+  
+  for(int i =0 ; i < input.length; i++)
+  {
+    for(int j =0; j < input[i].length;j++)
+    {
+      if(input[i][j]==0||visited[i][j])
+        continue;
+       
+      numIslands++;
+      
+      exploreIsland(input,visited,i,j);
+    } 
+  }  
+  
+}
+
+private void exploreIsland(int[][] input, boolean[][] visited,int i,int j){
+  
+  if(i<0||i>=input.length||j<0||j>=input[i].length)
+    return;
+  
+  
+  if(visited[i][j] = true||input[i][j]==0)
+    return;
+    
+  visited[i][j] = true;
+  
+  exploreIsland(input,visited,i,j+1);//right cell
+  exploreIsland(input,visited,i+1,j);//down cell
+  exploreIsland(input,visited,i,j-1);//left cell, if we arrived at this cell from top
+  exploreIsland(input,visited,i-1,j);//up cell, if we arrived from down
+}
+**/
