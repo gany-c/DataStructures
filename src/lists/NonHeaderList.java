@@ -86,11 +86,12 @@ public class NonHeaderList implements LinkedList<ListNode>{
   * (Even though an internal pointer is available, it points directly to a data node)
   * 
   * if a header is available this first check is not required.
+  * 
+  * In a doubly linked list, the header is again not required but another if-clause is required.
   */
 	@Override
 	public void delete(int value) {
-		// The deletes become far simpler with a header
-		//should be the case even in doubly linked list
+
 		
 		if(this.start==null)
 			return;
