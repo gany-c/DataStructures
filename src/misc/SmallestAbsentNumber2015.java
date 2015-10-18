@@ -75,6 +75,14 @@ public class SmallestAbsentNumber2015 {
     int[] d = {2,3,4,1,7,8,6,5};
 
     System.out.println("result = "+sol.findSmallestNotInList(d));
+    
+    int[] e = {2};
+
+    System.out.println("result = "+sol.findSmallestNotInList(e));
+    
+    int[] f = {1};
+
+    System.out.println("result = "+sol.findSmallestNotInList(f));
   }
 }
 
