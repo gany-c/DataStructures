@@ -2,9 +2,7 @@ package fb;
 
 import java.util.Arrays;
 
-enum State{
-	STARTED,MIN_FOUND,MAX_FOUND,CANDIDATE_MIN_FOUND;
-}
+
 /**
  * this is just a period's data
 you have to find out the best days to buy and sell in retrospect, but do it linear time
@@ -12,53 +10,82 @@ you have to find out the best days to buy and sell in retrospect, but do it line
  *
  */
 public class StockUtil {
+	
+	private enum State{
+		STARTED,MIN_FOUND,MAX_FOUND,CANDIDATE_MIN_FOUND;
+	}
+	
+	private static class Tuple{
+		int price = -1;
+		int index = -1;
+		@Override
+		public String toString() {
+			return "Tuple [price=" + price + ", index=" + index + "]";
+		}
+
+		
+	}
+	
 	//actually ends up finding the best prices, not best days i.e. not the indexes
-	public int[] findBestDays(int[] prices){
+	public Tuple[] findBestDays(int[] prices){
 		
 		if(prices==null||prices.length<=1)
 			return null;
 		
-		int min = -1, max = -1,cand_min=-1;
+		Tuple min = new Tuple(), max = new Tuple(),cand_min = new Tuple();
 		State state = State.STARTED;
 		
 		for(int i =0;i<prices.length;i++)
 		{
 			if(state == State.STARTED)
 			{
-				min = prices[i];
+				min.price = prices[i];
+				min.index = i;
 				state = State.MIN_FOUND;
 			}
 			else if(state == State.MIN_FOUND)
 			{
-				if(prices[i] < min)
-					min = prices[i];
-				else if(prices[i] > min)
+				if(prices[i] < min.price)
+				{	
+					min.price = prices[i];
+					min.index = i;
+				}	
+				else if(prices[i] > min.price)
 				{
-					max = prices[i];
+					max.price = prices[i];
+					max.index =i;
 					state = State.MAX_FOUND;
 				}
 			}
 			else if(state == State.MAX_FOUND)
 			{
-				if(prices[i] > max)
-					max = prices[i];
-				else if(prices[i] < min)
+				if(prices[i] > max.price)
+				{	
+					max.price = prices[i];
+					max.index = i;
+				}	
+				else if(prices[i] < min.price)
 				{
 					state = State.CANDIDATE_MIN_FOUND;
-					cand_min = prices[i];				
+					cand_min.price = prices[i];	
+					cand_min.index = i;
 				}
 			}
 			else if(state == State.CANDIDATE_MIN_FOUND)
 			{
-				if(prices[i] < cand_min)
-					cand_min = prices[i];
-				else if(prices[i] > cand_min)
+				if(prices[i] < cand_min.price)
+				{	
+					cand_min.price = prices[i];
+					cand_min.index = i;
+				}	
+				else if(prices[i] > cand_min.price)
 				{
-					if((prices[i] - cand_min) >(max -min))
+					if((prices[i] - cand_min.price) >(max.price -min.price))
 					{
 						min = cand_min;
-						max = prices[i];
-						cand_min = -1;
+						max.price = prices[i];
+						max.index = i;
+						cand_min = new Tuple();
 						state = State.MAX_FOUND;
 					}
 				}
@@ -67,23 +94,22 @@ public class StockUtil {
 		}
 		
 		
-		if(state == state.CANDIDATE_MIN_FOUND ||state == state.MAX_FOUND)
+		if(state == State.CANDIDATE_MIN_FOUND ||state == State.MAX_FOUND)
 		{
-			int[] output = new int[2];
+			Tuple[] output = new Tuple[2];
 			output[0] = min;
 			output[1] = max;
 			return output;
 		}
-		else
-		
-		return null;
+		else		
+			return null;
 	}
 
 	public static void main(String[] args) {
 		
 		StockUtil su = new StockUtil();
 		
-		int[] output = su.findBestDays(new int[]{7,253,89,135,90,153,34});
+		Tuple[] output = su.findBestDays(new int[]{7,253,89,135,90,153,34});
 		
 		System.out.println(Arrays.toString(output));
 		
