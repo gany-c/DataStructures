@@ -1,0 +1,63 @@
+Test
+ a 
+ b c
+ d e f g
+ h i
+ 
+ 1. store preorder and inorder - 2 strings// repetition
+ 2. store by levels
+ 3. i - left child at 2i*+1, 2*1+2 - increased storage space
+ 
+ abdecf dbeafc// less space
+ 
+ att,btt,ctf,
+ a0,b0,
+ 
+ tt
+ tf
+ ft
+ ff
+ 0
+ 1
+ 2
+ 3
+ 
+ {v a; left { val b; left d//more
+ 
+ 1 -2
+ 2- 4
+ 3 -8
+ 4 -16
+ 5 -32  -26 lower case
+ i - case but upper case/ lower case 6 bits
+ 
+ byte encodeChar(char c, boolean l, boolean r);
+ 
+ public class Node{
+ 
+ public char val;
+ public Node left;
+ public Node right;
+ 
+ }
+ 
+ //Just doing BFS first
+ public  List<byte> traverseByLevel(Node root){
+ 
+ List<byte> bytes = new ArrayList<>();
+ 
+ Queue<Node> q = new LinkedList<Node>();
+ 
+ q.enqueue(root);
+ 
+ while(!q.isEmpty()){
+ 
+     Node n = q.dequeue();
+     bytes.add(encodeChar(n.val,n.left!=null,n.right!=null)
+     
+     q.add(n.left)
+     q.add(n.right);
+ }
+ 
+ return bytes;
+ }
