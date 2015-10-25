@@ -26,6 +26,14 @@ public StaticTree(int[] source){
 	this.root = createTree(source, 0);
 }
 
+/**
+ * 
+ * @param source
+ * @param index
+ * @return
+ * 
+ * create pointer based tree from array based tree
+ */
 private static TreeNode createTree(int[] source,int index)
 {
   if((source==null)||(source.length==0))
@@ -52,6 +60,12 @@ private static TreeNode createTree(int[] source,int index)
   } 
 }
 
+/**
+ * 
+ * @param input
+ * 
+ * Preorder traversal: print root value, then visit left, then visit right.
+ */
  public static void preOrder(TreeNode input)
  {
 	if(input == null)
@@ -64,6 +78,12 @@ private static TreeNode createTree(int[] source,int index)
 	}	
  } 
 
+ /**
+  * 
+  * @param input
+  * 
+  * In order traversal: recursively visit left, print value, recursively visit right.
+  */
  public static void inOrder(TreeNode input)
  {
 	if(input == null)
@@ -77,6 +97,12 @@ private static TreeNode createTree(int[] source,int index)
 	}	
  }
 
+ /**
+  * 
+  * @param input
+  * 
+  * Post order traversal: recursively visit left, recursively visit right, print value.
+  */
 public static void postOrder(TreeNode input)
  {
 	if(input == null)
@@ -89,7 +115,17 @@ public static void postOrder(TreeNode input)
 		System.out.print(input.getValue()+", ");		
 	}	
  } 
- 
+
+/**
+ * Iterative PreOrder: 
+ * 1. Create a stack
+ * 2. Push the root into the stack
+ * 3. While stack is not empty
+ * 3.a. pop the element from the stack
+ * 3.b. print its value
+ * 3.c. if the right is not null, push it into the stack
+ * 3.d. if the left is not null, push it on top of the right.
+ */
 public void iterativePreOrder()
 {
 	if(root == null)
@@ -116,7 +152,14 @@ public void iterativePreOrder()
 	}
 }
 
-
+/**
+ * Iterative In order
+ * 1. Create a stack
+ * 2. Push left nodes into the stack until you hit the left extreme.
+ * 3. While the stack is not empty
+ * 3.a. Pop the node and print it.
+ * 3.b. if the node has a right child, push all it's left children into the stack.
+ */
 public void iterativeInOrder()
 {
 	if(root == null)
@@ -136,6 +179,18 @@ public void iterativeInOrder()
 	  	}
 	}
 }
+
+/**
+ * Breadth first search
+ * 
+ * 1. create a Queue
+ * 2. add the root into the queue
+ * 3. while the queue is not empty
+ * 3.a. poll the queue and get the first node out, print the value
+ * 3.b. if left is not null, add it to the queue; if the right is not null, add it to the queue.
+ * 
+ * In general, BFS will finish the nodes of one level and then visit the next level, but cannot tell when it is transiting from a level to another..
+ */
 public void bFS(){
 	
 	System.out.println("\n Starting Breadth First Search");
@@ -157,6 +212,16 @@ public void bFS(){
 	
 }
 
+/**
+ * Printing Levels:
+ * 
+ * 1. Do breadth first search with 2 queues
+ * 2. Initialize 2 queues and add the root to the first queue
+ * 3. while the first queue is not empty (actually, when no children have beeen added to the second queue)
+ * 3.a. get the element out of the first queue, print its value
+ * 3.b. if the left and right are available add them to the next queue
+ * 3.c. if you have drained the first queue, add a line break, and set the second queue as the first.
+ */
 public void printLevels(){
 	
 	System.out.println("\n Printing tree levels");
@@ -165,7 +230,7 @@ public void printLevels(){
 	
 	Queue<TreeNode> nextLevel = new LinkedList<TreeNode>();
 	
-	while (!thisLevel.isEmpty())
+	while (!thisLevel.isEmpty())//after iteration 1, it is actually a check on nextLevel
 	{
 		TreeNode node = thisLevel.poll();
 		System.out.print(node.getValue()+", ");
@@ -186,6 +251,11 @@ public void printLevels(){
 	}
 	
 }
+
+/**
+ * Depth First Search is identical to preorder
+ * Below, you have iterative Preorder.
+ */
 
 public void dFS(){
 	
