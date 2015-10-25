@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 
 /**
  * MISTAKE DONE HERE:- The apostrophe case was not handled e.g. Mom's 
+ * ALWAYS CLARIFY THE PUNCTUATION RULES WHILE SOLVING PALINDROME QUESTIONS
  * 
  * @author gchidam
  * 
