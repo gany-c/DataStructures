@@ -9,6 +9,34 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+ * MISTAKE DONE HERE:- The apostrophe case was not handled e.g. Mom's 
+ * 
+ * @author gchidam
+ * 
+ * Write a program that reads a text file and outputs the palindromes that occur in the file as well as the number of occurrences for each palindrome.  
+ * The output should be in order of the most frequent palindrome to the least frequent palindrome.  Palindromes that occur the same number of times should be ordered in lexicographic order. 
+ *  A palindrome is any word, phrase, number, or other sequence of characters which reads the same backward or forward. 
+
+Examples of palindromes: 121, radar, aa
+Note that for the purposes of this assignment there is no difference between uppercase and lowercase, punctuation and special characters should be treated like word separators.
+Sample input file:
+
+A cat sat on the mat and did not peep for a single moment.  Mom’s phone rang and I ran to the door but Beeb went the radar at 101 miles an hour. 
+
+Output:
+
+a > 2
+101 > 1
+beeb > 1
+did > 1
+i > 1
+mom > 1
+peep > 1
+radar > 1
+ *
+ */
+
 class PalinHolder implements Comparable<PalinHolder>{
 	
 	private String word;
@@ -72,7 +100,11 @@ public class PalindromeUtil {
 			if(word==null||word.trim().isEmpty())
 				continue;
 			
-			String trimmed = word.trim();
+			
+			
+			String trimmed = furtherTrim(word);
+			
+			
 			
 			if(new StringBuilder(trimmed).reverse().toString().equalsIgnoreCase(trimmed))
 			{
@@ -101,6 +133,25 @@ public class PalindromeUtil {
 		
 	}
 	
+	private String furtherTrim(String word) {
+		
+		if(word == null || word.trim().length()==0) 
+			return "";
+		else
+		{
+			String trimmed = word.trim();
+			
+			if(trimmed.endsWith(".")||trimmed.endsWith(";")||trimmed.endsWith(",")){
+				return trimmed.substring(0, trimmed.length()-1);
+			}
+			else if(trimmed.endsWith("'s")){
+				return trimmed.substring(0,trimmed.length()-2);
+			}
+			else
+				return trimmed;
+		}
+	}
+
 	public static void prepPalindromes(String input){
 		String[] inArray = input.split(" ");
 		List<String> inList = Arrays.asList(inArray);
@@ -119,7 +170,7 @@ public class PalindromeUtil {
 
 	public static void main(String[] args) {
 		System.out.println("HI");
-		String input = "A cat sat on the mat and did not peep for a single moment.  Mom’s phone rang and I ran to the door but Beeb went the radar at 101 miles an hour.";
+		String input = "A cat sat on the mat and did not peep for a single moment.  Mom's phone rang and I ran to the door but Beeb went the radar at 101 miles an hour.";
 		prepPalindromes(input); 
 		input = "Sore was I ere I saw Eros";
 		prepPalindromes(input); 
