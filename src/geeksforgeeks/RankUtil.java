@@ -7,9 +7,27 @@ import java.util.Arrays;
  * @author Ramanan
  * http://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-2-expected-linear-time/
  * 
- * Given an array and a number k where k is smaller than size of array, 
+ * Given an array of unsorted numbers,
  * we need to find the k’th smallest element in the given array. 
- * 
+ *  1. The naive approach would be to search k times - complexity would be k*n
+ *  2. The better approach would be to use Quicksort partition - 
+ *  it moves a pivot into it's correct position and ensures that all smaller elements are to the left and bigger elements are to the right.
+ *  3. So, in a loop, keep running the partition
+ *  3.1. if the partition pivots at K then return the pivotted element.
+ *  3.2. if the partition pivoted at a place greater than K then set the pivot as the upper bound and repeat
+ *  3.3. else, set the partition as the lower bound.
+ *  
+ *  QUICKSORT PIVOT
+ *  
+ *  1. Handle the special cases for the list being null, of size 1 and 2
+ *  2. set 2 pointers, one after the start position and one at the end
+ *  3. while the start pointer has not crossed the end pointer
+ *  3.1. scroll to the very last element if possible, otherwise to the first greater-than-START element, i could go past j by 1
+ *  3.2. in whatever the first counter hasn't explored go to the first smaller-than-START element
+ *  3.3. if pointers haven't crossed yet swap them.
+ *  
+ *  4. when the loop ends, all lesser elements have been pushed to left of i and vice versa for the greater elements (except element 1)
+ *  5. compare element with i-1 (i has stopped upon seeing the greater element, i-1 is smaller than start and should come before start) and swap if necessary.
  *
  */
 
@@ -17,6 +35,7 @@ public class RankUtil {
 	
 	private int partition(int[] input,int start, int end){
 		
+		//Handle the special cases for the list being null, of size 1 and 2
 		if(input==null)
 			return 0;
 		
@@ -35,12 +54,13 @@ public class RankUtil {
 				
 		}
 
-		
+		//set 2 pointers, one after the start position and one at the end
 		int i = start+1, j = end;
 		
 		while(i<j){
 			
 			//scroll to the very last element if possible, otherwise to the first greater element
+			//i could go past j by 1
 			while((i<=j) && input[i]<=input[start])
 				i++;
 			
@@ -62,8 +82,12 @@ public class RankUtil {
 	
 		
 	}
-	
-	//k starts at 0 max, can be input.length -1
+	/**
+	 * k starts at 0 max, can be input.length -1
+	 * @param input
+	 * @param k
+	 * @return
+	 */
 	public int findKthSmallest(int[] input, int k){
 		
 		if(input == null||input.length==0)
@@ -77,19 +101,23 @@ public class RankUtil {
 		
 		int start =0, end = input.length-1;
 		
+		// do in a loop
 		while(true)
 		{
-
-			
+			//do the quick sort partitioning, using the first element and get the final pivot position
 			int rank = partition(input,start,end);
 			
 			System.out.println("Upon partitioning = "+Arrays.toString(input));
 			System.out.println("privot pos = "+rank);
 			
+			//if the pivont rank equals k return;
 			if(rank==k)
 				return input[k];
+			//else if the pivot rank is greater than k, i.e. you want 3rd smallest and the list has found the 5th smallest
+			// set pivot rank as new end
 			else if(rank > k)
 				end = k;
+			//else set the new start to be the pivot rank
 			else
 				start = k;
 			

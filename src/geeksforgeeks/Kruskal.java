@@ -13,22 +13,48 @@ import java.util.Queue;
 
 
 /**
- * Kruskal starts as a set of disjointed forests (could be)
+ * Given a connected, undirected graph, a spanning tree of that graph is a subgraph that is a tree and connects all the vertices together. 
+ * A single graph can have many different spanning trees. 
+ * 
+ * A minimum spanning tree (MST) or minimum weight spanning tree is then a spanning tree with weight less than or equal to the weight of every other spanning tree.
+ * 
+ * Kruskal will most likely start off as a set of disjoint forests, the lowest weight edges can be in all places
  * and then merges together.
  * @author Ramanan
  *
+ * 1. Take list of nodes as input, if the input list is null or empty return
+ * 2. create empty set of edges for the output
+ * 3. get a list of the nodes, without the edges
+ * 4. get the list of edges sorted by weight
+ * 5. For each edge - add edge to both the list of nodes and the output, i.e. set of edges
+ * 6. Check if a cycle has been created, if so removed the addition from both places
+ * 
+ * 1. Checking for a cycle is done in 2 levels here, because we may have a disjoint forest of trees.
+ * 1.a. first check starts at a node and traces the traversal path and removes all from the forest.
+ * 2.a the second level does a simple BFS on the tree
+ * 
+ * instead of doing this 2 level general check for cycles, I believe it may be enough to do a one
+ * level check at the point addition
  */
 
 public class Kruskal {
 	
+	/*
+	 * Take list of nodes as input
+	 */
 	public Set<Edge> minSpanTree(List<Node> in){
 		
+		// if the input list is null or empty return
 		if(in==null||in.isEmpty())
 			return null;
 		
+		//create empty set of edges for the output
 		Set<Edge> output = new HashSet<Edge>();
+		
+		//get a list of the nodes, without the edges
 		List<Node> nodesOnly = getNodesOnly(in);
 		
+		//get the list of edges sorted by weight
 		Set<Edge> sortedEdges = getSortedEdges(in);
 		
 		
@@ -39,14 +65,18 @@ public class Kruskal {
 		{
 			System.out.println("edge used = "+edge);
 			
-			
+			//add the edge to nodesOnly list
 			addEdge(nodesOnly,edge);
+			//add the edge to output set
 			output.add(edge);
 			
-			boolean cyclic = isCyclic(output);
+			//check if a cycle has been created.
+			boolean cyclic = isCyclic(edge.v1);
+			//boolean cyclic = isCyclicForest(output);
 			
 			System.out.println("cycle created = "+cyclic);
 			
+			//if yes, remove the edge from output and the nodes only tree.
 			if(cyclic)
 			{
 				output.remove(edge);
@@ -97,23 +127,29 @@ public class Kruskal {
 	 * @param input
 	 * @return
 	 */
-	private boolean isCyclic(Set<Edge> input) {
+	@Deprecated
+	private boolean isCyclicForest(Set<Edge> input) {
 		
+		// get list of all nodes from the edge list, this is being treated as an array of roots
 		List<Node> nList= getExpNodes(input);
 		System.out.println("nodes in the current spanning tree = "+Arrays.toString(nList.toArray()));
 		
 		
 		while(!nList.isEmpty())
 		{
-			
+			//get the first node
 			Node node = nList.get(0);			
 			
+			//create a list of traversed nodes, empty
 			List<Node> traverseList = new ArrayList<Node>();			
 			
-			if(isCyclic(node,traverseList))
+			//traverse through the list to check if any cycles are found.
+			//if yes return else
+			if(isCyclicTree(node,traverseList))
 				return true;
 			else
 			{
+				// else remove all the traversed nodes from root array and continue.
 				nList.removeAll(traverseList);
 			}
 	
@@ -123,14 +159,64 @@ public class Kruskal {
 		return false;
 	}
 
+	private boolean isCyclic(Node root){
+
+		System.out.println("root for cyclic check = "+root);
+		
+		Set<Edge> visitedEdges = new HashSet<Edge>();
+		Set<Node> visitedNodes = new HashSet<Node>();
+		
+		Queue<Node> candidNodes = new LinkedList<Node>();
+		candidNodes.add(root);
+		visitedNodes.add(root);
+		
+		while(!candidNodes.isEmpty()){
+			
+			Node node = candidNodes.poll();
+			visitedNodes.add(node);
+			
+			for(Edge e:node.edges){
+				
+				//seeing an older node over the same edge is not a cycle
+				if(visitedEdges.contains(e))
+					continue;
+				else
+				{
+					visitedEdges.add(e);
+					Node nextNode = null;
+					
+					//next node is the other side of the edge
+					if(e.v1.equals(node))
+						nextNode = e.v2;
+					else
+						nextNode = e.v1;	
+					
+					if(visitedNodes.contains(nextNode)||candidNodes.contains(nextNode))
+					{						
+						return true;
+					}	
+					else
+					{
+						candidNodes.add(nextNode);
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		return false;
+	}
 
 	/**
-	 * Check one disjointed graph from its root
+	 * Check one disjointed graph from its root, through BFS
 	 * @param root
 	 * @param traverseList
 	 * @return
 	 */
-	private boolean isCyclic(Node root, List<Node> traverseList) {
+	@Deprecated
+	private boolean isCyclicTree(Node root, List<Node> traverseList) {
 		
 		System.out.println("root for cyclic check = "+root);
 		
@@ -161,6 +247,7 @@ public class Kruskal {
 					visitedEdges.add(e);
 					Node nextNode = null;
 					
+					//next node is the other side of the edge
 					if(e.v1.equals(node))
 						nextNode = e.v2;
 					else
@@ -289,12 +376,12 @@ public class Kruskal {
 		
 		Set<Edge> out = k.minSpanTree(input);
 		
-		System.out.println("-----------");
+		System.out.println("-----Start of output-----");
 		for(Edge e:out){
 			
 			System.out.print(e.weight+"  ");
 		}
-		System.out.println("-----------");
+		System.out.println("-----End of output-----");
 		
 		
 
