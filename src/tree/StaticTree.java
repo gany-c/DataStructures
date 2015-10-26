@@ -10,7 +10,12 @@ import java.util.Queue;
 import base.IntWrapper;
 import base.TreeNode;
 
-
+/**
+ * 
+ * @author gchidam
+ *
+ * Huge class, see method level comments.
+ */
 public class StaticTree{
 
 // The tree does not need a header over the root, because we are //dealing only with traversal functions, the root itself does not //change.
@@ -281,6 +286,13 @@ public void dFS(){
 	
 }
 
+/**
+ *  Print all paths to leaves:
+ *  1. Start at the root with an empty path
+ *  2. At each node, add the current value to the path, with a separator 
+ *  3. Recursively, call this method for left child and/or right child 
+ *  4. If neither, left or right is present, print the path and exit recursion
+ */
 public void printPathToLeaves(){
 	if(this.root == null)
 		return;
@@ -306,7 +318,16 @@ private void printPathToLeaves(TreeNode node,String path) {
 }
 
 /**
- * Excellently done
+ * Iterative post order: Excellently done
+ * 
+ * 1. Create an empty stack of nodes and an empty set of nodes.
+ * 2. Push the root into the stack, and navigate to the left most 
+ * 3. While stack is not empty
+ * 3.a. Pop a node from the stack
+ * 3.b. If this node is not contained in right explored and its right node is not null
+ * 3.b.a push the node into the stack and push to the left most end of its right sub tree
+ * 3.b.b mark the node as right explored.
+ * 3.b. - else print the value at the node and continue recursion
  */
 public void iterativePostOrder()
 {
@@ -350,6 +371,19 @@ private void pushLefts(Stack<TreeNode> stack, TreeNode node)
 private boolean targetFound = false;
 private int successor = Integer.MIN_VALUE;
 
+/**
+ * 
+ * @param target
+ * @return
+ * 
+ * 1. set 2 flags targetFound, successor; initialize them to false, null
+ * 2. Recursively call the left sub child
+ * 3. Next, if successor has been found return;
+ * 3.b els if the target has been found mark the current value as successor and return
+ * 3.c. if the current value equals the target, mark the target found flag
+ * 4. If right is not null, recursively invoke right.
+ */
+
 public int  inorderSuccessor(int target){
 	
 	this.targetFound = false;
@@ -390,6 +424,13 @@ private void inorderSuccessor(TreeNode input,int target)
 	}
 }
 
+/**
+ * 
+ * @return
+ * 
+ * Finding the max height - recursively call left and right height functions and return the max plus 1
+ * if both left and right child are missing return 0; if only one is missing invoke on that alone.
+ */
 public int maxHeight(){
 	return maxHeight(this.root);
 }
@@ -418,6 +459,17 @@ private int maxHeight(TreeNode in){
 	}
 }
 
+/**
+ * 
+ * @param input
+ * @return
+ * 
+ * Creating a mirror tree
+ * 
+ * 1. Clone the root node
+ * 2. recursively call the mirror on the right subchild and set it to the left of the output
+ * 3. recursively call the mirror on the left subchild and set it to the right of the output
+ */
 private TreeNode createMirror(TreeNode input){
 	
 	if(input==null)
@@ -445,6 +497,12 @@ public StaticTree getMirror(){
 		
 }
 
+/**
+ * Zig zag sort is similar to Print levels, 
+ * But simply reversing the intermediate queue at every iteration alone won't help
+ * Because, the code structure still explores left child and right child. 
+ * So another boolean flag is needed to push right child and then left child.
+ */
 public void zigZagStart(){
 
 	Queue<TreeNode> start = new LinkedList<TreeNode>();
@@ -490,7 +548,9 @@ private static void zigZag (Queue<TreeNode> q,boolean leftFirst){
 	}
 }
 
-//deep clone
+/**
+ * Deep clone is also similar to pre order, clone the current node, call deep clone function on the left and right sub trees.
+ */
 public StaticTree clone(){
 	
 	StaticTree cloneTree = new StaticTree(deepClone(this.root));
