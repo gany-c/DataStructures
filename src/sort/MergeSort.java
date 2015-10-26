@@ -1,5 +1,18 @@
 package sort;
 
+/**
+ * 
+ * @author Ramanan
+ *
+ * 1. Recursively split the array into 2
+ * 2. If array is of size 1 exit
+ * 3. Merge the 2 sorted sub-arrays to get a sorted array
+ * 
+ * Merge:
+ * 1. create a temporary array of same size as merged zone.
+ * 2. keep 2 pointers and progressively copy the smaller ones from both zones into the new array
+ * 3. copy the temporary array into the full zone.
+ */
 public class MergeSort {
 	
 	public void sort(int[] input)
