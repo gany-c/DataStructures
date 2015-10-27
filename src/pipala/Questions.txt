@@ -1,0 +1,45 @@
+1. Given a certain number of nodes connected by a linear bus, such that each node has a node on left and right; 
+Implement a method that counts the total number of methods in the system. methods given are 
+
+boolean isLeftMost(); boolean isRightMost(); sendLeft(someMessage); sendRight(someMessage);
+
+to be implemented
+
+main(), receiveLeft(Message m), receiveRight(Message m)
+
+The last two methods are callbacks. 
+The same methods should run on every code, and should run when all of the nodes start at the same time
+
+2. Given 2 sets of numbers, how will you find the intersection
+-- HashSet approach is what you would use, what if the hashset doesn't fit
+--- You may external sort the number lists and then do the check; max - min range of one set can be of help here.
+
+3. Given a huge string that represents a book; write a boolean sentence that returns true if any 2 sentences share a word set
+--- This is a simpler variation of the intersection question, in that you just need to find one 
+--- How will you do it the hashset doesn't fit.. has to be brute force
+--- What if a few false positives are allowed, then how would you do it? Hash a sentence and store in a BloomFilter
+--- How will you make a BloomFilter more precise? Increase the size of the underlying byte array.
+---- What if the file is distributed - Build bloomfilters on the fly on each node 
+and apart from the local check pass messages for checks on other nodes. Add these remote queries to the local bloom filter also.
+--- To reduce message passing, you can add batch the messages in terms of 10.
+
+4. How will you store a file of key-value pairs on disks? 
+
+integer - key size
+integer -value size
+key bytes,
+value bytes 
+checksum
+
+several of the above in a file and then a file level checksum.
+
+5. How will you create a PeekIterator, which is a wrapper around a regular iterator.
+
+Apart from the hasNext() and next() method you have to implement a peek() method.
+You use a temp variable for the method you pulled out - good approach,
+but don't use temp==null as a check. That would fail if the iterator itself contains null.
+
+6. How do you speed up external sort with multi core
+-- can't do in the merge phase, but you can in the first sort phase.
+
+7. How do you sort numbers across rings? How do you agree on the token ranges? You can use sampling 
