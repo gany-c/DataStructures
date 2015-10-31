@@ -1,5 +1,5 @@
 1. Given a certain number of nodes connected by a linear bus, such that each node has a node on left and right; 
-Implement a method that counts the total number of methods in the system. methods given are 
+Implement a method that counts the total number of nodes in the system. methods given are 
 
 boolean isLeftMost(); boolean isRightMost(); sendLeft(someMessage); sendRight(someMessage);
 
