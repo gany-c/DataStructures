@@ -25,7 +25,7 @@ public class FactorUtil {
 		else if(input == 1)
 		{//if input is 1, return a set containing 1.
 			Set<Integer> out = new TreeSet<Integer>();
-			out.add(1);
+			
 			return out;
 		}
 		else 
@@ -39,7 +39,8 @@ public class FactorUtil {
 				if(input%i == 0)
 				{
 					//if yes add divisor and quotient to the set
-					out.add(i);
+					if(i!=1)
+						out.add(i);
 					out.add(input/i);
 				}
 					
@@ -73,14 +74,12 @@ public class FactorUtil {
 			return null;
 		else if(input == 1)
 		{
-			Set<Integer> out = new TreeSet<Integer>();
-			out.add(1);
+			Set<Integer> out = new TreeSet<Integer>();	
 			return out;
 		}
 		else if(input ==2)
 		{
-			Set<Integer> out = new TreeSet<Integer>();
-			out.add(1);
+			Set<Integer> out = new TreeSet<Integer>();			
 			out.add(2);
 			return out;
 		}
@@ -126,6 +125,7 @@ public class FactorUtil {
 		
 		System.out.println(u.findPrimeFactors(2));
 		System.out.println(u.findPrimeFactors(5));
+		System.out.println(u.findPrimeFactors(12));
 		System.out.println(u.findPrimeFactors(30));
 		System.out.println(u.findPrimeFactors(366));
 		System.out.println(u.findPrimeFactors(360));
