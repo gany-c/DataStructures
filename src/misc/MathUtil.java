@@ -8,24 +8,40 @@ import java.util.Map;
 public class MathUtil {
 	
 	   
-	   /**
-	    * Returns a^b, as the standard mathematical exponentiation function
-	    */
-	   
-	   public static double pow(double a, int b) {
 
+/**
+ * 1. initialize output to 1
+ * 2. if the power param is 0, return 1.
+ * 3. initialize term variable to be base
+ * 4. if power lesser than 0, set the term to be its own reciprocal
+ * 5. get absolute value of the power
+ * 6. in a loop from 1 to power variable multiple the output by the base.
+ * 7. return output.	 
+ *   
+ * @param a
+ * @param b
+ * @return
+ */
+	   public static double pow(double a, int b) {
+		    //initialize output to 1
 		    double output = 1d;
 		    
+		    //if the power param is 0, return 1.
 		    if(b == 0)
 		        return output;
 		    else
 		    {
+		    	//initialize term to be base
 		        double term  = a;
+		        
+		        //if power lesser than 0, set the term to be its own reciprocal
 		        if (b <0 )
 		            term = (1/a); 
-		              
+		          
+		        // get the absolute value of the power
 		         int newB = Math.abs(b); 
 		
+		         //for i ranging from 1 to absolute value, multiply output by term.
 		          for(int i =0; i < newB; i++)
 		          {
 		              output = output * term;
@@ -33,32 +49,51 @@ public class MathUtil {
 		  
 		    }   
 		    
+		    
+		    //return output.
 		    return output;
 		        
 		 }
 	   
+	   /**
+	    * 1. initialize output to be 1
+	    * 2. if b equals 0, return 1 itself as output
+	    * 3. if b equals 1, return the base
+	    * 4. if b is less that 0 return the reciprocal of the result of a recursive call with the same base and a negative inversion of the power :)
+	    * 5. if the power is even, make a recursive call with power by 2 and return the square of the result.
+	    * 6. else do the same with the base multiplying the square.
+	    * @param a
+	    * @param b
+	    * @return
+	    */
 	   public static double powWow(double a, int b){
 		   
+		   //initialize output to be 1
 		   double output = 1d;
 		   
 		   if(b== 0)
 		   {
+			   //if b equals 0, return 1 itself as output
 			   return output;
 		   }
+		   //if b equals 1, return the base
 		   else if(b == 1)
 			   return a;
 		   else if(b <0)
 		   {
+			   //if b is less that 0 return the reciprocal of the result of a recursive call with the same base and a negative inversion of the power :)
 			   return(1d/powWow(a,(-1)*b ));
 		   }
 		   else{
 			   
+			   //if the power is even, make a recursive call with power by 2 and return the square of the result.
 			   if(b%2 == 0){
 				   double root = powWow(a,b/2);
 				   return root * root;
 			   }
 			   else
 			   {
+				   //else do the same with the base multiplying the square.
 				   double root = powWow(a,b/2);
 				   return root * root * a;
 			   }
