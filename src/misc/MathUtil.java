@@ -137,11 +137,23 @@ public class MathUtil {
 		   
 	   }
 	   
+	   
+	   // Create a Map for memoization, it need not be refreshed because fibonacci numbers are constants.
 	   private static Map<Integer,Integer> fibMap = new HashMap<Integer,Integer>();
 	   
-	   
+	   /**
+	    * 1. Create a Map for memoization, it need not be refreshed because fibonacci numbers are constants.
+	    * 2. if n is less than 1, return -1
+	    * 3. if n equals 1 return 0, if n equals 1
+	    * 4. Otherwise, check if the previous 2 fibonacci numbers are available in the map, use them if available otherwise make recursive calls
+	    * 5. sum the 2 previous  numbers, add them and add to the map, and return as output.
+	    * @param n
+	    * @return
+	    */
 	   
 	   public static int fib(int n){
+		   
+		   // if n is less than 1, return -1
 		   if(n <1)
 		   {
 			   System.out.println("enter a value greater than 0");
@@ -149,11 +161,15 @@ public class MathUtil {
 
 		   }
 
+		   // if n equals 1 return 0, if n equals 1
 		   if(n==1)
 		       return 0;
 		   else if(n==2)
 		       return 1;
 		   else {
+			   
+			   //Otherwise, check if the previous 2 fibonacci numbers are available in the map
+			   // use them if available otherwise make recursive calls
 			   Integer prev = fibMap.get(n-1);
 			   if(prev == null)
 				   prev = fib(n-1);
@@ -162,6 +178,8 @@ public class MathUtil {
 			   if(prevPrev == null)
 				   prevPrev = fib(n-2);
 			   
+			   //sum the 2 previous  numbers
+			   //add them and add to the map, and return as output.
 			   int out = prev + prevPrev;
 			   fibMap.put(n, out);	 
 			   
@@ -170,6 +188,11 @@ public class MathUtil {
 		   
 	   }
 	   
+	   /**
+	    * Simple for loop, with 2 
+	    * @param n
+	    * @return
+	    */
 	   public static int fibIterative(int n){
 		   if(n <1)
 		   {
@@ -199,7 +222,9 @@ public class MathUtil {
 	   
 
 	   
-	   /*
+	   /**
+	    * FIND ALL 6 DIGIT NUMBERS WHICH ARE SQUARES OF THE SUMS OF THEIR 3 DIGIT HALVES
+	    * 
 	    * Naive approach: call isSquareOfSumOf3digitHalves for all numbers between 100,000
 	    * and 1,000,000.
 	    * 
@@ -216,9 +241,13 @@ public class MathUtil {
 	    * 
 	    */
 	   public static List<Integer> findAll6DigitNumSquareOfSumOf3digitHalves(){
+		   
+		   //find all the 6 digit numbers which are squares
 		    List<Integer> allSq = findAll6DigitSquares();
 		    
 		    List<Integer> output = new ArrayList<Integer>();
+		    
+		    //check if they follow the property 
 		    for(Integer sq: allSq)
 		    	if(isSquareOfSumOf3digitHalves(sq))
 		    		output.add(sq);
@@ -228,10 +257,13 @@ public class MathUtil {
 	   
 	   private static boolean isSquareOfSumOf3digitHalves(int n){
 		   
+		   //if the number is not 6 digit, return false
 		   if(n < 100000 || n >999999)
 		  	   return false;
-		   else
+		   else			   
 		   {
+			  //divide by 1000 and take modulo 1000 to get the 2 terms
+			   //add the them ad squater them
 			  int term =  n/1000 + n%1000;
 			  return n==term*term;
 		   }
