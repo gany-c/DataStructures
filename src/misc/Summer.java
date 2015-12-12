@@ -26,14 +26,25 @@ interface TwoSum {
 
 
 
-
+/**
+ * 
+ * @author Ramanan
+ * 1. create an empty array list
+ * 2. create an empty set
+ * 3. while storing add the number to both the list and the set
+ * 4. while testing traverse the list and subtract each number from the supplied value
+ * check if the difference is present in the set.
+ */
 
 public class Summer implements TwoSum{
 
+	//create an empty array list
    private List<Integer> storeList = new ArrayList<Integer>(); 
    
+   //create an empty set
    private Set<Integer> storeSet = new HashSet<Integer>();
 
+   //while store add the number to both the list and the set
    public void store(int input){
 
         storeList.add(input);
@@ -41,6 +52,8 @@ public class Summer implements TwoSum{
 
    }
    
+   //while testing traverse the list and subract each number from the supplied value
+   //check if the difference is present in the set.
    public boolean test(int val)
    {
    
