@@ -8,6 +8,9 @@ import base.DupSet;
 /**
  * 
  * @author Ramanan
+ * 
+ * QUESTION: find all the ways in which a number can be summed, Ramanujan's partitions :)
+ * 
  * Calculate the 2 sum pairs and if any of the pair items is greater than 2, 
  * recursively calculate for that item
  * 
@@ -38,33 +41,13 @@ public class SumUtil {
 			{
 				if(pair.get(0) >1)
 				{
-					Set<DupSet> inner1 = findAllSumSets(pair.get(0));
-					
-					for(DupSet innerSet: inner1)
-					{
-//						System.out.println(pair.get(0)+": innerSet = "+innerSet);
-						innerSet.add(pair.get(1));	
-//						System.out.println(" innerSet, after combining = "+innerSet);
-//						System.out.println(" innerSet, already exists = "+output.contains(innerSet));
-//						System.out.println(" innerSet, map  = "+innerSet.getMap());
-						output.add(innerSet);
-					}
+					combineWithInnerPartitions(pair.get(0),pair.get(1),output);
 						
 				}
 				
 				if(pair.get(1) >1)
 				{
-					Set<DupSet> inner1 = findAllSumSets(pair.get(1));
-					
-					for(DupSet innerSet: inner1)
-					{
-//						System.out.println(pair.get(1)+": innerSet = "+innerSet);
-						innerSet.add(pair.get(0));		
-//						System.out.println(" innerSet, after combining = "+innerSet);
-//						System.out.println(" innerSet, already exists = "+output.contains(innerSet));
-//						System.out.println(" innerSet, map  = "+innerSet.getMap());
-						output.add(innerSet);
-					}
+					combineWithInnerPartitions(pair.get(1),pair.get(0),output);
 						
 				}
 			}
@@ -75,6 +58,20 @@ public class SumUtil {
 			
 		}
 		
+		
+	}
+
+	private void combineWithInnerPartitions(int firstNumber, int secondNumber, Set<DupSet> output) {
+
+		Set<DupSet> inner = findAllSumSets(firstNumber);
+		
+		for(DupSet innerSet: inner)
+		{
+
+			innerSet.add(secondNumber);	
+
+			output.add(innerSet);
+		}
 		
 	}
 
