@@ -5,6 +5,8 @@ import java.util.Map;
 
 public class Polynomial {
 	
+	// A polynomial is represented as a map of 
+	// coefficients = keys, exponent powers as values
 	private Map<Integer,Float> termMap;
 	
 	public void print(){
