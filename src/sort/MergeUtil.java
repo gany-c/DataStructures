@@ -16,6 +16,13 @@ public class MergeUtil {
 	}
 	
 	/**
+	 * PROBLEM:- you are given 2 sorted arrays, the bigger one has empty spaces at the end, the same size as the smaller array. 
+	 * Merge the 2 arrays in place
+	 * 
+	 * The only tricky part is the input counter in the larger array =>inPointer2 = outPointer - smallArray.length;
+	 * This is best figured out using an example.
+	 * 
+	 * 
 	 * Mistakes were in cut-and-paste, used smallArray instead of bigArray and vice versa
 	 * @param bigArray
 	 * @param smallArray
@@ -31,14 +38,6 @@ public class MergeUtil {
 		int inPointer2 = outPointer - smallArray.length;
 		
 		while(inPointer1 >=0){
-			
-/*			System.out.println("Step : o "+outPointer+" i1 "+inPointer1+" i2 "+inPointer2);
-			for(int i:bigArray)
-			{
-				System.out.print(i+", ");
-			}
-			System.out.println();*/
-
 			
 			if(inPointer1 < 0)
 				bigArray[outPointer--] = bigArray[inPointer2--];
@@ -97,29 +96,47 @@ public class MergeUtil {
 	 * 2. This requires k comparison for each of the k *n items. So the complexity is O(k*k*n)
 	 * 3. The way of getting rid of redundant comparisons would using a priority queue of size k
 	 * 4. Keep removing from the elements from the priorty-queue=>output and replace it with an element from the sublist to which it belonged
+	 * 4.1. :- This is why the Tuple class is needed.
 	 * 5. What if you moved one from priority-queue to output and the corresponding list becomes empty? It is OK, doesn't have to be replaced
 	 * the priority queue merely reduces in size. 
+	 * 
+	 * K-WAY MERGE:-
+	 * 1. Create a priority queue of Tuples - listIndex and element
+	 * 2. initialize the queue with the first number in every list, (and get the total number of elements - not needed)
+	 * 3. create an empty output list
+	 * 4. while the priority is not empty
+	 * 4.1. Get the first tuple from the q
+	 * 4.2. Add the value to the output, add get the next element from the sublist based on the index and add it to the Queue
+	 * 4.3. If the sublist is empty do nothing.
+	 * 
 	 */
 	public List<Integer> mergeAll(List<List<Integer>> lists)
 	{
 		if(lists==null || lists.size()==0)
 		    return null;
-		    
+		
+		//Create a priority of Tuples - listIndex and element
 		PriorityQueue<Tuple> q = new PriorityQueue<Tuple>();
 	
+		//initialize the queue with the first number in every list, and get the total number of elements
 		int totalSize = init(lists, q);
 	
+		//create an empty output list
 		List<Integer> output = new ArrayList<Integer>();
 	
+		//while the q is not empty
 		while(!q.isEmpty()){
 	
-		Tuple t = q.remove();// get the next element from queue
+		Tuple t = q.remove();// get the next tuple from queue
 	
+		
 		if(t==null)
 		    break;
 	
+		//add the tuple's value to the output
 		output.add(t.val);//add it to the output list
 	
+		
 		if(lists.get(t.index).size()!=0){ // if the sublist is not empty
 		    int newVal = lists.get(t.index).remove(0);// get the first element from the sublist
 		    q.add(new Tuple(newVal,t.index));// add it to the queue
