@@ -4,9 +4,22 @@ package string;
  * 
  * @author Ramanan
  * 
- * Check if one string contains another
- * the pattern may include * and ?
- *
+ * Check if one string contains another, * the pattern may include * and ?
+ * 
+ * Solution - code it without any regex first, add the ? functionality next and the * at the end.
+ * 
+ * FIND method:
+ * 1. slide the pattern string from the postion where the 2 starts overlap to the point where the 2 ends overlap.
+ * 2. Invoke the subString function at every point.
+ * 
+ * SUB STRING method:
+ * 
+ * 1. if the characters of the pattern and the input match or if the pattern has ? 
+ * 		invoke the substring function recursively for the next 2 positions.
+ * 2. if the current character in the pattern is a *, 
+ * 2.1. if it is the last pattern character return true.
+ * 2.2. if not, check the remaining pattern recursively at every other point in the index
+ * 3. if not, return false.
  */
 public class PatternSearcher {
 
