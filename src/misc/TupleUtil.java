@@ -14,11 +14,30 @@ import java.util.Stack;
  * 
  * A variation of this problem is where you are given a set of intervals
  * or processes with start and end times and you have to find when they 
- * overlap
+ * overlap i.e. time periods when at least one process was running.
+ * 
+ * create a static inner class with fields for start, end and a constructor.
+ * -- create a method for checking if this tuple is mergeable with another
+ * -- create a compare method, which examines start only
+ * 
+ * 1. if  the input is null or it's size is less than equal to 1 just return the input
+ * 2. sort the input by the starting value
+ * 3. create a new stack
+ * 4. push the first element from the list into the stack
+ * 4.1. take the first element from the list
+ * 4.2. check if it is mergeable with the top most element in the stack
+ * 4.2.1. if yes, pop the element from the stack, merge it with list element 
+ * 4.2.2. and push the new element in to the stack.
+ * 4.3. else push the list element into the stack.
+ * 4.4. return the contents of the stack.
+ * 
  * 
  */
 public class TupleUtil {
 	
+	//create a static inner class with fields for start, end and a constructor.
+	//create a method for checking if this tuple is mergeable with another
+	//create a compare method, which examines start only
 	public static class Tuple implements Comparable<Tuple>{
 
 		private int start = 0;
@@ -87,33 +106,40 @@ public class TupleUtil {
 	
 	public List<Tuple> mergeOverlaps(List<Tuple> input) throws Exception{
 		
+		//if  the input is null or it's size is less than equal to 1 just return the input
 		if (input == null || input.size() <=1)
 			return input;
 		
-		Collections.sort(input);
-		
-/*		System.out.println("------------soreted results start");
-		for(Tuple in:input)
-			in.display();
-		System.out.println("------------soreted results end");*/
-		
+		//sort the input by the starting value
+		Collections.sort(input);		
+
+		//create a new stack
 		Stack<Tuple> stack = new Stack<Tuple>();
+		
+		//push the first element from the list into the stack
 		stack.push(input.remove(0));
 		
+		//while the input is not empty
 		while(!input.isEmpty()){
 			
+			//take the first element from the list
 			Tuple r = input.remove(0);
+			
+			//check if it is mergeable with the top most element in the stack
 			if(stack.peek().isMergeable(r))
 			{
+				//if yes, pop the element from the stack, merge it with list element 
+				//and push the new element in to the stack.
 				Tuple l = stack.pop();
 				Tuple merged = Tuple.merge(l, r);
 				stack.push(merged);
 			}
 			else
 				stack.push(r);
-			
+			//else push the list element into the stack.
 		}
 		
+		//return the contents of the stack.
 		List<Tuple> output = new ArrayList<Tuple>();
 		output.addAll(stack);
 		return output;
