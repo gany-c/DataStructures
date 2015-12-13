@@ -1,4 +1,4 @@
-package misc;
+package javaTrial;
 
 
 public class TestPrivate {
