@@ -8,33 +8,14 @@ public static String reverse(String input)
 	return null;
  else
  {
-  char[] holder = new char[input.length()];
 
-  for(int i=0;i<input.length();i++)
-  { 
-    holder[i] = input.charAt(i);
-    
-   }
-
-  int start =0;
-  int end = input.length()-1;
-
-  while(start<end)
-  {
-    char temp = holder[start];
-    holder[start] = holder[end];
-    holder[end] = temp;
-
-    start++;
-    end--;
-  }
  
   StringBuilder out = new StringBuilder();
   
-  for(int i=0;i<holder.length;i++)
+  for(int i=input.length()-1;i>=0;i--)
   {
-     out = out.append(holder[i]);
-    //reccomended string buffer 
+     out = out.append(input.charAt(i));
+    
    }
   return out.toString();
  }
