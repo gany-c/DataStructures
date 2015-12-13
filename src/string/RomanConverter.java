@@ -2,8 +2,22 @@ package string;
 
 import java.util.Map;
 
+/**
+ * 
+ * @author gchidam
+ * 
+ * idea is very simple, start at the end and keep adding if you see larger values, else subtract the value from the sum so far
+ *
+ * 1. Create a static map of characters to integers
+ * 2. set a variable for the maximum encountered so far, set a variable for the sum
+ * 3. traverse the string in reverse
+ * 3.1. get the character and the its value from the map
+ * 3.3. if the value is greater than the max value seen, add it to the sume and set it as the new max.
+ * 3.4. Else, subtract if from the sum.
+ */
 public class RomanConverter {
 	
+	//Create a static map of characters to integers
 	private static Map<Character,Integer> valueMap = new java.util.HashMap<Character,Integer>();
 	
 	static{
@@ -24,14 +38,20 @@ public class RomanConverter {
 	//start at the end and keep adding if you see larger values, else subtract the value from the sum so far
 	public static int getIndian(String s){
 		
+		//set a variable for the maximum encountered so far
 		int max = 0;
+		//set a variable for the sum
 		int sum = 0;
 	
+		//traverse the string in reverse
 		for(int i = s.length()-1;i>=0;i--)
 		{
+			//get the character and the its value from the map
 			char c = s.charAt(i);			
 			int value = valueMap.get(c);
 			
+			//if the value is greater than the max value seen
+			//add it to the sume and set it as the new max.
 			if(value>=max)
 			{
 				max = value;
@@ -39,6 +59,7 @@ public class RomanConverter {
 			}
 			else
 			{
+				//else subtract it from the sum.
 				sum = sum-value;
 			}
 		}
