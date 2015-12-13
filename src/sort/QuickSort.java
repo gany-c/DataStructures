@@ -5,6 +5,21 @@ public class QuickSort {
 	/**
 	 *  Picturize this list and write
 	 *  5, 1, 2, 3, 6, 4, 7, 8, 9, 10
+	 *  
+	 *  1. Input parameters are the array and the starting and ending indices
+	 *  2. if the start and the end indices are the same return
+	 *  3. it they are just 2 items apart, do a plain swap.
+	 *  4. Take the value at the start index as the pivot,
+	 *  5. set one counter at the end and one at the start plus 1 position
+	 *  6. while, the counters haven't crossed paths
+	 *  6.1. move the first counter forward as long as you see bigger elements
+	 *  6.2. move the second counter backward as long as you see smaller elements
+	 *  6.3. if the counters still haven't crossed paths swap the 2 elements at the counters, and move them a step
+	 *  6.4. continue in loop
+	 *  7. After the loop, one final swap of the pivot has to be done; do it if the second counter hasn't reached the pivot position 
+	 *  (i.e. entire segment is greater than pivot)
+	 *  8. now that the Pivot is placed, make recursive calls - if the right side and left side of the pivot have at least 2 elements.
+	 *  
 	 * @param a
 	 * @param lo
 	 * @param hi
