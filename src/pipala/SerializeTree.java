@@ -1,4 +1,4 @@
-package tree;
+package pipala;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,8 @@ public class SerializeTree {
 	
 	private byte serializeNode(CharNode c){
 		
-		StringBuffer out = new StringBuffer();
+		
+		StringBuffer out = new StringBuffer("0");
 		
 		if(c.getLeft()==null)
 			out.append("0");
@@ -34,7 +35,10 @@ public class SerializeTree {
 		
 		out.append(convertToString(c.getValue()));
 		
-		return Byte.parseByte(out.toString(), 2);
+		
+		byte output = Byte.parseByte(out.toString(), 2);
+		
+		return output;
 		
 		
 	}
