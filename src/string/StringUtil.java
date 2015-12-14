@@ -5,6 +5,14 @@ import java.util.Set;
 
 public class StringUtil {
 	
+	/**
+	 * 1. Start with the small string's start overlapping the big one's start
+	 * 1.1. slide the small one until the ends overlap.
+	 * 2. at each point call startsWith
+	 * @param main
+	 * @param sub
+	 * @return
+	 */
 	public int indexOf(String main, String sub){
 		
 		if(main == null || sub ==null)
@@ -24,6 +32,13 @@ public class StringUtil {
 		
 	}
 
+	/**
+	 * Simple character to character comparison starting at the index i in the bigger string.
+	 * @param main
+	 * @param sub
+	 * @param i
+	 * @return
+	 */
 	private boolean startsWith(String main, String sub, int i) {
 		
 		if(main == null || sub ==null||i<0)		
@@ -39,7 +54,20 @@ public class StringUtil {
 		}
 	}
 	
-	private Set<String> findAllPerm(String input){
+	/**
+	 * 
+	 * @param input
+	 * @return
+	 * 
+	 * 1. if the string is empty or null, return null
+	 * 2. if there is just 1 character, put it ina set and return
+	 * 3. Traverse the length of the string
+	 * 3.1. Get the character at the index
+	 * 3.2. Construct a substring of the remaining characters
+	 * 3.3. Make a recursive call for the remaining characters
+	 * 3.4. For each string in the set returned by 3.3. prepend this character.
+	 */
+	public Set<String> findAllPerm(String input){
 		
 		if(input==null||input.trim().isEmpty())
 			return null;
