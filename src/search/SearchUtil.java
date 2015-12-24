@@ -24,16 +24,25 @@ public class SearchUtil {
 	char findInsPoint(String sortedString, char x) throws Exception
 	{
 	
-	    if(sortedString == null || sortedString.trim().isEmpty())
-	     throw new Exception("invalid sorted string parameter");
+	    if(sortedString == null )
+	    	throw new Exception("invalid sorted string parameter");
 	     
 	     String input = sortedString.trim();
-	     int index = getIndex(input,x,0,input.length() -1);
 	     
-	     if(index < 0 )
-	         return input.charAt(0);
-	     else
-	         return input.charAt(index);          
+	     if(input.isEmpty())
+	    	 throw new Exception("invalid sorted string parameter");
+	     else if((input.length()==1)||(input.charAt(0) > x)||(input.charAt(input.length() -1) <= x))
+	    	 return input.charAt(0);
+	     else{	    	 
+		     int index = getIndex(input,x,0,input.length() -1);
+		     
+		     if(index < 0 )
+		         return input.charAt(0);
+		     else
+		         return input.charAt(index);   	    	 
+	     }
+	     
+       
 	            
 	}
 
@@ -45,9 +54,7 @@ public class SearchUtil {
 	    
 	    if(input.charAt(mid)<=x){
 	        
-	        if(mid == end)
-	            return -1;
-	        else if (input.charAt(mid+1) > x)
+	    	if (input.charAt(mid+1) > x)
 	            return mid +1;
 	        else{
 	            return getIndex(input, x, mid +1,  end);        
@@ -55,9 +62,7 @@ public class SearchUtil {
 	                    
 	    } else { 
 	    
-	         if(mid ==start)
-	             return 0;
-	         else if ( input.charAt(mid -1) <= x)
+	    	if ( input.charAt(mid -1) <= x)
 	             return mid;
 	         else{
 	              return getIndex(input, x, start, mid -1);      
@@ -73,6 +78,9 @@ public class SearchUtil {
 		
 		try {
 			char output = util.findInsPoint(input, 'z');
+			System.out.println(output);
+			
+			output = util.findInsPoint(input, 'i');
 			System.out.println(output);
 			
 			output = util.findInsPoint(input, 'k');
