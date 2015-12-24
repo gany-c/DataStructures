@@ -19,6 +19,14 @@ public class SearchUtil {
 	 * ['c', 'f', 'k'], 'c' => 'f'
 	 * ['c', 'f', 'k'], 'd' => 'f'
 	 * @throws Exception 
+	 * 
+	 * SOLUTION:-
+	 * 1. Have a non recursive wrapper method which checks for 
+	 * 1.a. input being null or empty
+	 * 1.b. and falling out of the range i.e. lesser than minimum and larger than maximum
+	 * 2. Then initiate the recursive method.
+	 * 2.a. mid equals end, only if start and end are the same number.
+	 * 2.b. mid can equal start both if start and end have merged and start is one lesser than end.
 	 */
 
 	char findInsPoint(String sortedString, char x) throws Exception
@@ -35,11 +43,7 @@ public class SearchUtil {
 	    	 return input.charAt(0);
 	     else{	    	 
 		     int index = getIndex(input,x,0,input.length() -1);
-		     
-		     if(index < 0 )
-		         return input.charAt(0);
-		     else
-		         return input.charAt(index);   	    	 
+		     return input.charAt(index);   	    	 
 	     }
 	     
        
