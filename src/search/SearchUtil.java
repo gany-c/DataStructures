@@ -82,54 +82,60 @@ public class SearchUtil {
 		
 		try {
 			char output = util.findInsPoint(input, 'z');
-			System.out.println(output);
+			System.out.println(input +","+'z'+ " = "+ output);
 			
 			output = util.findInsPoint(input, 'i');
-			System.out.println(output);
+			System.out.println(input +","+'i'+ " = "+ output);
 			
 			output = util.findInsPoint(input, 'k');
-			System.out.println(output);
+			System.out.println(input +","+'k'+ " = "+ output);
 			
 			output = util.findInsPoint(input, 'a');
-			System.out.println(output);
+			System.out.println(input +","+'a'+ " = "+ output);
 			
 			output = util.findInsPoint(input, 'c');
-			System.out.println(output);
+			System.out.println(input +","+'c'+ " = "+ output);
 			
 			output = util.findInsPoint(input, 'v');
-			System.out.println(output);
+			System.out.println(input +","+'v'+ " = "+ output);
+			
+			output = util.findInsPoint(input, 'h');
+			System.out.println(input +","+'h'+ " = "+ output);
+			
+			output = util.findInsPoint(input, 'm');
+			System.out.println(input +","+'m'+ " = "+ output);
 			
 			System.out.println("-----------");
 			
 			String input2 = "cv";
 			
 			output = util.findInsPoint(input2, 'k');
-			System.out.println(output);
+			System.out.println(input2 +","+'k'+ " = "+ output);
 			
 			output = util.findInsPoint(input2, 'a');
-			System.out.println(output);
+			System.out.println(input2 +","+'a'+ " = "+ output);
 			
 			output = util.findInsPoint(input2, 'z');
-			System.out.println(output);
+			System.out.println(input2 +","+'z'+ " = "+ output);
 			
 			output = util.findInsPoint(input2, 'c');
-			System.out.println(output);
+			System.out.println(input2 +","+'c'+ " = "+ output);
 			
 			output = util.findInsPoint(input2, 'v');
-			System.out.println(output);
+			System.out.println(input2 +","+'v'+ " = "+ output);
 			
 			System.out.println("-----------");
 			
 			String input3 = "m";	
 			
 			output = util.findInsPoint(input3, 'k');
-			System.out.println(output);
+			System.out.println(input3 +","+'k'+ " = "+ output);
 	
 			output = util.findInsPoint(input3, 'z');
-			System.out.println(output);
+			System.out.println(input3 +","+'z'+ " = "+ output);
 			
 			output = util.findInsPoint(input3, 'm');
-			System.out.println(output);
+			System.out.println(input3 +","+'m'+ " = "+ output);
 
 			
 		} catch (Exception e) {
