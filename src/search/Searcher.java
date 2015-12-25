@@ -109,6 +109,47 @@ public class Searcher {
 
 	}
 	
+	public boolean isPresent(int[] input, int key){
+		
+		if(input == null || input.length ==0)
+			return false;
+		if(input[0] > key || input[input.length-1] < key)
+			return false;
+		else return binaryIsPresent(input, key, 0, input.length -1);
+			
+					
+	}
+	
+	/** here +1, -1 is used despite not having adjacency comparisons
+	 * The target value may go out of range of start and end.
+	 * 
+	 * But since we are just returning true or false, it is OK
+	 * 
+	 * @param input
+	 * @param key
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	private boolean binaryIsPresent(int[] input, int key, int start, int end) {
+		
+		int mid = (start + end )/2;
+		 
+		if(input[mid] == key)
+			return true;
+		else
+		{
+			if(start == mid)
+				return input[end] == key;
+			
+			if(input[mid] < key)
+				return binaryIsPresent(input,key, mid+1,end);
+			else
+				return binaryIsPresent(input,key, start,mid -1);
+		}	    
+		
+	}
+
 	public static void main(String[] args){
 		
 		Searcher s = new Searcher();
@@ -127,6 +168,23 @@ public class Searcher {
 		System.out.println("{ 1,5,9},8 index = "+s.search(new int[]{ 1,5,9},8));
 		System.out.println("{ 1,5,9,13,17},12 index = "+s.search(new int[]{ 1,5,9,13,17},12));
 		System.out.println("{ 1,5,9,13,17},8 index = "+s.search(new int[]{ 1,5,9,13,17},8));
+		
+		System.out.println("=================================");
+		
+		System.out.println("{ 2,4,5,6,9,155},4 index = "+s.isPresent(new int[]{ 2,4,5,6,9,155},4));
+		System.out.println("{ 2,4,5,6,9,155},8 index = "+s.isPresent(new int[]{ 2,4,5,6,9,155},8));
+		System.out.println("{ 2,4,5,6,9,155},1 index = "+s.isPresent(new int[]{ 2,4,5,6,9,155},1));
+		System.out.println("{ 2,4,5,6,9,155},256 index = "+s.isPresent(new int[]{ 2,4,5,6,9,155},256));
+		System.out.println("{ 155},256 index = "+s.isPresent(new int[]{ 155},256));
+		System.out.println("{ 155},65 index = "+s.isPresent(new int[]{ 155},65));
+		System.out.println("{ 2,155},65 index = "+s.isPresent(new int[]{ 2,155},65));
+		System.out.println("{ 2,155},256 index = "+s.isPresent(new int[]{ 2,155},256));
+		System.out.println("{ 21,32,155},22 index = "+s.isPresent(new int[]{ 21,32,155},22));
+		System.out.println("{ 2,4,5,6,9,155,159},4 index = "+s.isPresent(new int[]{ 2,4,5,6,9,155,159},4));
+		System.out.println("{ 2,4,5,6,9,155,159},11 index = "+s.isPresent(new int[]{ 2,4,5,6,9,155,159},11));
+		System.out.println("{ 1,5,9},8 index = "+s.isPresent(new int[]{ 1,5,9},8));
+		System.out.println("{ 1,5,9,13,17},12 index = "+s.isPresent(new int[]{ 1,5,9,13,17},12));
+		System.out.println("{ 1,5,9,13,17},8 index = "+s.isPresent(new int[]{ 1,5,9,13,17},8));
 
 	}
 
