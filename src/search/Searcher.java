@@ -2,7 +2,7 @@ package search;
 
 public class Searcher {
 	
-	/**
+	/** EASY
 	 * given an array of sorted integers and a number, find the index where input number is positioned or where it needs to be inserted.
 	 * 1. check for null conditions
 	 * 2. check for the extremities
@@ -16,12 +16,17 @@ public class Searcher {
 	 * e.g. { 1,5,9,13,17},8
 	 * e.g. { 1,5,9,13,17},12
 	 * 
-	 * In the first case, we are comparing mid with its adjacent elements so it is OK
+	 * In the first case, we are comparing mid with its adjacent elements so it is OK 
+	 * - here you can use mid +1 and mid -1 and break out, without making recursion ending code.
 	 * 
 	 * 3.1. If the element at mid is the same as what you were looking for, return mid
 	 * 3.2. Check if start == mid. This can happen in 2 cases 
-	 *  1. start and end are adjacent - here the value is strictly greater than start, but less than or equal to end, so return start +1 or mid +1 or end.
-	 *  2. start and end overlap - depending on how the value at mid compares with the input value, return an index 1 greater or mid itself (will get pushed if a new value is inserted)
+	 *  1. start and end are adjacent
+	 *   - here the value is strictly greater than start, but less than or equal to end, 
+	 *   - so return start +1 or mid +1 or end.
+	 *  2. start and end overlap - 
+	 *  depending on how the value at mid compares with the input value, return an index 1 greater or mid itself 
+	 *  (will get pushed if a new value is inserted)
 	 * @param list
 	 * @param in
 	 * @return
