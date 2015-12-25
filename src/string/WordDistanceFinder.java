@@ -1,5 +1,11 @@
 package string;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class WordDistanceFinder {
 	
 	/* This class will be given a list of words (such as might be tokenized
@@ -18,9 +24,9 @@ public class WordDistanceFinder {
 	 the - 0
 	 quick - 1,4
 	 brown -2 
-	 fox - 3
+	 fox - 3 */
 
-	public class WordDistanceFinder {
+
 
 	    Map<String, List<Integer>> dict = new HashMap<String, List<Integer>>(); 
 
@@ -54,30 +60,84 @@ public class WordDistanceFinder {
 	         List<Integer> indexOne = dict.get(wordOne);
 	         List<Integer> indexTwo = dict.get(wordTwo);
 	         
-	         if(indexOne == null || indexOne.isEmpty()|| indexTwo == null || indextTwo.isEmpty())
+	         if(indexOne == null || indexOne.isEmpty()|| indexTwo == null || indexTwo.isEmpty())
 	             return -1;
 	         else if (indexOne.size() == 1 && indexTwo.size() ==1){
 	           return Math.abs(indexOne.get(0) - indexTwo.get(0));       
 	         } 
-	         else if ( indexOne.size() == 1 || indexTwo.size() ==1 ){
-	         // binary search and return the difference in the index
-	        }
-	        else {// two lists of sorted numbers - goal is to find the shortes difference between them.
-	        
-	        // brute force where you compare each number of the list with the other
-	        // I'm guessing - mergesort's merge, but retain the list information and get the shortest gap
+	        else {
+	        	
+	        	int[] merged = negateAndMerge(indexOne,indexTwo);
+	        	
+	        	
+	        	
+	        	return findShortestGap(merged);
 	        
 	        }
 	    }
+	
+	    }
+
+
+	private int findShortestGap(int[] merged) {
+			
+		if(merged == null || merged.length <1)
+			return -1;
+		
+		int minDistance = Integer.MAX_VALUE;
+		
+		for(int i = 0;i<merged.length-1;i++){
+			
+			int sum = merged[i] + merged[i+1];
+			
+			if(sum < merged[i] || sum < merged[i+1])
+			{
+				int distance = Math.abs(merged[i+1]) - Math.abs(merged[i]);
+				
+				if(distance < minDistance)
+					minDistance = distance;
+			}
+			
+		}
+		
+		return minDistance;
 	}
-
-
-
-	 */	
-
+	
+	private int[] negateAndMerge(List<Integer> indexOne, List<Integer> indexTwo) {
+			
+			int[] output = new int[indexOne.size() + indexTwo.size()];
+			
+			int cOne = 0;
+			int cTwo = 0;
+			int k = 0;
+			
+			
+			while(cOne < indexOne.size() && cTwo < indexTwo.size()){
+				
+				if(indexOne.get(cOne) < indexTwo.get(cTwo))
+					output[k++] = indexOne.get(cOne++) + 1;
+				else
+					output[k++] = -1 * (indexTwo.get(cTwo++)+1);
+			}
+			
+			while(cOne < indexOne.size()){				
+				output[k++] = indexOne.get(cOne++) + 1; 				
+			}
+			
+			while(cTwo < indexTwo.size()){				
+				output[k++] = -1 * (indexTwo.get(cTwo++) + 1); 				
+			}
+			
+			return output;
+	}
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
+		WordDistanceFinder finder = new WordDistanceFinder(Arrays.asList("the", "quick", "brown", "fox", "quick","the"));
+		System.out.println(finder.distance("fox","the"));
+		System.out.println(finder.distance("quick", "fox") );
+		System.out.println(finder.distance("quick", "fox") );
 	}
 
 }
