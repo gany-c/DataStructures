@@ -12,56 +12,6 @@ public class NonHeaderList implements LinkedList<ListNode>{
 	 */
 	ListNode start = null;
 	
-	
-	
-	
-	
-	public static void main(String[] args){
-		
-		NonHeaderList list = new NonHeaderList();
-		
-		list.add(22);
-		list.add(1);
-		list.add(7);
-		list.add(8);
-		
-		list.display();
-		
-		list.add(100);
-		list.add(350);
-		list.add(2);
-		
-		list.display();
-		
-		list.delete(3);
-		
-		list.display();
-		
-		list.delete(2);
-		
-		list.display();
-
-		
-	}
-
-
-
-	private void display() {
-		System.out.println("List = ");
-		
-		ListNode temp = this.start;
-		
-		while(temp!=null)
-		{
-			System.out.print(temp.getValue()+", ");
-			temp = temp.getNext();
-		}
-		
-		System.out.println();
-		
-	}
-
- 
 	/*
 	 * stack like addition
 	 * (non-Javadoc)
@@ -127,13 +77,55 @@ public class NonHeaderList implements LinkedList<ListNode>{
 	}
 
 
-
-
-
 	@Override
 	public boolean hasLoops() {
 		// TODO Needn't be done
 		return false;
 	}
+	
+	public static void main(String[] args){
+		
+		NonHeaderList list = new NonHeaderList();
+		
+		list.add(22);
+		list.add(1);
+		list.add(7);
+		list.add(8);
+		
+		list.display();
+		
+		list.add(100);
+		list.add(350);
+		list.add(2);
+		
+		list.display();
+		
+		list.delete(3);
+		
+		list.display();
+		
+		list.delete(2);
+		
+		list.display();
+
+		
+	}
+
+
+
+	private void display() {
+		System.out.println("List = ");
+		
+		ListNode temp = this.start;
+		
+		while(temp!=null)
+		{
+			System.out.print(temp.getValue()+", ");
+			temp = temp.getNext();
+		}
+		
+		System.out.println();
+		
+	}	
 	
 }	
