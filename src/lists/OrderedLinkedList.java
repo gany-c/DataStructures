@@ -6,6 +6,9 @@ public class OrderedLinkedList{
 	
 ListNode headerNode = null;
 
+/**
+ * Pretty much the same as what you have in plain linked list sort method.
+ */
 public OrderedLinkedList(){
 
 	headerNode = new ListNode();
