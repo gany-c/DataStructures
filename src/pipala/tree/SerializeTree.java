@@ -1,4 +1,4 @@
-package pipala;
+package pipala.tree;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package pipala;
+package pipala.tree;
 
 
 public class CharNode{

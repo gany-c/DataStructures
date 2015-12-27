@@ -1,4 +1,4 @@
-package pipala;
+package pipala.tree;
 
 import java.util.LinkedList;
 import java.util.List;
