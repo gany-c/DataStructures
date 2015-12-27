@@ -2,11 +2,28 @@ package lists;
 
 import base.ListNode;
 
+/** EASY
+ * 1. Have 2 header nodes entry and exit
+ * 2. exit will point to the 1st node to be removed 
+ * 2.1. which in turn will point to the next node and so on.
+ * 3. the last node will have null as next; and both entry and its ancestor will point to it.
+ * 
+ * 4. When the queue is empty, exit will point to null and entry will point to exit.
+ * 
+ * 
+ * @author gchidam
+ *
+ */
 public class LinkedQueue{
 
+//initialize two variables for entry and exit.	
 ListNode exit = null;
 ListNode enter = null;
-	
+
+/**
+ * 1. initialize the exit and entry pointers to nodes with min value
+ * 2. Get the entry node to point to exit.
+ */
 public LinkedQueue(){
 	
 	exit = new ListNode();
@@ -18,7 +35,12 @@ public LinkedQueue(){
 	
 }
 
-
+/**
+ * 1. create a new node and set the value to passed parameter.
+ * 2. get the node pointed to by enter = startData
+ * 3. Get start-data's nest and  enter's next to point to the new node.
+ * @param value
+ */
 
 private void add(int value)
 {
@@ -32,6 +54,12 @@ private void add(int value)
 	
 }
 
+/**
+ *  1. if enter's next points to exit, the queue is already empty, so return.
+ *  2. Get the node pointed to by the exit header's next = out, set exit's next to be the out node's next
+ *  3. Now, if the exit's next is pointing to null, then the queue is empty, get enter's next to point to exit.
+ * @return
+ */
 private int get()
 {
 	 if(enter.getNext()==exit)
