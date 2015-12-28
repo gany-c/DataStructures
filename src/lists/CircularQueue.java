@@ -1,5 +1,30 @@
 package lists;
 
+/**
+ * 
+ * @author gchidam
+ * 
+ * 1. There are two pointers for adding members and removing members to the queue.
+ * 1.a. They both move in the same direction.
+ * 2. The queue will always have one empty space to distinguish between emptiness and fullness
+ * EXIT POINTS - Where to delete
+ * ENTER POINTS - where to insert, they will be the same if the entire array is occupied,
+ * 
+ * 1. Need a string array and 2 counters as instance variables.
+ * 2. CONSTRUCTOR: if the size of the queue is less than 2 quit
+ * 2.a. initialize the array of the given size and initialize the counters to be 0 each.
+ * 
+ * GET: if enter == exit return, the queue is empty.
+ * 1. Else, store the value at exit = out.
+ * 2. update the value at exit to be null
+ * 3. move exit forward, but with mod function.
+ * 
+ * ADD: Enter is the place where the next element should be added.
+ * 1. Calculate next, this is the place where enter will point to after insertion.
+ * 2. Now, if next and exit are the same - don't insert, return.
+ * 3. else add the new element at enter location; update enter to next.
+ *
+ */
 public class CircularQueue{
 	
  String[] queue = null;
@@ -93,6 +118,7 @@ public static void main(String[] args)
 	
 	q.add("d");
 	q.add("e");
+	q.display();
 	q.add("f");//won't be written
 	
 	q.display();
