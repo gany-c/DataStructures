@@ -6,7 +6,15 @@ public class StackNodes{
 
 /*
 The header node with dummy data is necessary because a lack of it will require the pop method to return both the popped value
-and the updated header.
+and the updated header. * CLAP CLAP*
+
+1. In the constructor, initialize the top variable with minimum value
+2. PUSH:- While pushing, get the node Top points to and assign it as next to your new node
+2.1. get top to point to the new node
+
+3. POP - if top points to null, return null
+4. store top.next in a temp variable. get the next of Top's next = X. Get top to point to X.
+4.1. return temp.
 */
 	ListNode top = null;
 
@@ -15,7 +23,6 @@ public StackNodes()
  top = new ListNode();
  top.setValue(Integer.MIN_VALUE);
  top.setNext(null);
-
 
 }
 
