@@ -1,6 +1,16 @@
 package lists;
 
-
+/**
+ *  1. ARRAYS: Stack doesn't need to be circular, only the queue needs to be
+ *  2. There is only one counter for the top and it moves in opposite directions for adding and removing.
+ *  3. CONSTRUCTOR: initialize the array to the given size and set the pointer to -1 to indicate it is empty.
+ *  4. POP: If the counter is lesser than 0, the stack is empty - return
+ *  4.1. get the value pointed by the counter, decrement the counter and return the value.
+ *  5. PUSH: If the counter is equal or greater than the last index, there is no more space, return
+ *  5.1. Increment the counter and add the value at the counter index in the array.
+ * @author gchidam
+ *
+ */
 public class StackArray{
 	
 private String[] container = null;	
