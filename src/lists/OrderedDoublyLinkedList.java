@@ -2,6 +2,11 @@ package lists;
 
 import base.DoubleNode;
 
+/**
+ * Pretty straightforward - just like any other list
+ * @author Ramanan
+ *
+ */
 public class OrderedDoublyLinkedList{
 
 DoubleNode headerNode;

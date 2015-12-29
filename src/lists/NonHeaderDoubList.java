@@ -3,37 +3,20 @@ package lists;
 import base.DoubleNode;
 import base.ListNode;
 
+/**
+ *  1. The add method is the same as singly linked list, just add at the beginning.
+ *  2. Delete is the same as any non header list, if the PREV is null
+ *  2.a. it is the first node
+ *  2.b. then update the start pointer to the next node.
+ *  2.c. in any case just do connect the prev node to the next node.
+ * @author Ramanan
+ *
+ */
 public class NonHeaderDoubList implements LinkedList<DoubleNode> {
 	
 	DoubleNode start = null;
 	
-	public static void main(String[] args){
-		
-		NonHeaderDoubList list = new NonHeaderDoubList();
-		
-		list.add(22);
-		list.add(1);
-		list.add(7);
-		list.add(8);
-		
-		list.display();
-		
-		list.add(100);
-		list.add(350);
-		list.add(2);
-		
-		list.display();
-		
-		list.delete(3);
-		
-		list.display();
-		
-		list.delete(2);
-		
-		list.display();
 
-		
-	}	
 
 	@Override
 	public void add(int val) {
@@ -97,6 +80,34 @@ public class NonHeaderDoubList implements LinkedList<DoubleNode> {
 		System.out.println();
 		
 	}
+	
+	public static void main(String[] args){
+		
+		NonHeaderDoubList list = new NonHeaderDoubList();
+		
+		list.add(22);
+		list.add(1);
+		list.add(7);
+		list.add(8);
+		
+		list.display();
+		
+		list.add(100);
+		list.add(350);
+		list.add(2);
+		
+		list.display();
+		
+		list.delete(3);
+		
+		list.display();
+		
+		list.delete(2);
+		
+		list.display();
+
+		
+	}		
 	
 
 	@Override
