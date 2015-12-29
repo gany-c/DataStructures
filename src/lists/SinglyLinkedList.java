@@ -45,7 +45,8 @@ public class SinglyLinkedList implements LinkedList<ListNode>{
 	 * 1. Start traversal by setting a temporary variable at the head node.
 	 * 2. while the next node is not null and the next node's value is not the same as the passed value
 	 * 2.1. keep incrementing the pointer - so you stop before target or the list end.
-	 * 3. If you have stopped before the target, set the next node's next as this node's next.
+	 * 3. If you have stopped before the target, set the next node's next as this node's next. 
+	 * 3.1. If you have stopped before null, do nothing
 	 */
 	@Override
 	public void delete(int value) {
