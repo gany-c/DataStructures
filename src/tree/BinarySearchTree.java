@@ -4,7 +4,11 @@ import base.TreeNode;
 
 
 public class BinarySearchTree {
-	
+	/*
+	 * 1. create instance variables for 
+	 * header, rank, rankCrossed and target.
+	 */
+	 
 	private TreeNode header = new TreeNode();
 	
 	
@@ -12,6 +16,22 @@ public class BinarySearchTree {
 	boolean rankCrossed = false;
 	int target = 0;
 	
+	/**
+	 * RANK = (Number of elements in the tree which are smaller than the given element) 
+	 * 1. Check if the header node or its right child is null,
+	 * 1.a. then it is an empty tree, return.
+	 * 2. Initialize the values for target, rank and rankCrossed
+	 * 3. call the recursive getRank function.
+	 * 
+	 * 1. This function follows the Inorder paradigm
+	 * 2. Make a recursive call to the left child.
+	 * 3. Check if rank has been crossed; if yes, then return.
+	 * 4. Check if the parameter value is lesser than target value, 
+	 * 4.1. if yes increment the rank and make a recursive call to the right child if it is not null
+	 * 4.2. if the rank hasn't been crossed and if the current parameter value is greater or equal to target value
+	 * 4.2.1. set the rank crossed as true and return.
+	 * 
+	 */
 	public int getRank(int input){
 
 		if(this.header ==null || this.header.getRight() == null)
@@ -56,6 +76,25 @@ public class BinarySearchTree {
 	private int count = 0;
 	private int targetCount = 0;
 	private int result = Integer.MIN_VALUE;
+	
+	/**
+	 * 1. if the header is null or its right is null return 
+	 * 2. initialize the count to 1, the targetCount to the input paramter and result to min value.
+	 * 3. Call the recursive overloaded method with the header's right.
+	 * 
+	 * 1. Follow the inorder paradigm
+	 * 2.  if the left is not null, invoke the same method on the left child.
+	 * 3. if count so far, is still lesser than target
+	 * 3.1. increment the count
+	 * 3.2. if the right sub child is not null, recursively invoke it..
+	 * 4. if count has arrived at the target, 
+	 * 4.1. set the result to be the current node's value.
+	 * 4.2. increment the count -- this indicates that the target has been found to the lower nodes.
+	 * 5. Else - count has gone past -- target has been found in a lower node -- return without doing anything.
+	 * 
+	 * @param i
+	 * @return
+	 */
 	
 	public  int findIthSmallest(int i){
 		
@@ -120,12 +159,6 @@ public class BinarySearchTree {
 		}
 	 }	
 
-
-	public void insert(int value){
-		insertNode(header,value);
-		//Can start at the header because all nodes will be 
-		// greater and hence to its right
-	}
 	
 	public boolean search(int value){
 		
@@ -155,6 +188,13 @@ public class BinarySearchTree {
 		}
 	}
 
+	public void insert(int value){
+		insertNode(header,value);
+		//Can start at the header because all nodes will be 
+		// greater and hence to its right
+	}	
+	
+	
 	private void insertNode(TreeNode input,int value)
 	{
 		if(value<input.getValue())
