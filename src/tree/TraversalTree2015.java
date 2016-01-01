@@ -7,6 +7,37 @@ import base.TreeNode;
 
 public class TraversalTree2015 {
 	
+	/**
+	 * 
+	 * @param preorder
+	 * @param inorder
+	 * @return
+	 * @throws Exception
+	 * 
+	 * THIS METHOD IS ESSENTIALLY SIZE BASED
+	 *  -- CALCULATE THE NUMBER OF ELEMENTS IN THE LEFT AND RIGHT SUBTREE USING THE INORDER
+	 *  -- SPLIT, THE PREORDER BASED ON THAT.
+	 *  
+	 *  YOU HAVE TO PASS FOUR INDEXES.
+	 * 
+	 * 1. if the preorder or inorder list is null or empty or they have a size discrepancy throw an exception.
+	 * 2. Get a value to index map of the inorder positions.
+	 * 3. Invoke the construct tree function with the preorder list, inorder map, 2 starts and ends for preorder and inorder.
+	 * 
+	 * FUNCTION - constructTree
+	 * 1. create a node with value at preorder start.
+	 * 2. if preorder start < end
+	 * 2.1. get the inorder position of the preorder start i.e. root.
+	 * 2.2. subtract from the inorder start to get size ## Shouldn't you add 1 here? 
+	 * 	- No because, you don't want to include the root.
+	 * 2.3. invoke the function recursively for the left side.
+	 * 2.4. --- with preorder start +1, start + left tree size
+	 * 2.5. --- and inoder start and inorder pos +1
+	 * 3. If there are elements on the right side
+	 * invoke the constructTree function recursively.
+	 * 
+	 * 
+	 */
 	public TreeNode constructTree(int[] preorder,int[] inorder) throws Exception{
 		
 		if(preorder == null || inorder == null || preorder.length ==0 || inorder.length != preorder.length)
