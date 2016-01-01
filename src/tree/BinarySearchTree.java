@@ -159,11 +159,24 @@ public class BinarySearchTree {
 		}
 	 }	
 
-	
+	/**
+	 * 1. As usual, check the header and its right node for being null. Else call the recursive search function.
+	 * 
+	 * 1. if the input node's value and the supplied value are the same, return true.
+	 * 2. Else if the input node's value is less than parameter value
+	 * 2.1. If the right side is null then return false
+	 * 2.2. else recursively invovke the function on the right child.
+	 * 3. Else
+	 * 3.1. If the left child is null 
+	 * 3.2. return false
+	 * 3.3. recursively invoke the function on the left side.
+	 * @param value
+	 * @return
+	 */
 	public boolean search(int value){
 		
 		//can start searching from the right of the header
-		if(this.header.getRight()==null)		
+		if(this.header == null || this.header.getRight()==null)		
 			return false;
 		else
 			return search(this.header.getRight(),value);
@@ -188,6 +201,20 @@ public class BinarySearchTree {
 		}
 	}
 
+	/**
+	 * 1. Invoke the recursive insertion function with the header node - same as invoking on its right.
+	 * 
+	 * 1. if passed in value is lesser than the current node, 
+	 * 1.1. Check if the left node is null
+	 * 1.2. if yes, then create a node for the value and set left as this node
+	 * 1.3. else, make a recursive call to the left child.
+	 * 
+	 * 2. Else (Departure from not inserting duplicates as shown below)
+	 * 2.1. check if the node's right is null
+	 * 2.2. if yes, then create a node for the value and set it on the node's right.
+	 * 2.3. else make a recursive call for the node's right.
+	 * @param value
+	 */
 	public void insert(int value){
 		insertNode(header,value);
 		//Can start at the header because all nodes will be 
@@ -328,7 +355,16 @@ public class BinarySearchTree {
 	int inorderPrev = Integer.MIN_VALUE;
 	boolean orderViolated = false;
 	/**
-	 * Create the inorder traversal and check if order is violated
+	 * 1. Create the inorder traversal and check if order is violated
+	 * 2. Don't do the mistake of just checking the immediate children
+	 * 
+	 * 1. Create instance variables for Inorder ancestor and order being violated.
+	 * 2. Check if the header or its right child is null, else invoke the recursive function
+	 * 
+	 * 1. Invoke the self function on the left child if it is not null.
+	 * 2. When it returns check if the global order violation variable is set, if yes return
+	 * 2.1. Else, compare the global value with the current node value, if there is a violation return.
+	 * 2.2. Else, record the current node value as the global value and invoke on the right child of current node.
 	 * @return
 	 */
 	public boolean isValid(){
