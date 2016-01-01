@@ -5,6 +5,33 @@ import java.util.Map;
 
 import base.TreeNode;
 
+/**
+ * 
+ * @author Ramanan
+ * 
+ * 1. Given the preorder and inorder traversals of a tree, reconstruct it.
+ * 
+ * 1. Create a map of the preorder elements to their indices
+ * 2. Call the recursive  create tree function with
+ * 2.1. the newly created map
+ * 2.2. the inorder list and 0 and list length as start and end.
+ * 
+ *  createTree FUNCTION:- 
+ * 1. Within the start and end limits supplied, find the element with the lowest preorder position
+ * 1.a This is the inorder position of the element with the lowest preorder postion.
+ * 2. Create a node with the value at this position.
+ * 3. If this  inorder-position is lesser than start, recursively invoke this function for the left child node.
+ * 4. If the inorder-position is lesser than end, recursively invoke this function for the right child.
+ * 
+ * FUNCTION lowestPreOrderPos:-
+ * 
+ * 1. Create 2 variables, one for the inorder index and second for minimum preorder value.
+ * 2. Traverse the inorder list from start to end, inclusive.
+ * 2.1. Get the element and the index and get's preorder position
+ * 2.2. If the preorder index is lesser than stored one, update both the inorder and preorder min indices.
+ * 3. return the stored inorder index.
+ *
+ */
 public class TraversalTree {
 	
 	public static TreeNode createTree(int[] preorder,int[] inorder)
