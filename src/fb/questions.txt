@@ -25,7 +25,7 @@ cab-> cba
 14. http://www.geeksforgeeks.org/dynamic-programming-set-10-0-1-knapsack-problem/
 
 15. http://www.geeksforgeeks.org/backtracking-set-1-the-knights-tour-problem/
-16. http://www.geeksforgeeks.org/backtracking-set-3-n-queen-problem/
+16. http://www.geeksforgeeks.org/backtracking-set-3-n-queen-problem/ => Done - ChessBoardUtil
 17. http://www.geeksforgeeks.org/backttracking-set-5-m-coloring-problem/
 18. http://www.geeksforgeeks.org/backttracking-set-4-subset-sum/
 
