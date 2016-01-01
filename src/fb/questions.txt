@@ -11,15 +11,15 @@ cab-> cba
 
 ------------------------geeks for geeks----------------
 
-5. http://www.geeksforgeeks.org/find-k-closest-elements-given-value/
-6. http://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-2-expected-linear-time/
+5. http://www.geeksforgeeks.org/find-k-closest-elements-given-value/ => Done - ListUtil
+6. http://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-2-expected-linear-time/ => Done - Rank Util
 7. http://geeksquiz.com/given-sorted-array-number-x-find-pair-array-whose-sum-closest-x/
 
-8. http://www.geeksforgeeks.org/greedy-algorithms-set-2-kruskals-minimum-spanning-tree-mst/
+8. http://www.geeksforgeeks.org/greedy-algorithms-set-2-kruskals-minimum-spanning-tree-mst/ => Done - Kruskal
 9. http://www.geeksforgeeks.org/greedy-algorithms-set-3-huffman-coding/
-10. http://www.geeksforgeeks.org/greedy-algorithms-set-6-dijkstras-shortest-path-algorithm/
+10. http://www.geeksforgeeks.org/greedy-algorithms-set-6-dijkstras-shortest-path-algorithm/ => Done in Algos project.
 
-11. http://www.geeksforgeeks.org/anagram-substring-search-search-permutations/
+11. http://www.geeksforgeeks.org/anagram-substring-search-search-permutations/ - Check WordUtils
 12. http://www.geeksforgeeks.org/dynamic-programming-set-4-longest-common-subsequence/
 13. http://www.geeksforgeeks.org/dynamic-programming-set-8-matrix-chain-multiplication/
 14. http://www.geeksforgeeks.org/dynamic-programming-set-10-0-1-knapsack-problem/
