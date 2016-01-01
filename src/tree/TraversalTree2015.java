@@ -30,7 +30,7 @@ public class TraversalTree2015 {
 	 * 2.1. get the inorder position of the preorder start i.e. root.
 	 * 2.2. subtract from the inorder start to get size ## Shouldn't you add 1 here? 
 	 * 	- No because, you don't want to include the root.
-	 * 2.3. invoke the function recursively for the left side.
+	 * 2.3. If left side size > 0, invoke the function recursively for the left side.
 	 * 2.4. --- with preorder start +1, start + left tree size
 	 * 2.5. --- and inoder start and inorder pos +1
 	 * 3. If there are elements on the right side
@@ -60,7 +60,8 @@ public class TraversalTree2015 {
 			int inorderPos = inorderMap.get(preorder[pStart]);		
 			int leftTreeSize = inorderPos - iStart;			
 			
-			root.setLeft(constructTree(preorder,inorderMap,pStart + 1, pStart + leftTreeSize,iStart,inorderPos -1));
+			if(leftTreeSize > 0)
+				root.setLeft(constructTree(preorder,inorderMap,pStart + 1, pStart + leftTreeSize,iStart,inorderPos -1));
 			
 			if(pStart + leftTreeSize < pEnd){
 				root.setRight(constructTree(preorder,inorderMap,pStart + leftTreeSize + 1, pEnd,inorderPos +1, iEnd));
@@ -92,12 +93,54 @@ public class TraversalTree2015 {
 		{
 			TreeNode node = util.constructTree(preorderList,inorderList);
 			StaticTree tree = new StaticTree(node);
-			tree.bFS();
+			tree.printLevels();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		System.out.println("\n =====================");
+		
+	   preorderList = new int[]{1,  3, 6, 12, 13, 7, 14, 15};
+	   inorderList = new int[]{ 1, 12, 6, 13, 3, 14, 7, 15};
+	   try 
+	   {
+		TreeNode node = util.constructTree(preorderList,inorderList);
+		StaticTree tree = new StaticTree(node);
+		tree.printLevels();
+	   } catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	   }
+	   
+		
+	   System.out.println("\n =====================");
+		
+	   preorderList = new int[]{1,  3, 6, 12, 13, 7};
+	   inorderList = new int[]{ 1, 12, 6, 13, 3, 7};
+	   try 
+	   {
+		TreeNode node = util.constructTree(preorderList,inorderList);
+		StaticTree tree = new StaticTree(node);
+		tree.printLevels();
+	   } catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	   }
+	   
+	   System.out.println("\n =====================");
+		
+	   preorderList = new int[]{1, 2,3,4,5};
+	   inorderList = new int[]{ 4,3,5,2,1};
+	   try 
+	   {
+		TreeNode node = util.constructTree(preorderList,inorderList);
+		StaticTree tree = new StaticTree(node);
+		tree.printLevels();
+	   } catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	   }	   
 
 	}
 
