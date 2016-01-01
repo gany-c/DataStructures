@@ -251,6 +251,22 @@ public class BinarySearchTree {
 		return out;
 	}
 	
+	/**
+	 * 1. If the tree's header or it's right is null return.
+	 * 2. Locate the tree's parent and 
+	 * 2.1. create a variable for this node being left or right child
+	 * 2.2. create variables for the parent and target nodes.
+	 * 3. If the target node is a leaf - then set null as the parent's new descendant 
+	 * The side is based on the boolean variable 2.1.
+	 * 3.1. If the target node has both branches
+	 * 3.2. Find the left most node on the right side. -= LEFT END
+	 * 3.3. Make the left child of target, the left child of LEFT END
+	 * 3.4. Make the right child of target, the child of parent node based on the variable 2.1.
+	 * 4. If the target has just one child, left or right
+	 * 4.1. Make the child the descendant of the parent.
+	 *
+	 * @param target
+	 */
 	public  void delete(int target)
 	{
 		if(this.header.getRight() == null)
