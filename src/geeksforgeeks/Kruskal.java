@@ -16,10 +16,12 @@ import java.util.Queue;
  * Given a connected, undirected graph, a spanning tree of that graph is a subgraph that is a tree and connects all the vertices together. 
  * A single graph can have many different spanning trees. 
  * 
- * A minimum spanning tree (MST) or minimum weight spanning tree is then a spanning tree with weight less than or equal to the weight of every other spanning tree.
+ * A minimum spanning tree (MST) or minimum weight spanning tree is then a spanning tree 
+ * with weight less than or equal to the weight of every other spanning tree.
  * 
  * Kruskal will most likely start off as a set of disjoint forests, the lowest weight edges can be in all places
  * and then merges together.
+ * 
  * @author Ramanan
  *
  * 1. Take list of nodes as input, if the input list is null or empty return

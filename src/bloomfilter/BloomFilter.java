@@ -8,6 +8,16 @@ package bloomfilter;
  * in the example below an integer is stored as 3 bits in a bit array. 
  * The position of the bits is determined by the hash function
  * 
+ * HASH FUNCTION: takes 3 numbers as input
+ * 1. the number to be stored
+ * 2. a constant term
+ * 3. array size 
+ *  and returns a bit index.
+ *  
+ *  This function is called with 3 different constant terms for each number that is to be stored.
+ *  While checking, the same 3 numbers are used.
+ *
+ * 
  * the percentage of false postives can be tweaked by
  * 
  * 1. size of the bit array - just has to be large, needn't be prime

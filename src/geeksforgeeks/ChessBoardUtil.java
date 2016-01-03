@@ -6,7 +6,7 @@ package geeksforgeeks;
  * 
  * The N Queen is the problem of placing N chess queens on an N×N chessboard so that no two queens attack each other.
  * 
- * 1. Traverse the board row by row
+ * 1. Traverse the board, starting from the first row, and move to the other rows recursively
  * 2. In each row - check if a cell is a valid cell for placing the queen
  * 2.1. if not check the next cell
  * 2.2. if yes, mark it as a queen position
@@ -15,7 +15,7 @@ package geeksforgeeks;
  * 2.2.3 Else reset the position to 0
  * 
  * MISTAKES made - 
- * 1. Wrongly assumed both diagnols will be of same size and hence can be checked in one loop
+ * 1. Wrongly assumed both diagonals will be of same size and hence can be checked in one loop
  * 2. Counter  > and < typo
  * 3. Counter array.length and array.length -1 confusion.
  * 

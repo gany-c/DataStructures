@@ -3,10 +3,24 @@ package cloudera;
 /**
  * 
  * @author Ramanan
- * 
+ * -------------------
+
  * A matrix is split into islands, by a sea of zeroes :)
  * Find the island with the largest sum
  * 
+ * 1. Create a boolean matrix of same dimensions - to say which pixel is visited.
+ * -- alternative could be set it to 2.
+ * 2. Traverse the original matrix, row by row, 
+ * 2.1. if the pixel is not zero and it is not marked visited in the other matrix,
+ * 2.2. Start a recursive function, for exploring
+ * 2.2.1 it should add it's own value to the sum and recursively call all its neighboring pixels
+ * 2.2. Once the sum is returned, compare it with the maximum sum recorded.
+ * 
+ * Note:- Even though the traversal goes from top to bottom, an upwards neighbor recursion is also 
+ * necessary. Otherwise, will fail if the island is U shaped with right bar of the U shorter 
+ *  than the left bar
+ * *  
+ * -------------------------------------- 
  * A more accurate version of this code is in the comments below.
  * The recursive function i.e. getSum is wrong in that it doesn't 
  * check upwards

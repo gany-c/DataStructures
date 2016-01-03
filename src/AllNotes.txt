@@ -1,0 +1,166 @@
+ALL NOTES:-
+
+BLOOM FILTER:
+
+ * BloomFilter is a data structure for quick boolean lookups with a small chance of false positives
+ * e.g. is a username lookup at the time of registration. Some false positives are allowed.
+ * 
+ * in the example below an integer is stored as 3 bits in a bit array. 
+ * The position of the bits is determined by the hash function
+ * 
+ * HASH FUNCTION: takes 3 numbers as input
+ * 1. the number to be stored
+ * 2. a constant term
+ * 3. array size 
+ *  and returns a bit index.
+ *  
+ *  This function is called with 3 different constant terms for each number that is to be stored.
+ *  While checking, the same 3 numbers are used.
+ *
+ * 
+ * the percentage of false postives can be tweaked by
+ * 
+ * 1. size of the bit array - just has to be large, needn't be prime
+ * 2. the coefficients used in calculation of the hashes - have to be relatively large and prime
+ * 2.a. 2 digit primes work better than 4 digit non primes.
+
+
+MATRIX, ISLAND EXPLORATION:-
+
+ * A matrix is split into islands, by a sea of zeroes :)
+ * Find the island with the largest sum
+ * 
+ * 1. Create a boolean matrix of same dimensions - to say which pixel is visited.
+ * -- alternative could be set it to 2.
+ * 2. Traverse the original matrix, row by row, 
+ * 2.1. if the pixel is not zero and it is not marked visited in the other matrix,
+ * 2.2. Start a recursive function, for exploring
+ * 2.2.1 it should add it's own value to the sum and recursively call all its neighboring pixels
+ * 2.2. Once the sum is returned, compare it with the maximum sum recorded.
+ * 
+ * Note:- Even though the traversal goes from top to bottom, an upwards neighbor recursion is also 
+ * necessary. Otherwise, will fail if the island is U shaped with right bar of the U shorter 
+ *  than the left bar
+ 
+ MATRIX, N QUEENS PROBLEM, BACKTRACKING:-
+ 
+  * The N Queen is the problem of placing N chess queens on an N×N chessboard so that no two queens attack each other.
+ * 
+ * 1. Traverse the board, starting from the first row, and move to the other rows recursively
+ * 2. In each row - check if a cell is a valid cell for placing the queen
+ * 2.1. if not check the next cell
+ * 2.2. if yes, mark it as a queen position
+ * 2.2.1 Do a recursive check for the next rows from there
+ * 2.2.2 if that succeeds, return true
+ * 2.2.3 Else reset the position to 0
+ * 
+ * MISTAKES made - 
+ * 1. Wrongly assumed both diagonals will be of same size and hence can be checked in one loop
+ * 2. Counter  > and < typo
+ * 3. Counter array.length and array.length -1 confusion.
+ 
+ SEARCH, FAULTY CHECKIN FINDER:-
+ 
+ Given a boolean list of flags, representing a history of checkins, find the first faulty check in.
+ 
+ * do the  null and size check. 
+ * If the last element is true, then all is well, return -1
+ * if the first element is false then return the first index, i.e. 0
+ * Otherwise, kick in the search process.
+ 
+ * Do a binary search to find the transition
+ * 1. if you hit a false, then check if the previous element was true
+ * 2. if you hit a true, check if the succeeding element is false
+ * 3. Move the search index by treating "true" as a smaller value than "false" 
+ 
+ 
+ LIST - ARRAY, BEST DAYS TO BUY AND SELL STOCK
+ 
+ you have to find out the best days to buy and sell in retrospect, but do it linear time
+  one n^2 approach is to compare all differences
+  
+ SOLUTION:- 
+ 
+ 1. Keep track of 4 states as you traverse the list - STARTED,MIN_FOUND,MAX_FOUND,CANDIDATE_MIN_FOUND;
+ 2. create a tuple class to store the index and price
+ 
+ *  1. when you start take the first value as the minimum value.
+ *  2. if you are descending a slope that is finding values that are
+ *     lower than the minimum, keep resetting the minimum.
+ *  3. If a value greater than the minimum is found, then mark it as maximum.
+ *  4. For the remainder of the loop if, greater maxima are found, reset the maximum
+ *  5. Only other thing which needs to be marked is a lower minimum being found, 
+ *     5.1. Mark it as candidate minimum
+ *     5.2. Candidate minimum will be reset as a minimum if a maximum with greater difference can be found.
+ *     5.3. Candidate minimum will be reset if lower mimima can be found. 
+
+ 
+ LIST - ARRAY, PUSH ZEROES TO THE END
+ 
+ Given an array of integers, push the zeroes to the end..
+ 
+ SOLUTION 1:-  new and improved
+ 
+ * QUICKSORT PARTITION:- without moving the pivot.
+ * 
+ *  1. if the input is null or the list size is lesser than 2 return;
+ *  2. set up 2 counters, i at the start and j at the end.
+ *  3. While i is lesser than j, do
+ *  3.1. while i is lesser than the end and while input[i] is not 0, keep incrementing the i
+ *  3.2. i will either go out of the loop or stop at a 0
+ *  3.3. While j is greater than i and input[j] is zero, keep decrement i.e. no need to swap pre-existing zeroes at the end.
+ *  3.4. If you have stopped at a legitimate 0 - non zero combination, swap them and move the counts.
+ *  3- Again, if the counts have gone past each other, break out
+ * 
+ * 
+ * 
+ * MISTAKES MADE:- When a logic and an index bounds check are together in a check
+ * Make sure, you have the bound check in front of logical check, Otherwise the exceptions will be thrown anyway.
+ 
+ SOLUTION 2:-
+ 
+ * Given an array of integers, push the zeroes to the end
+ * 
+ * 1. if input = null or has nothing in it, return.
+ * 2. find the number of zeroes, if the aren't any return.
+ * 3. create 2 pointers - 1 at the start of the array and the second where the zeroes are supposed to start.
+ * 4. second one should be set at input.length - number of zeroes
+ * 5. In a loop
+ * 5.a. move the first pointer to the first zero
+ * 5.b. if it has crossed into the zero section, return; this can happen when the zeros are already in the end.
+ * 5.c. Move the second pointer to the first non zero location, a length check here may not be necessary because 5.b. takes care of it
+ * 5.d. Do a swap of the integers at the pointers.
+ 
+ DYNAMIC PROGRAMMING, KNAPSACK OF HIGHEST VALUE
+ 
+ Get the highest valued knap sack for a given weight. Each item has a weight and value.
+ 
+  * PRINCIPLE - Each and every item is either there in the final solution or it is not there
+ * 
+ * Item absent = Solution for remaining items , same threshold
+ * Item present = Solution for (remaining items , (threshold - weight of items )) + value of items
+ * 
+ * Choose the greater of the two.
+ * 
+ * 1. if the input sack is null or empty or if the permitted weight is less than or equal to 0
+ * 1.2. return null;
+ * 2. if the sack size is 1, return an empty sack if the item's weight is greater than the threshold
+ * 2.2. else return the input.
+ * 3. Else
+ * 3.1. Remove the first items from the sack
+ * 3.2.  if it's weight is greater than the threshold, return what is best for the rest of the sack
+ * 3.3. . Invoke the function recursively for
+				//1. This threshold and remaining items
+				//2. This threshold - weight of item, and remaining items.
+ * 3.3.1 Add the value of the item  to the second result. 
+ * 4. return the greater of the two
+ * 
+ * 
+ * MISTAKE MADE:
+ * 
+ * 1. The knapsack function is not idempotent
+ * 2. It changes the state of the input array.
+ * 3. So, don't call it multiple times expecting the same result, call it and store the results in a temporary array.
+	 
+	 
+	 
