@@ -22,7 +22,7 @@ public class Polynomial {
 	}
 	
 	private String getTermString(Integer exp, Float coeff) {
-		// TODO Auto-generated method stub
+		
 		return ""+coeff+"*x^"+exp;
 	}
 

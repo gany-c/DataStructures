@@ -19,6 +19,16 @@ public class SimpleMatrix {
 		int[][] result = sm.matrixMultiply(a, d);
 		
 		display(result);
+		
+		/**
+		 * Hi
+--------------------------
+45 
+102 
+--------------------------
+12 15 21 
+30 39 54 
+		 */
 	}
 	
 	public static void display(int[][] c){
@@ -39,6 +49,16 @@ public class SimpleMatrix {
 		
 	}
 	
+	/**
+	 * MATRIX MULTIPICATION
+	 * 
+	 * 1. INVOLVES 3 NESTED LOOPS.
+	 * 2. THE FIRST 2 LOOPS ARE FOR visiting each cell of the output matrix.
+	 * 3. THE THRID LOOP IS TO do the sum or products of input 1's row and input's column
+	 * @param in1
+	 * @param in2
+	 * @return
+	 */
 	public int[][] matrixMultiply(int[][] in1,int[][] in2){
 		
 		//check if dimensions are valid
@@ -48,10 +68,10 @@ public class SimpleMatrix {
 			int[][] output = new int[in1.length][in2[0].length];
 			
 			//for each row
-			for(int i =0; i < in1.length; i++)
+			for(int i =0; i < output.length; i++)
 			{
 				//for each column
-				for(int j=0; j < in2[0].length; j++)
+				for(int j=0; j < output[0].length; j++)
 				{
 					//initialize an element
 					output[i][j] = 0;

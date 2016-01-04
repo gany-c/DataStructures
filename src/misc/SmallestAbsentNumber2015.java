@@ -8,7 +8,7 @@ import java.util.*;
  * 
  * @author Ramanan
  * 
- * The final approach is the same as smallestAbsentNumber
+ * 
  * 
  * Given an array of size N, if the numbers are contiguous 1 to N, 
  * then the solution = N +1;

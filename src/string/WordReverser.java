@@ -2,7 +2,18 @@ package string;
 
 import java.util.Stack;
 
-
+/*
+ * 1. split the words into tokens
+ * 2. put the tokens into a stack
+ * 3. keep popping the stack and merging the tokens
+ * 
+ * 1. How to split into tokens?
+ * 1.1. Start with an empty string buffer
+ * 1.2. traverse the input string
+ * 1.3. if you encounter non blank characters append to the buffer.
+ * 1.4. else convert the buffer to string and add it to list of tokens
+ * 1.4. reinitialize the buffer.
+ */
 
 public class WordReverser{
 

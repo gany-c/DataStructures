@@ -47,12 +47,34 @@ class AnagramComparator implements Comparator<String>{
 
 public class WordUtils {
 	
+	/**
+	 * PROBLEM: - FIND THE COMPOUND WORDS
+	 * i.e. given a set of words - find words that contain other words in the list
+	 * BETTER APPROACH - 
+	 * 1. if input is null or less than 2 return null
+	 * 2. Descending Sort the words by length - Use the Compator (not comparable interface)
+	 * Collections.sort(input,new MyComparator());
+	 * 3. Create an empty HashSet of words.
+	 * 4. Create 2 nested loops
+	 * In each inner loop check if the starting word holds any of the subsequent words using indexOf
+	 * If yes, add to the hashset
+	 * 4.1 move the outer loop.
+	 * 
+	 * 
+	 * @param inputWords
+	 * @return
+	 * @throws RuntimeException
+	 */
 	public static List<String> findCompound(String[] inputWords) throws RuntimeException
 	{
+		//if the input list is null return null
 		if(inputWords==null||inputWords.length==0)
 			return null;
 		
+		// create an empty list of string 
 		List<String> output = new ArrayList<String>();
+		
+		//create and 
 		HashMap<String,Integer> countMap = new HashMap<String,Integer>();
 		
 		
@@ -95,6 +117,15 @@ public class WordUtils {
 		return output;
 	}
 	
+	/*
+	 * 1. If either string is null return false
+	 * 2. if their lengths don't match return false
+	 * 
+	 * 3. convert both strings to character arrays.
+	 * 4. sort both arrays
+	 * 5. convert them back to strrings.
+	 * 6. Check if they are eaual.
+	 */
 	public static boolean isAnagram(String s1, String s2){
 
         // Early termination check, if strings are of unequal lengths,

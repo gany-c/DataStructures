@@ -15,12 +15,15 @@ Input: K = 4, X = 35
        arr[] = {12, 16, 22, 30, 35, 39, 42, 
                45, 48, 50, 53, 55, 56}
 Output: 30 39 42 45
-Note that if the element is present in array, then it should not be in output, only the other closest elements are required.
+Note that if the element is present in array, then it should not be in output, 
+only the other closest elements are required.
  *
  * SOLUTION:-
  * 
- * 1. Do a binary search to find the indexes between which this number falls. 2 bounds are required, even if an exact match is found.
- * 2. Set these as starting pointers and copy the numbers, move the pointer depending on which pointer's number is closer to the input number.
+ * 1. Do a binary search to find the indexes between which this number falls. 
+ * 	2 bounds are required, even if an exact match is found.
+ * 2. Set these as starting pointers and copy the numbers, 
+ * 	move the pointer depending on which pointer's number is closer to the input number.
  * 3. Break when you hit k, watch out for the array ends.
  *
  */

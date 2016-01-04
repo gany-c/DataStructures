@@ -6,27 +6,41 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/* This class will be given a list of words (such as might be tokenized
+ * from a paragraph of text), and will provide a method that takes two
+ * words and returns the shortest distance (in words) between those two
+ * words in the provided text.
+ * Example:
+ *   WordDistanceFinder finder = new WordDistanceFinder(Arrays.asList("the", "quick", "brown", "fox", "quick","the"));
+ *   assert(finder.distance("fox","the") == 3);
+ *   assert(finder.distance("quick", "fox") == 1);
+ *
+ * "quick" appears twice in the input. There are two possible distance values for "quick" and "fox":
+ *     (3 - 1) = 2 and (4 - 3) = 1.
+ * Since we have to return the shortest distance between the two words we return 1.
+ 
+ the - 0
+ quick - 1,4
+ brown -2 
+ fox - 3 */
+
+/**
+ * 
+ * @author Ramanan
+ * 
+ * PROBLEM: Given a list of words whre each word could appear multiple times; 
+ * and a pair of words, find the shortest distance between them.
+ * 
+ * SOLUTION:
+ * 1. Build a map with words as keys and a list of their indexes as values.
+ * 2. These lists will be naturally sorted
+ * 3. If you are passed the same word twice for distance, return 0 or shortest gap in the list.
+ * 4. If you are passed 2 different words, present as keys, then merge the 2 lists and find the shortest gap.
+ * 4.1. You could either merge them as a tuple or you could negate the numbers of one list. and find the largest gap
+ * between a positive and negative number.
+ *
+ */
 public class WordDistanceFinder {
-	
-	/* This class will be given a list of words (such as might be tokenized
-	 * from a paragraph of text), and will provide a method that takes two
-	 * words and returns the shortest distance (in words) between those two
-	 * words in the provided text.
-	 * Example:
-	 *   WordDistanceFinder finder = new WordDistanceFinder(Arrays.asList("the", "quick", "brown", "fox", "quick","the"));
-	 *   assert(finder.distance("fox","the") == 3);
-	 *   assert(finder.distance("quick", "fox") == 1);
-	 *
-	 * "quick" appears twice in the input. There are two possible distance values for "quick" and "fox":
-	 *     (3 - 1) = 2 and (4 - 3) = 1.
-	 * Since we have to return the shortest distance between the two words we return 1.
-	 
-	 the - 0
-	 quick - 1,4
-	 brown -2 
-	 fox - 3 */
-
-
 
 	    Map<String, List<Integer>> dict = new HashMap<String, List<Integer>>(); 
 

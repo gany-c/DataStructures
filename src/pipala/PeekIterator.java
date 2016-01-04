@@ -28,7 +28,8 @@ import java.util.Set;
 	 * 2.1. update the instance value and variable using the iterator
 	 * 2.2. return the temporary variable.
 
-	NOTE: Don't use temp==null as a check in PEEK and GET. That would fail if the iterator itself contains null as one of the values.
+	NOTE: Don't use temp==null as a check in PEEK and GET. 
+	That would fail if the iterator itself contains null as one of the values.
 
  * @author gchidam
  *
