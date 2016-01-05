@@ -76,6 +76,10 @@ public class NumberUtil {
 		root2 = nu.sqrt(0.25, 0.00001);
 			
 		System.out.println("root of 0.25 = "+root2);
+		
+		root2 = nu.sqrt(0.09, 0.00001);
+		
+		System.out.println("root of 0.09 = "+root2);
 	}
 
 }

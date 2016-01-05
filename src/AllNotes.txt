@@ -444,6 +444,8 @@ only the other closest elements are required.
  
  HEAP 
  
+ A MIN HEAP CAN BE CONVERTED TO A MAX HEAP AND VICE VERSA, BY JUST MULTIPLYING THE KEYS BY 1
+ 
   * Heaps are implemented here
  * https://github.com/gany-c/Algos/blob/master/src/Assign6/MinHeap.java
  * https://github.com/gany-c/Algos/blob/master/src/Assign6/MaxHeap.java
