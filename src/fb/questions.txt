@@ -31,6 +31,24 @@ cab-> cba
 
 19. http://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
 
+--------------------Career Cup -----------------------
+http://www.careercup.com/question?id=5389627422670848 - Isomorphic strings
+
+create a map of character to separtor-index-separater
+combine the values and compre
+
+http://www.careercup.com/question?id=15489754 - binary search on a rotated sorted array
+
+3 binary searches - one to find the break point, then one for each zone.
+
+http://www.careercup.com/question?id=5685440222855168
+
+Reverse polish notation, use both stack and string traversal
+
+-- traverse the string, character by character
+-- keep pushing operands into stack, 
+if you see an operator, pop 2 operands, do the operation. Push back into the stack 
+
 
 --------------------Illumina --------------------------
 
