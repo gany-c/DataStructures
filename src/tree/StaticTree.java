@@ -502,6 +502,8 @@ public StaticTree getMirror(){
  * But simply reversing the intermediate queue at every iteration alone won't help
  * Because, the code structure still explores left child and right child. 
  * So another boolean flag is needed to push right child and then left child.
+ * 
+ * TRY THE 2 STACKS APPROACH - SEEMED GOOD ON PEN AND PAPER
  */
 public void zigZagStart(){
 

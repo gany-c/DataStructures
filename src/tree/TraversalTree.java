@@ -20,7 +20,7 @@ import base.TreeNode;
  * 1. Within the start and end limits supplied, find the element with the lowest preorder position
  * 1.a This is the inorder position of the element with the lowest preorder postion.
  * 2. Create a node with the value at this position.
- * 3. If this  inorder-position is lesser than start, recursively invoke this function for the left child node.
+ * 3. If this  inorder-position is greater than start, recursively invoke this function for the left child node.
  * 4. If the inorder-position is lesser than end, recursively invoke this function for the right child.
  * 
  * FUNCTION lowestPreOrderPos:-

@@ -379,6 +379,35 @@ only the other closest elements are required.
  1. Put the first list in a hashset and create a second empty list for the output
  2. Traverse through the second list and add every number that is present in the set into the output.
  
+ LIST - Largest Sum Contiguous Subarray
+ 
+ 1. Strip out - trailing and leading negative numbers if any
+ 2. if all are positive, then give out the sum
+ 3. if all are negative return the smallest abs number
+ 
+ 4. transform the list into Zone ojbects (start, end, sum, sign). 
+ 	The negative zones should sandwich the positive ones. put them in a stack
+ 5. Set a max zone object = null, mergeable zone objec
+ 6. while stack is not empty
+ 6.1. pop the object, {
+ 
+ 	if the object is positive 
+ 	-- if max zone is null or lesser, set this object as max zone
+ 	
+ 	if mergeable object is null
+ 	-- set this object as mergeable
+ 	
+ 	else merge into mergeable objet,
+ 	-- if the new object is bigger than max zone, set it as max zone.
+ 	
+ 	Else if the object is negative
+ 	-- if the mergeable object is not null, merge into it,
+ 	-- if the sum is negative, set the mergeable object to null.
+ 	
+ 7. Return the max zone object. 
+ 
+ . 
+ 
  GRAPHS - DJIKSTRA'S ALGORITHM
  
  	 * Djikstra: - In a weighted graph, given a source node, find the shortest path to all nodes from the source.
@@ -580,15 +609,15 @@ only the other closest elements are required.
 	 * 5.a.  if they are not the same, make 2 recursive calls, each with one end lopped off and k decremented by 1
 	 *  return true if either one of them returns true.
 	 
-STRING - SEARCH SUB STRING WITH REGULAR EXPRESSION
+STRING - SEARCH SUB STRING WITH REGULAR EXPRESSION, regexp
 
  * Check if one string contains another, * the pattern may include * and ?
  * 
- * Solution - code it without any regex first, add the ? functionality next and the * at the end.
+ * Solution - code it without any regexp first, add the ? functionality next and the * at the end.
  * 
  * FIND method:
  * 1. slide the pattern string from the postion where the 2 starts overlap to the point where the 2 ends overlap.
- * 2. Invoke the subString function at every point.
+ * 2. Invoke the subString function at every point. - Can achieve this through cross recursion, call the original
  * 
  * SUB STRING method:
  * 
@@ -986,7 +1015,7 @@ TREE - Reconstruct from Traversal
  * 1. Within the start and end limits supplied, find the element with the lowest preorder position
  * 1.a This is the inorder position of the element with the lowest preorder postion.
  * 2. Create a node with the value at this position.
- * 3. If this  inorder-position is lesser than start, recursively invoke this function for the left child node.
+ * 3. If this  inorder-position is greater than start, recursively invoke this function for the left child node.
  * 4. If the inorder-position is lesser than end, recursively invoke this function for the right child.
  * 
  * FUNCTION lowestPreOrderPos:-
@@ -1105,6 +1134,8 @@ STATIC TREE -
  * But simply reversing the intermediate queue at every iteration alone won't help
  * Because, the code structure still explores left child and right child. 
  * So another boolean flag is needed to push right child and then left child.
+ 
+  TRY THE 2 STACKS APPROACH - SEEMED GOOD ON PEN AND PAPER
  
  15. DEEP CLONE  Deep clone is also similar to pre order, 
  clone the current node, 
