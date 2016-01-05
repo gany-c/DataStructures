@@ -15,7 +15,7 @@ package heap;
  * 
  * 1. return the topmost element
  * 2. decrement the index
- * 3. take bottom-most element and put it in the bottom.
+ * 3. take bottom-most element and put it on top.
  * 4. correct the heap property downwards. - correctDown()
  * 
  * correctDown()

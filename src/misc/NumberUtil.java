@@ -28,6 +28,9 @@ public class NumberUtil {
 		//if the number is the same as 0 or 1 return the same number.
 		if(number==0 ||number ==1)
 			return number;
+		else if (number >0 && number <1){
+			return 1/(sqrt((1/number),precision));
+		}
 		else
 		{
 			//else begin a typical binary search
@@ -69,6 +72,10 @@ public class NumberUtil {
 		double root2 = nu.sqrt(2, 0.00001);
 		
 		System.out.println("root of 2 = "+root2);
+		
+		root2 = nu.sqrt(0.25, 0.00001);
+			
+		System.out.println("root of 0.25 = "+root2);
 	}
 
 }

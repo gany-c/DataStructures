@@ -8,8 +8,7 @@ public class Palindrome {
 	 * 2. strip the input of all whitespaces
 	 * 3. if what remains is of length 0 or 1, return true
 	 * 4. set up two counters, one at the starting and one at the ending.
-	 * 5. if what remains is of length 0 or 1, return true
-	 * 6. set up two counters, one at the starting and one at the ending.
+	
 	 * 7. while they don't cross paths, compare the characters at the counters and move them in opposite directions
 	 * 8. return false if the characters don't match.
 	 * @param input
@@ -58,7 +57,7 @@ public class Palindrome {
 	 *
 	 * 1. if the input string is null or less than 0 return false
 	 * 2. if the input length equals 1, return true
-	 * 3. if the input length equals true, then return true if characters are equal or if 
+	 * 3. if the input length equals two, then return true if characters are equal or if 
 	 * 		k is greater than 0, otherwise return false.
 	 * 4. Else, Check recursively
 	 * 5. Compare the first and last characters, if they are the same make a recursive call
