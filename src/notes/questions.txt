@@ -1,3 +1,17 @@
+
+- You're given a text file of white space delimited words
+- Words may be separated by one or more white spaces
+- You're asked to compute the following:
+
+- The total number of words in the file
+- The frequency of each word
+- The top-K most frequently occurring words in the file
+
+- Caveat: You may not use String.split(), Pattern, StringTokenizer, StringBuffer, StringBuilder, etc to split a line of text, i.e., parse the text on your own.
+
+CORE IS IMPLEMENTING THE TOKENIZER - USE 2 INDEXES, INSTEAD GOING ON ADDING.
+------------------------------FB 2015-------------------
+
 1. Given a revision system like git, it has a list of checkins / revisions and after some revision things went bad. You are given a function isGood(revision), you have to find out which revision was the source - Did this, was a simple binary search.
 
 2. Given a list of positive and negative integers, push all the zeros to the end - Do this in linear time, without using any additional storage - Got this, but didn't catch edge cases - end already has more that one consecutive zero, adjustment for this pushes the pointer out, and order of conditions while doing these two.
