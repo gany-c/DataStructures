@@ -576,6 +576,15 @@ only the other closest elements are required.
  * 1.4. else convert the buffer to string and add it to list of tokens
  * 1.4. reinitialize the buffer.
  
+ IF A STRING BUFFER IS NOT ALLOWED:-
+ 
+ 1. Keep 2 indices - one for word start, one for current
+ 2. Move both forward if you see whitespaces and you don't have a word starting
+ 3. move only the current index forward, if you encounter a non whitespace.
+ 4. if you encounter a whitespace and you have a word start, call substring from start to current
+ and reset the indices.
+ 
+ 
  STRING - PALINDROME
  
  * MISTAKE DONE HERE:- The apostrophe case was not handled e.g. Mom's 

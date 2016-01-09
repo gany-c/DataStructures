@@ -117,6 +117,19 @@ http://www.careercup.com/question?id=1843671
 -- Will you have a friends to friends table and invoke this as a separate ajax API?
 -- Will you have a single denormalized table? of friend ranks?
 
+---------------------- Geometry, points and XY coordinates------------------
+
+1. Given n points, find the Closest pair
+
+--- n^2 checks
+Sort by x axis and find the closest neighbor for each point
+--- reduce the number of checks by 
+1. Don't traverse beyond, the shortest distance already found for that point
+2. For a given point, while traversing along the X axis and measuring distances
+
+-- once one neighbor is found, the remaining nodes have to have lower Y separation than that neighbor.
+ 
+
 ------------------------geeks for geeks----------------
 
 5. http://www.geeksforgeeks.org/find-k-closest-elements-given-value/ => Done - ListUtil
