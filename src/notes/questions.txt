@@ -81,6 +81,14 @@ What requirements, or specifications will you reauest?
 How will you fill up this DB?
 When will you access or refresh it, if the RTs are the source of truth?
 
+2.5. Micro-Services cause a lot of chatter and network latency; why use that model? why not put everything together?
+-- If each functionality needs to be scaled independently, why not put everything together and scale up the number of nodes
+-- I guess the reason could be that the microservices could have additional clients besides IRO i.e. your aggregator.
+
+-- If there is another level of persistence at the aggregator, how will you sync it with the RTs or Micro Service DBs
+
+
+
 3. Given two sorted lists, with no internal duplicates 
 - Create their intersection and union, both should be sorted
 - If you use a TreeSet, what will be the complexity? 
@@ -89,6 +97,8 @@ When will you access or refresh it, if the RTs are the source of truth?
 - This can be done using merge sort 
 - just add a check for equality and update the intersection array, instead of the merge array
 - the merge array will form the union array.
+- If there are a million words, how will you speed up the process?
+- If you use multithreading and split the lists into zones, how will you determine where to split 
 
 4. Given the X and Y coordinates of a set of points, find the maximum number of points which can be fitted on a line
 http://www.careercup.com/question?id=1843671
@@ -116,6 +126,10 @@ http://www.careercup.com/question?id=1843671
 6. Now, what if you want to add friends, and friends rank to the screen?
 -- Will you have a friends to friends table and invoke this as a separate ajax API?
 -- Will you have a single denormalized table? of friend ranks?
+7. How will you ensure that people don't see the same games/ words again and again?
+-- Use a random number generator?
+-- If there are 50,000 words and 10,000 users at a time; How often will a user see repetitions
+
 
 ---------------------- Geometry, points and XY coordinates------------------
 
