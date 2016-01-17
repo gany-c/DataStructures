@@ -752,7 +752,8 @@ MATHEMATICS - SQUARE ROOT
 	 * 4.3. if the product equals the number, return the average.
 	 * 4.4. if you fall lesser than the number, set start to mid
 	 * 4.5. else set end to mid	 
-	 
+
+MATHEMATICS - GIVEN A CERTAIN AMOUNT AND COIN VALUES, FIND ALL COMBINATIONS	 
 MATHEMATICS - RAMANUJAN'S PARTITIONS :)
 
  * QUESTION: find all the ways in which a number can be summed, Ramanujan's partitions :)
