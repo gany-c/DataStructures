@@ -1,0 +1,10 @@
+Do these by hand for warming up
+
+1. Inorder traversal
+2. Breadth First Sort
+3. Print levels
+4. Zig zag sort.
+5. Linked list sort
+6. Tokenize without string buffer or builder.
+7. Regex search.
+8. Merge sort.
