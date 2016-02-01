@@ -1,6 +1,7 @@
 package tree;
 
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
@@ -503,9 +504,16 @@ public StaticTree getMirror(){
  * Because, the code structure still explores left child and right child. 
  * So another boolean flag is needed to push right child and then left child.
  * 
+ * This method seems to fail for the second level
+ * 
  * TRY THE 2 STACKS APPROACH - SEEMED GOOD ON PEN AND PAPER
  */
 public void zigZagStart(){
+	
+	if(this.root == null){
+		System.out.println("tree is empty");
+		return;
+	}
 
 	Queue<TreeNode> start = new LinkedList<TreeNode>();
 	start.add(root);
@@ -517,36 +525,93 @@ private static void zigZag (Queue<TreeNode> q,boolean leftFirst){
 
 	
 	Stack<TreeNode> temp = new Stack<TreeNode>();
+	//System.out.println("Fresh Stack : "+Arrays.toString(temp.toArray()));
 	
 	
 	while(!q.isEmpty())
 	{
 		TreeNode node = q.poll();
 	
-		System.out.println(node.getValue());	
+		System.out.print(node.getValue()+", ");	
 	
 		 if(node.getLeft() != null && leftFirst)
 		     temp.push(node.getLeft());
 	     
-		 if(node.getRight()!=null);
+		 if(node.getRight()!=null)
 	      temp.push(node.getRight());  
 	      
 	    if(node.getLeft() != null && !leftFirst)
 	     temp.push(node.getLeft());   
 	    
-	    
+	   
 	
 	}
+	
+	 System.out.println();
+	// System.out.println("Stack created so far: "+Arrays.toString(temp.toArray()));
 	
 	if(!temp.isEmpty())
 	{
 		Queue<TreeNode> nextQueue = new LinkedList<TreeNode>();
 		 
-		while(!temp.isEmpty()){
+		while(!temp.empty()){
 			nextQueue.add(temp.pop());
 		}
 
-		zigZag(nextQueue,!leftFirst);
+		if(!nextQueue.isEmpty()){
+			//System.out.println("Going to invoke on Queue: "+Arrays.toString(nextQueue.toArray()));
+			zigZag(nextQueue,!leftFirst);
+		}
+			
+	}
+}
+
+/**
+ *  Using 1 stack will make it DFS or depth first search
+ *  2 stacks will make it zig zag traversal
+ */
+
+public void zigZag(){
+	if(this.root == null)
+		return ;
+	else
+		zigZag(this.root);
+}
+
+private void zigZag(TreeNode n){
+	
+	if (n==null)
+		return;
+	
+	Stack<TreeNode> curr = new Stack<TreeNode>();
+	curr.push(n);
+	
+	Stack<TreeNode> next = new Stack<TreeNode>();
+	
+	boolean leftNodeFirst = true;
+	
+	while(!curr.isEmpty()){
+		
+		TreeNode sn = curr.pop();
+		System.out.print(sn.getValue()+" ");
+		
+		
+		if(sn.getLeft()!=null && leftNodeFirst)
+			next.push(sn.getLeft());
+		
+		if(sn.getRight()!=null )
+			next.push(sn.getRight());
+
+		if(sn.getLeft()!=null && !leftNodeFirst)
+			next.push(sn.getLeft());
+		
+		if(curr.isEmpty()){
+			System.out.println();
+			curr = next;
+			next = new Stack<TreeNode>();
+			leftNodeFirst =!leftNodeFirst;
+		}
+		
 	}
 }
 
@@ -637,10 +702,19 @@ public static void main(String[] args){
 	System.out.println(tree2.inorderSuccessor(14));	
 	
 	StaticTree tree3 = tree2.getMirror();
-	System.out.println("\n BFS of new tree  ----------");
-	tree3.bFS();
-	System.out.println("\n BFS of old tree  ----------");
-	tree2.bFS();
+	System.out.println("\n BFS of mirrored tree  ----------");
+	tree3.printLevels();
+	System.out.println("\n BFS of original tree  ----------");
+	tree2.printLevels();
+	
+	System.out.println("\n Zig zag traversal old   ----------");
+	tree2.zigZagStart();
+	System.out.println("\n End: Zig zag traversal old   ----------");
+	
+	System.out.println("\n Zig zag traversal 2 stacks   ----------");
+	tree2.zigZag();
+	System.out.println("\n End: Zig zag traversal 2 stacks   ----------");
+	
 	System.out.println("\n height of tree ----------");
 	System.out.println(tree2.maxHeight());
 	System.out.println("\n printing tree by levels ----------");
