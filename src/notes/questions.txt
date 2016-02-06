@@ -1,3 +1,10 @@
+---------------------Settu Kadai :P :) ----------------------------------
+1. Find a the existence of a string in a matrix of characters
+2. given 2 lists of tuples/periods sorted by their starting date,
+merge them together such that the overlapping ranges are sorted. - Easy
+3. Design an auctions website; what are the java objects?
+
+--------------------------------------------------------------------------
 MATHEMATICS - GIVEN A CERTAIN AMOUNT AND COIN VALUES, FIND ALL COMBINATIONS	 
 MATHEMATICS - RAMANUJAN'S PARTITIONS :)
 
