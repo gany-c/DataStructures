@@ -197,6 +197,9 @@ LIST - Shortest distance in a dictionary
  
  SINGLY LINKED LIST, DOUBLY LINKED LIST, WITH AND WITHOUT HEADER, - LOOK AT THE CODE.
  
+ -- find the middle element.
+ -- check for cycles
+ 
  LIST - ARRAY, BEST DAYS TO BUY AND SELL STOCK
  
  you have to find out the best days to buy and sell in retrospect, but do it linear time

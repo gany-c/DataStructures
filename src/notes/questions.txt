@@ -1,6 +1,11 @@
 MATHEMATICS - GIVEN A CERTAIN AMOUNT AND COIN VALUES, FIND ALL COMBINATIONS	 
 MATHEMATICS - RAMANUJAN'S PARTITIONS :)
 
+-------------------- LINKED LIST---------------
+
+ -- find the middle element.
+ -- check for cycles
+
 -------------------- RIVER SEA 2015---------------
 - You're given a text file of white space delimited words
 - Words may be separated by one or more white spaces
