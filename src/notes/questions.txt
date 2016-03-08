@@ -1,3 +1,7 @@
+-------------------- Apple Mar 7 2016---------------
+
+In Cassandra, How would you model the backend of Top Viewed items application
+--------------------------------------------------------
 MATHEMATICS - GIVEN A CERTAIN AMOUNT AND COIN VALUES, FIND ALL COMBINATIONS	 
 MATHEMATICS - RAMANUJAN'S PARTITIONS :)
 
