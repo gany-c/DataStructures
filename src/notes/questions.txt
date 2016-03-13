@@ -9,6 +9,15 @@ MATHEMATICS - RAMANUJAN'S PARTITIONS :)
 
  -- find the middle element.
  -- check for cycles
+ 
+ 3. INSERT INTO A ORDERED LINKED LIST WHERE THERE IS NO HEADER NODE, BUT A HEADER POINTER IS AVAILABLE
+ 
+ --- First check if the header pointer is null or if the node to which it points to is strictly greater than the input
+ ---- If so, insert right there i.e. set header as the input's next and make the header pointer point to input.
+ 
+ --- if not, set a pointer called curr, it starts at the node pointed to by head
+ ---- Keep moving forward, until the node pointed by curr is null or is strictly greater
+ ---- insert the new node, between curr and its next.
 
 -------------------- RIVER SEA 2015---------------
 - You're given a text file of white space delimited words
