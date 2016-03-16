@@ -1,3 +1,38 @@
+-------------------- Apple Mar 15 2016---------------
+
+1. Given a blocking write method, how will you implement a non blocking wrapper
+1.1. Instead of returning the future, you can return a UUID and store the future in an internal map.
+1.2. other methods to be written are getStatus,abandon write.
+
+2. Design the analytics pipeline for an extremely popular mobile gaming system.
+2.1. Will you use Cassandra or Hive? why?
+2.2. In the cassandra primary key, 
+what are the pros and cons of putting a field as part of a composite partition key or making it a clustering key?
+2.2.3 What are the advantages or disadvantages of having 1 row per partition.
+2.4. In Cassandra, 
+--Primary key determines the node on which the data is placed, i.e PK is hashed to token ranges
+--Clustering key determines the record placement within the partition.
+--The partitions within a node? Are they sorted in some order? or can they found just by the hash of the partition key?
+2.3. When you have a service which  is both a client and server,
+Is there any advantage of being non-blocking in the outgoing requests when, you are blocking w.r.t to inbound?
+-- I said the thread pools can be used better, i.e. more threads will be freed
+--- and now to think, if the incoming is non blocking, why does it matter to the client what server does?
+--- Think through this in terms of Question 1
+4. How do semaphores work?
+5.Lambda, streams and filtering:-
+--Given a Map of Strings as keys and Sets as values
+-- How will you use Streams and Lambdas to get a map of String Keys and integer counts of set size
+-- Which method will you invoke on the stream? (not filter)
+
+-- N way merge sort was asked twice.
+-- In general, Apple emphasizes more on Java than algorithms
+
+6. Some crazy combinatronics problem
+--- 3 numbers should sum up to 1.
+--- their values should be between 0 and 1
+--- they should be multiples of an input step size
+--- Find all such combinations
+
 -------------------- Apple Mar 7 2016---------------
 
 In Cassandra, How would you model the schema/backend of a Top Viewed items application
@@ -19,7 +54,8 @@ MATHEMATICS - RAMANUJAN'S PARTITIONS :)
  ---- Keep moving forward, until the node pointed by curr is null or is strictly greater
  ---- insert the new node, between curr and its next.
 
--------------------- RIVER SEA 2015---------------
+-------------------- RIVER SEA 2016---------------
+
 - You're given a text file of white space delimited words
 - Words may be separated by one or more white spaces
 - You're asked to compute the following:
@@ -31,18 +67,65 @@ MATHEMATICS - RAMANUJAN'S PARTITIONS :)
 - Caveat: You may not use String.split(), Pattern, StringTokenizer, StringBuffer, StringBuilder, etc to split a line of text, i.e., parse the text on your own.
 
 CORE IS IMPLEMENTING THE TOKENIZER - USE 2 INDEXES, INSTEAD GOING ON ADDING.
-------------------------------FB 2015-------------------
 
-1. Given a revision system like git, it has a list of checkins / revisions and after some revision things went bad. You are given a function isGood(revision), you have to find out which revision was the source - Did this, was a simple binary search.
 
-2. Given a list of positive and negative integers, push all the zeros to the end - Do this in linear time, without using any additional storage - Got this, but didn't catch edge cases - end already has more that one consecutive zero, adjustment for this pushes the pointer out, and order of conditions while doing these two.
+------------------------- linkedin 2016 -----------------------
 
-3. I'm given  the prices of a stock for 1 year for each day. Find the best pair of days to buy and sell  - do this in Linear time : totally screwed this up, still don't know the answer.
+1. How will you sell Linkedin's premium membership on Walmart? 
+What would be the interfaces? 
+What requirements, or specifications will you reauest?
 
-4. next ...find all permutations of a string ...for e.g. abc has 6 per which aew
-abc -> acb 
-bac-> bca
-cab-> cba
+2. Why not have a persistent layer at IRO itself? 
+How will you fill up this DB?
+When will you access or refresh it, if the RTs are the source of truth?
+
+2.5. Micro-Services cause a lot of chatter and network latency; why use that model? why not put everything together?
+-- If each functionality needs to be scaled independently, why not put everything together and scale up the number of nodes
+-- I guess the reason could be that the microservices could have additional clients besides IRO i.e. your aggregator.
+
+-- If there is another level of persistence at the aggregator, how will you sync it with the RTs or Micro Service DBs
+
+
+3. Given two sorted lists, with no internal duplicates 
+- Create their intersection and union, both should be sorted
+- If you use a TreeSet, what will be the complexity? 
+- What is a TreeSet's retrieval complexity, 
+- What is a TreeSet's inner structure.
+- This can be done using merge sort 
+- just add a check for equality and update the intersection array, instead of the merge array
+- the merge array will form the union array.
+- If there are a million words, how will you speed up the process?
+- If you use multithreading and split the lists into zones, how will you determine where to split 
+
+4. Given the X and Y coordinates of a set of points, find the maximum number of points which can be fitted on a line
+http://www.careercup.com/question?id=1843671
+
+- This can be done in n^2 complexity.
+- Solve the problem for each point taking that point as a "must pass" for the line
+--- Maintain a map of slope - count of points, return the max from the map
+- Get the max of the results from above.
+
+5. Incrementally design a game system
+
+1. Simple Hangman game for 1000 users; no persistence
+-- put the session in HttpSession
+2. What if you want to see your cummulative score
+-- persistence layer, score table
+3.  What if you want to see top ranked players in another page
+-- Kafka not needed here for offline rank calculation
+-- A simple api on the score table, with order by
+4.  How would you calculate the user's rank?
+-- it will not be in the top 100 or so - calculating rank will be expensive
+-- how do you approximate the rank? correlate rank and score and periodically correct the rank?
+5. Now, what if you have to load balance this system?
+-- Will you create a new table for rank apart from score and constantly update this?
+-- What will be the model of the table in nosql
+6. Now, what if you want to add friends, and friends rank to the screen?
+-- Will you have a friends to friends table and invoke this as a separate ajax API?
+-- Will you have a single denormalized table? of friend ranks?
+7. How will you ensure that people don't see the same games/ words again and again?
+-- Use a random number generator?
+-- If there are 50,000 words and 10,000 users at a time; How often will a user see repetitions
 
 ------------------------Apple Oct 2015----------------------------------------------
 
@@ -92,64 +175,20 @@ but don't use temp==null as a check. That would fail if the iterator itself cont
 
 7. How do you sort numbers across rings? How do you agree on the token ranges? You can use sampling 
 
-------------------------- linkedin 2016 -----------------------
+------------------------------FB 2015-------------------
 
-1. How will you sell Linkedin's premium membership on Walmart? 
-What would be the interfaces? 
-What requirements, or specifications will you reauest?
+1. Given a revision system like git, it has a list of checkins / revisions and after some revision things went bad. You are given a function isGood(revision), you have to find out which revision was the source - Did this, was a simple binary search.
 
-2. Why not have a persistent layer at IRO itself? 
-How will you fill up this DB?
-When will you access or refresh it, if the RTs are the source of truth?
+2. Given a list of positive and negative integers, push all the zeros to the end - Do this in linear time, without using any additional storage - Got this, but didn't catch edge cases - end already has more that one consecutive zero, adjustment for this pushes the pointer out, and order of conditions while doing these two.
 
-2.5. Micro-Services cause a lot of chatter and network latency; why use that model? why not put everything together?
--- If each functionality needs to be scaled independently, why not put everything together and scale up the number of nodes
--- I guess the reason could be that the microservices could have additional clients besides IRO i.e. your aggregator.
+3. I'm given  the prices of a stock for 1 year for each day. Find the best pair of days to buy and sell  - do this in Linear time : totally screwed this up, still don't know the answer.
 
--- If there is another level of persistence at the aggregator, how will you sync it with the RTs or Micro Service DBs
+4. next ...find all permutations of a string ...for e.g. abc has 6 per which aew
+abc -> acb 
+bac-> bca
+cab-> cba
 
 
-
-3. Given two sorted lists, with no internal duplicates 
-- Create their intersection and union, both should be sorted
-- If you use a TreeSet, what will be the complexity? 
-- What is a TreeSet's retrieval complexity, 
-- What is a TreeSet's inner structure.
-- This can be done using merge sort 
-- just add a check for equality and update the intersection array, instead of the merge array
-- the merge array will form the union array.
-- If there are a million words, how will you speed up the process?
-- If you use multithreading and split the lists into zones, how will you determine where to split 
-
-4. Given the X and Y coordinates of a set of points, find the maximum number of points which can be fitted on a line
-http://www.careercup.com/question?id=1843671
-
-- This can be done in n^2 complexity.
-- Solve the problem for each point taking that point as a "must pass" for the line
---- Maintain a map of slope - count of points, return the max from the map
-- Get the max of the results from above.
-
-5. Incrementally design a game system
-
-1. Simple Hangman game for 1000 users; no persistence
--- put the session in HttpSession
-2. What if you want to see your cummulative score
--- persistence layer, score table
-3.  What if you want to see top ranked players in another page
--- Kafka not needed here for offline rank calculation
--- A simple api on the score table, with order by
-4.  How would you calculate the user's rank?
--- it will not be in the top 100 or so - calculating rank will be expensive
--- how do you approximate the rank? correlate rank and score and periodically correct the rank?
-5. Now, what if you have to load balance this system?
--- Will you create a new table for rank apart from score and constantly update this?
--- What will be the model of the table in nosql
-6. Now, what if you want to add friends, and friends rank to the screen?
--- Will you have a friends to friends table and invoke this as a separate ajax API?
--- Will you have a single denormalized table? of friend ranks?
-7. How will you ensure that people don't see the same games/ words again and again?
--- Use a random number generator?
--- If there are 50,000 words and 10,000 users at a time; How often will a user see repetitions
 
 
 ---------------------- Geometry, points and XY coordinates------------------
