@@ -1,3 +1,4 @@
+
 -------------------- Apple Mar 15 2016---------------
 
 1. Given a blocking write method, how will you implement a non blocking wrapper
@@ -36,7 +37,15 @@ Is there any advantage of being non-blocking in the outgoing requests when, you 
 -------------------- Apple Mar 7 2016---------------
 
 In Cassandra, How would you model the schema/backend of a Top Viewed items application
---------------------------------------------------------
+
+---------------------Settu Kadai :P :) ----------------------------------
+1. Find a the existence of a string in a matrix of characters
+2. given 2 lists of tuples/periods sorted by their starting date,
+merge them together such that the overlapping ranges are sorted. - Easy
+3. Design an auctions website; what are the java objects?
+
+--------------------------------------------------------------------------
+
 MATHEMATICS - GIVEN A CERTAIN AMOUNT AND COIN VALUES, FIND ALL COMBINATIONS	 
 MATHEMATICS - RAMANUJAN'S PARTITIONS :)
 

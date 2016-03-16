@@ -1160,6 +1160,12 @@ STATIC TREE -
  * So another boolean flag is needed to push right child and then left child.
  
   TRY THE 2 STACKS APPROACH - SEEMED GOOD ON PEN AND PAPER
+  
+  * The 2 stacks approach works perfectly fine.
+  * Using a single stack to traverse a tree results in DFS
+  * 2 stacks can be used get the zig zag sort going.
+  * The nodes of a single level are in one stack, the children go into the next one.
+  * The same boolean flag for toggle the left-first vs right-first exploration is used as above.
  
  15. DEEP CLONE  Deep clone is also similar to pre order, 
  clone the current node, 
