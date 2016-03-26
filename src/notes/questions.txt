@@ -1,4 +1,9 @@
 
+1. Find the majority element in an array i.e. at least n+1/2 times it should appear
+2. find the number of ways in which n elements can be arranged in a BST.
+3. Given 2 sorted arrays, find the median number of the combined, - merge without copy
+
+
 -------------------- Apple Mar 15 2016---------------
 
 1. Given a blocking write method, how will you implement a non blocking wrapper
@@ -14,6 +19,7 @@ what are the pros and cons of putting a field as part of a composite partition k
 --Primary key determines the node on which the data is placed, i.e PK is hashed to token ranges
 --Clustering key determines the record placement within the partition.
 --The partitions within a node? Are they sorted in some order? or can they found just by the hash of the partition key?
+http://www.datastax.com/dev/blog/basic-rules-of-cassandra-data-modeling
 2.3. When you have a service which  is both a client and server,
 Is there any advantage of being non-blocking in the outgoing requests when, you are blocking w.r.t to inbound?
 -- I said the thread pools can be used better, i.e. more threads will be freed
