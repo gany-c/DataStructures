@@ -1,3 +1,36 @@
+------------------- Fitbit April 2016-----------
+
+1. SAME AS APPLE:-
+ Given a certain number of nodes connected by a linear bus, such that each node has a node on left and right; 
+Implement a method that counts/prints the total number of nodes in the system. methods given are 
+
+boolean isLeftMost(); 
+boolean isRightMost(); 
+sendLeft(someMessage); 
+sendRight(someMessage);
+to be implemented, 
+main()/ Constructor, 
+receiveLeft(Message m), 
+receiveRight(Message m)
+
+-- If you have state inside the class, how will you deal with both messages arriving at the node at the same time?
+-- How will you deal with a one node topology?
+-- Java: Can constructors invoke instance methods or static methods only?
+-- Can instance variables be assigned the results of instance methods directly in the declaration?
+-- What happens when a class is instantiated?
+
+2. Merge 2 sorted arrays? What happens when one array is longer?
+-- the index and the array length, < vs <=
+
+3. A binary tree - can have COMMON-VALUE-SUBTREES or CST, 
+-- Each leaf is a CST
+-- 3
+  / \
+  3  3
+  The above is a CST. there are 3 CSTs in that tree
+ -- Write a function to count the number of CSTs in a tree. 
+
+---------------------Kuppusami-----------------
 
 1. Find the majority element in an array i.e. at least n+1/2 times it should appear
 2. find the number of ways in which n elements can be arranged in a BST.

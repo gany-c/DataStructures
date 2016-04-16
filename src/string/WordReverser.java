@@ -1,5 +1,7 @@
 package string;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 /*
@@ -52,6 +54,51 @@ private static Stack<String> getTokens(String input)
    } 
    return output;
  }
+}
+
+private static List<String> tokenize(String input){
+	
+	if(input== null || input.trim().length()==0){
+		return null;
+	}
+	
+	List<String> output = new ArrayList<String>();
+	
+	boolean startFound=false;
+	int i=0,stringStart =0;
+	
+	
+	for(;i<input.length();){
+		
+		if(input.charAt(i)==' '){
+			
+			if(!startFound){
+				stringStart++;
+				i++;
+			}
+			else{
+				output.add(input.substring(stringStart,i));
+				i++;
+				stringStart = i;
+				startFound = false;
+			}
+		} else{
+			
+			if(!startFound){
+				startFound = true;
+				i++;
+			}
+			else{
+				i++;
+			}				
+		}		
+	}
+	
+	if(startFound){
+		output.add(input.substring(stringStart,i));
+	}
+	
+	return output;
 }
 
 
