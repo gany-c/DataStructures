@@ -22,6 +22,26 @@ import java.util.PriorityQueue;
 
 - Caveat: You may not use String.split(), Pattern, StringTokenizer, StringBuffer, StringBuilder, etc to split a line of text, i.e., parse the text on your own.
 
+Solution:-
+
+1. Reading from file
+--- Can use latest 7 and 8 apis
+--- Use try-with-resources
+---Can use lambdas for further processing
+2. Tokenizing
+-- If String builder and buffer are not acceptabl
+-- then 2 counters can be used, for the starting and ending of the token
+-- You can check if the word is a separator
+-- Make sure you handle the end of the line.
+3. Word count
+--- Simply add it to a map of word to counts
+--- return the size of the map
+4. Top K
+--- At the end, loop through the contents of the map
+--- create tuples for each key value and add it to a priority queue
+--- If the priority queue exceeds K in size, remove from the front.
+--- at the end you'll have the top K items but in reverse order
+
 
 */
 
@@ -157,7 +177,7 @@ public class Amazon {
 		try {
 			amazon.printWordFrequencyTopK("/Users/Ramanan/Documents/workspace-sts-3.3.0.RELEASE/DataStructures/src/string/LoremIpsum.txt", 10);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
