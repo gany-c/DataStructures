@@ -68,7 +68,7 @@ private static List<String> tokenize(String input){
 	int i=0,stringStart =0;
 	
 	
-	for(;i<input.length();){
+	while(i<input.length()){
 		
 		if(input.charAt(i)==' '){
 			
@@ -132,7 +132,26 @@ public static String reverseWords(String input)
 
 }
 
-public static void main(String[] args){
+private static void testTokenize(){
+	String sentence = "The quick brown fox jumped over the lazy dog";
+	System.out.println(tokenize(sentence));
+	
+	System.out.println(tokenize("Defibrilator"));
+	
+	System.out.println(tokenize("Pounce Menacing"));
+	
+	System.out.println(tokenize("Long          Pause"));
+	
+	System.out.println(tokenize(null));
+	
+	System.out.println(tokenize("       Long     Pause       "));
+	
+	System.out.println(tokenize(""));
+	
+	System.out.println(tokenize("a bc"));
+}
+
+private static void testReverseWords(){
 	
 	String sentence = "The quick brown fox jumped over the lazy dog";
 	System.out.println(reverseWords(sentence));
@@ -142,6 +161,15 @@ public static void main(String[] args){
 	System.out.println(reverseWords("Pounce Menacing"));
 	
 	System.out.println(reverseWords("Long          Pause"));
+	
+
+}
+
+public static void main(String[] args){
+	
+//testReverseWords();
+
+testTokenize();
 	
 }
 
