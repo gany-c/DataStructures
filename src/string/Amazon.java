@@ -1,8 +1,16 @@
 package string;
 
-public class Amazon {
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.PriorityQueue;
 
-}
 /**
 - You're given a text file of white space delimited words
 - Words may be separated by one or more white spaces
@@ -15,83 +23,144 @@ public class Amazon {
 - Caveat: You may not use String.split(), Pattern, StringTokenizer, StringBuffer, StringBuilder, etc to split a line of text, i.e., parse the text on your own.
 
 
-/**
-1. I have method to read the file and create a string variable
-2. Read each line, use the String.charAt() == ' ' split the word,
-
-2.1 if you encounter a whitespace
-2.1.1 if you have a temporary variable of some length - break the word, reset the temporary variable
-2.1.2 if your temporary variable is of 0 length, ignore the whitespace
-
-
-class ReadOutput {
-    
-    int numberOfWords = 0;
-    java.util.Map<String, Integer> frequency;
-    List<String> topK;
-    }
-    
-    class WordFrequency implements Comparable<WordFrequency>{
-        
-    }    
-    
-    public ReadOutput processFile(String fileName, int k){
-        
-        if(k <= 0)
-              throw new Exception("Invalid argument for K");
-        
-       if(fileName == null || fileName.length() == 0)
-           throw new Exception("Invalid file name");
-           
-        Queue topK = new PriorityQueue<>(K) //size   
-           
-       Iterator<String> lines= getLines(fileName);
-       
-       Map frequencyMap = new HashMap<String,Integer>();
-       
-       while(lines.hasNext()){
-           
-           String line  = line.next();
-           List<String> words =  line.getTokens();
-       
-           for(String word:words){
-               
-               if(frequencyMap.get(word == null)
-                   frequencyMap.put(word, 1);
-                else
-                    frequencyMap.put(word, frequencyMap.get(word)++);   
-           }    // for loop                     
-       } // while loop
-       
-       int totalWordCount == 0;
-       for(Value<String, Integer> value: frequencyMap.valueSet()){
-           
-           totalWordCount = totalWordCount + value.getValue();
-           
-           WordFrequency wf= getWordFrequency(value);
-           
-           if(wf.compareTo(topK.peek())
-           {
-               topK.add(wf);
-               topK.poll();
-            }   
-   
-       }    
-       
-       ReadOutput output = getOutput(totalWordCount, frequencyMap, topK);
-  }
-  
-  private ReadOutput getOutPut(int totalWordCount, .....){
-  
-  }
-  private Iterator<String> getLines(String fileName){
-      
-     
-
-
-BufferedReader reader = new BufferedReader(new StringReader(<string>));
-String line = reader.readLine();
-  
-      
-   }   
 */
+
+public class Amazon {
+	
+	public void printWordFrequencyTopK(String fileName, int k) throws Exception{
+		
+		if(fileName==null||fileName.trim().isEmpty()||k <=0)
+			throw new Exception("Invalid input");
+		
+		List<String> sentences = getSentences(fileName);
+		Map<String,Integer> wordCountMap = new HashMap<>();
+		
+		
+		for(String sentence:sentences){
+			
+			List<String> words = tokenize(sentence);
+			
+			for(String word: words){
+				
+				if(wordCountMap.containsKey(word))
+					wordCountMap.put(word, wordCountMap.get(word)+1);
+				else
+					wordCountMap.put(word, 1);
+				
+			}
+		}
+		
+		System.out.println("Number of words = "+wordCountMap.size());
+		
+		printTopK(wordCountMap,k);
+	}
+
+	private void printTopK(Map<String, Integer> wordCountMap, int k) {
+		
+		class Tuple implements Comparable<Tuple>{
+			String word;
+			int count;
+
+			@Override
+			public int compareTo(Tuple o) {
+				if(o==null)
+					return 1;
+				else 
+					return (this.count - o.count);
+				
+			}
+
+			public Tuple(String word, int count) {
+				super();
+				this.word = word;
+				this.count = count;
+			}
+
+			@Override
+			public String toString() {
+				return "Tuple [word=" + word + ", count=" + count + "]";
+			}
+									
+		}
+		
+		PriorityQueue<Tuple> q  = new PriorityQueue<>();
+		
+		for(Entry<String, Integer> entry:wordCountMap.entrySet()){
+			q.add(new Tuple(entry.getKey(),entry.getValue()));
+			
+			if(q.size() > k)
+				q.poll();
+		}
+		
+		System.out.println("Printing Top K values:");
+		while(!q.isEmpty())
+			System.out.println(q.poll()+", ");
+		
+		
+	}
+
+	private List<String> tokenize(String input) {
+		
+		if(input== null || input.trim().length()==0){
+			return null;
+		}
+		
+		List<String> output = new ArrayList<String>();
+		
+		boolean startFound=false;
+		int i=0,stringStart =0;
+		
+		
+		while(i<input.length()){
+			
+			if(input.charAt(i)==' '){
+				
+				if(!startFound){
+					stringStart++;
+					i++;
+				}
+				else{
+					output.add(input.substring(stringStart,i).toLowerCase());
+					i++;
+					stringStart = i;
+					startFound = false;
+				}
+			} else{
+				
+				if(!startFound){
+					startFound = true;
+					i++;
+				}
+				else{
+					i++;
+				}				
+			}		
+		}
+		
+		if(startFound){
+			output.add(input.substring(stringStart,i).toLowerCase());
+		}
+		
+		return output;
+	}
+
+	private List<String> getSentences(String fileName) throws IOException {
+
+		List<String> output = Files.readAllLines(Paths.get(fileName), Charset.forName("US-ASCII"));
+		return output;
+		
+	}
+	
+	public static void main(String[] args){
+		
+		Amazon amazon = new Amazon();
+		try {
+			amazon.printWordFrequencyTopK("/Users/Ramanan/Documents/workspace-sts-3.3.0.RELEASE/DataStructures/src/string/LoremIpsum.txt", 10);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
+
