@@ -23,6 +23,22 @@ BLOOM FILTER:
  * 1. size of the bit array - just has to be large, needn't be prime
  * 2. the coefficients used in calculation of the hashes - have to be relatively large and prime
  * 2.a. 2 digit primes work better than 4 digit non primes.
+ 
+GEOMETRY - FIND THE MAXIMUM NUMBER OF COLLINEAR POINTS
+
+	 * 1. Find the maximum number of collinear points for each point in the list
+	 * 2. return the maximum
+	 * 
+	 * 1.findMaxNumForPoint: Given one target point and the rest, 
+	 * 1.1 --- Calculate the slope of the target with every other point
+	 * 1.2. --- store the result in a slope to count map
+	 * 2. Return the max count slope plus 1; (first slope, encompasses 2 points)
+	 * 
+	 * 1. getSlope
+	 * 1.1. Check for division by 0
+	 * 1.2. In Java, there is something called negative 0.0
+	 * 1.3. In general geometry, slope can be negative; 
+	 * but the slope between 2 points will remain the same regardless of which point is used first
 
 MATRIX, NUMBER OF DISTINCT PATHS TO ORIGIN:
 

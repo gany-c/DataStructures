@@ -149,6 +149,8 @@ private static void testTokenize(){
 	System.out.println(tokenize(""));
 	
 	System.out.println(tokenize("a bc"));
+	
+	System.out.println(tokenize("a"));
 }
 
 private static void testReverseWords(){
