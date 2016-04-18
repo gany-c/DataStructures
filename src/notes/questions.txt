@@ -114,7 +114,7 @@ MATHEMATICS - RAMANUJAN'S PARTITIONS :)
 
 - Caveat: You may not use String.split(), Pattern, StringTokenizer, StringBuffer, StringBuilder, etc to split a line of text, i.e., parse the text on your own.
 
-CORE IS IMPLEMENTING THE TOKENIZER - USE 2 INDEXES, INSTEAD GOING ON ADDING.
+CORE IS IMPLEMENTING THE TOKENIZER - USE 2 INDEXES, INSTEAD OF GOING ON ADDING TO A TEMP TOKEN.
 
 
 ------------------------- linkedin 2016 -----------------------
@@ -174,6 +174,21 @@ http://www.careercup.com/question?id=1843671
 7. How will you ensure that people don't see the same games/ words again and again?
 -- Use a random number generator?
 -- If there are 50,000 words and 10,000 users at a time; How often will a user see repetitions
+
+Solution
+
+-- Constraint = Joins not allowed, secondary indexes aren't allowed
+-- advantage = Create as many tables as you want.
+
+-- Top scorer and Rank table
+--- Create 2 tables - <Player(pk), Score> and <Score, Player> (combined pk)
+--- Whenever a player gets a new score, update in the first table
+---- take the old score and player id combo and update the new table.
+---- Top scorers = get 100 records from the result set in the second table
+---- Rank of a player = in the second table, select count(*) from "second-table" where score > my-score
+---- Friends and friends rank - Keep a <Player,player> mapping table with player 1 as primary key
+------- Get all such players i.e. friends and get their ranks
+
 
 ------------------------Apple Oct 2015----------------------------------------------
 

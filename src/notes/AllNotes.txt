@@ -586,6 +586,9 @@ Solution:-
 
 1. Reading from file
 --- Can use latest 7 and 8 apis
+— Old vs new way 
+—— http://howtodoinjava.com/java-8/read-file-line-by-line-in-java-8-streams-of-lines-example/
+—— https://gist.github.com/Kevin-Lee/8eb27d4282f19db404bd
 --- Use try-with-resources
 ---Can use lambdas for further processing
 2. Tokenizing
