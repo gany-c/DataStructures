@@ -1,3 +1,50 @@
+------------------- Box April 2016 -------------
+
+1. Same as fitbit, unival tree -implement isUnival, countNumUnival
+2. Elevator algorithm
+--- Multiple elevators, how do we decide which one serves a request
+--- Enum state- UP, Down, waiting to determine direction
+--- Boolean array of floors length, to represent the requests
+--- Elevators are thread objects, which share above array, plus another state of each elevator 
+--- Run method() - Calls Serve(State, currFloor)
+----- if waiting, go to nearest request
+----- if going up, go to nearest up request
+----- if going down, goto nearest down request.
+
+3. Distributed Cache design
+--- How do you prevent different load balanced nodes from overwriting values in the Cache?
+----- Use DB timestamp and accept only the latest value for a write
+----- Where does the lock exist in Cache's map? DB level or Bucket level
+----- How will you implement timeouts in a distributed system? 
+----- Lock is acquired and not returned? e.g. How does a ZK ephemeral node handle this?
+----- How are new nodes added in Cassandra?
+----------How is the token range redistribution done?
+----------How can this done while serving live traffic?
+
+4. Map operation with Begin, RollBack and Commit?
+
+-- Implement a data structure which supports
+---- put(key, value), get(key), delete, count(value)
+PLUS
+--- Begin, Rollback, commit
+--- Nested transactions are allowed
+--- At any point of time, any of the operations should return the most relevant value
+----- if present in the innermost, then from there, else from the next layer and so on.
+----- A single commit, commits all transactions
+----- A single rollback, rolls back the innermost.
+
+Solution
+
+--- use one map for commit and a stack of maps for the transactions
+--- each begin adds a map
+--- each rollback removes a map
+--- each commit replays the changes from the bottom of the map
+
+
+Solution 2
+
+--- try using a map of lists where each value of the list is one layer of transaction
+
 ------------------- Fitbit April 2016-----------
 
 1. SAME AS APPLE:-
