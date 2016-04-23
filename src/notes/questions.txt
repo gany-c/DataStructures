@@ -1,3 +1,9 @@
+Interviewing resources:
+
+1. https://www.careercup.com/page?pid=distributed-computing-interview-questions&sort=comments
+2. http://www.programcreek.com/2012/11/top-10-algorithms-for-coding-interview/
+3. Testing elevator algorithm in Javascript http://play.elevatorsaga.com/
+
 ------------------- Box April 2016 -------------
 
 1. Same as fitbit, unival tree -implement isUnival, countNumUnival
@@ -11,7 +17,7 @@
 ----- if going up, go to nearest up request
 ----- if going down, goto nearest down request.
 
---- Testing in Javascript http://play.elevatorsaga.com/
+
 
 3. Distributed Cache design
 --- How do you prevent different load balanced nodes from overwriting values in the Cache?
