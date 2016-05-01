@@ -1,8 +1,36 @@
-Interviewing resources:
+----------------- FB Interview workshop Questions --------------------
+
+1. Given a Fibonacci binary tree - i.e. 2 children are values that are added to get the Fib number
+--- What will be the height of the tree if the Number at the root is N (not Log N)
+--- What will be the number of nodes?
+
+2. Given a set of birth and death years, find the years which have maximum population?
+3. Given 2 sorted arrays, find the common numbers
+4. What is the Space complexity in recursion? - The stack's size and memory
+5. What is the above when memoization is used.
+6. Find all numbers that can be expressed as the sum of cubes of 2 different numbers in 2 different ways.
+a^3 + b ^3 = c^3 + d^3; a, b, c and d are less than 1000 and greater than 0
+7. Find the largest sum sub matrix.
+8. Find all sub sets of a set
+9. Find all permutations of a smaller string in a bigger string. What if the same string as small and big
+10. Ransom note problem: http://algorithmsandme.in/2014/03/strings-ransom-note-from-magazine/
+11. Tries - https://www.youtube.com/watch?v=NKr6gWcXkIM, https://www.youtube.com/watch?v=AXjmTQ8LEoI
+12. Where there is backtracking, use recursion
+
+
+Design questions:-  http://highscalability.com/
+
+1. Design tiny url
+2. Design best seller on Amazon
+3. Design Twitter
+
+
+---------------- Interviewing resources:--------------------
 
 1. https://www.careercup.com/page?pid=distributed-computing-interview-questions&sort=comments
 2. http://www.programcreek.com/2012/11/top-10-algorithms-for-coding-interview/
 3. Testing elevator algorithm in Javascript http://play.elevatorsaga.com/
+
 
 ------------------- Box April 2016 -------------
 
@@ -135,7 +163,7 @@ In Cassandra, How would you model the schema/backend of a Top Viewed items appli
 ---------------------Settu Kadai :P :) ----------------------------------
 1. Find a the existence of a string in a matrix of characters
 2. given 2 lists of tuples/periods sorted by their starting date,
-merge them together such that the overlapping ranges are sorted. - Easy
+merge them together such that the overlapping ranges are unified. - Easy
 3. Design an auctions website; what are the java objects?
 
 --------------------------------------------------------------------------
