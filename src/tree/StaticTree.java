@@ -653,6 +653,72 @@ private TreeNode deepClone(TreeNode node) {
 	return newNode;
 }
 
+
+public Integer lowestCommonAncestor(int val1, int val2){	
+	
+	Integer val = lowestCommonAncestor(this.root, val1, val2);
+	
+	if(val == null)
+		return -1;
+	else return val;
+	
+}
+
+/**
+ * -- If one value is the ancestor of another then the former is the Lowest common ancestor.
+ * ---- consequently if exactly one value is not present in the tree then the other value will be declare the LCA
+ * 
+ * --- 1. if current value is equal to either one of the 2 values return it.
+ * ----2. if not, recursively invoke on left child and right child
+ * ------- if the 2 sides return different non null value, return the current node value.
+ * ------- else return the non-value returned from any one side.
+ * ------- otherwise return null
+ * @param node
+ * @param val1
+ * @param val2
+ * @return
+ */
+private Integer lowestCommonAncestor(TreeNode node, int val1, int val2) {
+	
+	//System.out.println("Debug node, val1, val2 = "+node.getValue()+", "+val1+", "+val2);
+	
+	if(node.getValue() == val1){		
+		return val1;		
+	} else if(node.getValue() == val2){
+		return val2;
+	} else{
+		
+		if(node.getLeft()==null && node.getRight() == null)
+			return null;
+		
+		Integer leftVal = null;
+		Integer rightVal = null;
+		
+		if(node.getLeft()!=null)
+			leftVal = lowestCommonAncestor(node.getLeft(), val1, val2);
+		
+		if(node.getRight()!=null)
+			rightVal = lowestCommonAncestor(node.getRight(), val1, val2);
+		
+		//System.out.println("Debug node, leftVal, rightVal = "+node.getValue()+", "+leftVal+", "+rightVal);
+		Integer returnValue = null;
+		
+		if(leftVal!=null && rightVal !=null)
+			returnValue = node.getValue();
+		else if(leftVal!=null)
+			returnValue =  leftVal;
+		else if(rightVal!=null)
+			returnValue = rightVal;
+//		else
+//			return null;
+		
+		//System.out.println("Debug, return value = "+returnValue);
+		return returnValue;
+		
+	}
+
+}
+
 public static void main(String[] args){
 	
 	System.out.println("Hi----------");
@@ -706,6 +772,12 @@ public static void main(String[] args){
 	tree3.printLevels();
 	System.out.println("\n BFS of original tree  ----------");
 	tree2.printLevels();
+	System.out.println("\n Testing the lowest common ancestor  ----------");
+	System.out.println("Lowest common ancestor of 3, 8 = "+tree2.lowestCommonAncestor(3,8) );
+	System.out.println("Lowest common ancestor of 10, 11 = "+tree2.lowestCommonAncestor(10,11) );
+	System.out.println("Lowest common ancestor of 7, 12 = "+tree2.lowestCommonAncestor(7,12) );
+	System.out.println("Lowest common ancestor of 2, 8 = "+tree2.lowestCommonAncestor(2,8) );
+	System.out.println("Lowest common ancestor of 6, 13 = "+tree2.lowestCommonAncestor(6,13) );
 	
 	System.out.println("\n Zig zag traversal old   ----------");
 	tree2.zigZagStart();

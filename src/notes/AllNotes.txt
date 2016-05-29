@@ -1241,3 +1241,13 @@ STATIC TREE -
  15. DEEP CLONE  Deep clone is also similar to pre order, 
  clone the current node, 
  call deep clone function on the left and right sub trees.
+ 
+ 16. LOWEST COMMON ANCESTOR:-
+ 
+ * -- If one value is the ancestor of another then the former is the Lowest common ancestor.
+ * ---- consequently if exactly one value is not present in the tree then the other value will be declare the LCA
+ * 
+ * --- 1. if current value is equal to either one of the 2 values return it.
+ * ----2. if not, recursively invoke on left child and right child
+ * ------- if the 2 sides return different non null value, return the current node value.
+ * ------- else return the non-value returned from any one side.
