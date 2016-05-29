@@ -604,6 +604,25 @@ Solution:-
 --- create tuples for each key value and add it to a priority queue
 --- If the priority queue exceeds K in size, remove from the front.
 --- at the end you'll have the top K items but in reverse order
+
+STRING - PARENTHESES
+
+	GOAL : GIVEN A STRING CONSISTING OF ( AND ) IN ANY ORDER, 
+	DELETE AS LITTLE AS POSSIBLE TO CREATE A BALANCED STRING	
+	
+	YOUR METHOD: don't know if this will work
+	-- CREATE ZONES OR STARTING INDEXES OF VALID AREAS 
+	-- STORE THESE IN A STACK 
+	-- MERGE THE ZONES AS MUCH AS POSSIBLE
+	-- Make the new string with valid zones
+	
+	SHREYANSH'S METHOD: WORKS
+	
+	-- RECORD THE UNBALANCED PARENTHESES, AND DELETE THEM
+	-- WHEN YOU SEE A LEFT PARENTHESES, RECORD IN THE STACK
+	-- WHEN YOU SEE A RIGHT PARENTHESES, POP IT FROM THE STACK
+	------IF THERE IS NOTHING TO POP, RECORD IT IN ANOTHER STACK
+	--- DELETE WHATEVER REMAINS IN THE STACK
  
   STRING - CHECK FOR COMPOUND WORDS
  
