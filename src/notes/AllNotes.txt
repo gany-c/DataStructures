@@ -196,6 +196,12 @@ LIST - Shortest distance in a dictionary
  * 4.1. You could either merge them as a tuple or you could negate the numbers of one list. and find the largest gap
  * between a positive and negative number.	 
  
+ARRAY:- Given an array such that the values are always lesser than size and greater than -1
+---- rearrange the array such that a[i] = a[a[i]]
+---- Do this such that, no secondary array is used.
+---- ANSWER: THINK ABOUT HOW YOU WILL DO IT WITH THE SECONDARY STORAGE, THEN THINK WHY YOU NEED IT, 
+		THEN FIND THE ALTERNATIVE.
+ 
  LIST - ARRAY, KTH SMALLEST IN AN UNSORTED ARRAY
  
   * http://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-2-expected-linear-time/
@@ -912,7 +918,14 @@ MISC - PEEK ITERATOR
 
 	NOTE: Don't use temp==null as a check in PEEK and GET. 
 	That would fail if the iterator itself contains null as one of the values.	 
-	
+
+SORT - BUCKETSORT
+
+When to use it? i.e. Range of values is much smaller than the number of values.
+---- Use another smaller array of counts of values, the indexes represent the values.
+---- What if there is meta data associated with the values? i.e.  unique records
+---- How will you do it without putting a list or stack into each value of the new small count array.
+
 	
 SORT - HEAPSORT	
 
