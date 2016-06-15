@@ -1264,3 +1264,10 @@ STATIC TREE -
  * ----2. if not, recursively invoke on left child and right child
  * ------- if the 2 sides return different non null value, return the current node value.
  * ------- else return the non-value returned from any one side.
+ 
+ TRIE:-
+ 
+ Given a list of Strings, find longest commont prefix (not subsequence)
+ 
+ --- Organize the words as a Trie, with a header
+ --- The path up to the first point of divergence is the answer.
