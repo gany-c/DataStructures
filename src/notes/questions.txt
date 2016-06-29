@@ -1,3 +1,16 @@
+----------------------Microsoft------------------------------------------
+
+1. Cassandra doesn't offer immediate consistency: he claims
+2. what was the read count + write count > Replication factor?
+https://docs.datastax.com/en/cassandra/2.0/cassandra/dml/dml_about_transactions_c.html
+3. Don't give the Etrade to Bank example - That is because of FCC :) Can be done in Milliseconds
+4. How do you build a Database with immediate consistency and scalability
+---- use an RDBMS and partition it e.g. by user names
+---- Split the analytics part away from the OLTP, i.e. the OLAP from OLTP
+----- Use noSql for OLAP.
+
+
+--------------------------------------------------------------------------
 SHEKHAR RAJ:- ARRAY:-
 
 1. Given an array such that the values are always lesser than size and greater than -1
