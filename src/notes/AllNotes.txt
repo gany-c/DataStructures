@@ -629,6 +629,15 @@ STRING - PARENTHESES
 	-- WHEN YOU SEE A RIGHT PARENTHESES, POP IT FROM THE STACK
 	------IF THERE IS NOTHING TO POP, RECORD IT IN ANOTHER STACK
 	--- DELETE WHATEVER REMAINS IN THE STACK
+	
+STRING - PARENTHESES: BOOLEAN CHECK FOR BEING BALANCED	
+
+https://github.com/gany-c/scala-tutorial/blob/master/Main.scala
+
+-- If the condition is not to use a stack
+----- Use recursion
+----- 3 parameters are String, index and count of start parentheses
+------ increment the count when you see a start, decrement when you see an end parentheses
  
   STRING - CHECK FOR COMPOUND WORDS
  
@@ -845,6 +854,18 @@ MATHEMATICS - SQUARE ROOT
 	 * 4.5. else set end to mid	 
 
 MATHEMATICS - GIVEN A CERTAIN AMOUNT AND COIN VALUES, FIND ALL COMBINATIONS	 
+
+https://github.com/gany-c/scala-tutorial/blob/master/Main.scala
+
+-- Take the first coin and sum up 3 cases
+----- 1. if it is possible to add up to AMOUNT using only the first coin, add 1 to sum
+----- 2. if it is possible to add up to AMOUNT without this coin, add the result of recursive invocation without first coin and same sum.
+----- 3.in a loop add all the following
+-------- decrement AMOUNT by first coin and make a recursive call for the rest of the AMOUNT, with other coins - add this number to sum
+--------- keep doing this until AMOUNT becomes lesser than or equal to zero.
+
+Return the sum of 1,2,3
+
 MATHEMATICS - RAMANUJAN'S PARTITIONS :)
 
  * QUESTION: find all the ways in which a number can be summed, Ramanujan's partitions :)
