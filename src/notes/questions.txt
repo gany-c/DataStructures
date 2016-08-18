@@ -1,3 +1,9 @@
+---------------------Twitter-----------------------------------------
+
+1. Given a runnable and a microsecond delay, write a method that will execute the runnable after the delay.
+2. Who throws the InterruptedException on a sleeping thread and why?
+http://www.ibm.com/developerworks/library/j-jtp05236/
+
 ----------------------Microsoft------------------------------------------
 
 1. Cassandra doesn't offer immediate consistency: he claims
