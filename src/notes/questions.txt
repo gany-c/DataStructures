@@ -1,3 +1,9 @@
+--------------------Kuppuswamy--------------------------------------
+
+1. Flatten a nested iterator; how would you handle cycles?
+2. The dictionary + sentence questions - what is the complexity? n square or exponential
+3. Url shortener - What would be the size of entries? total size of the DB?
+
 ---------------------Twitter-----------------------------------------
 
 1. Given a runnable and a microsecond delay, write a method that will execute the runnable after the delay.
