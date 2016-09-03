@@ -1,3 +1,18 @@
+-------------------Evernote----------------
+
+1. THINGKING TRAP:- Binary search can be deceptive at times, check the mechanism of sorting before saying "Binary search"
+---  ids can be inserted in an array by order of time - They are sorted by time, by can't be searched in a binary way.
+
+2. Design a messenger or chat service
+--- You have to show the previous chats, so have a file person-person-File, 
+----- load the file or the file's tail -100
+--- You will need a directory of user ids, indexed by name, email etc
+--- When the connection is made, you create a file
+--- How do you transmit User name and Password securely?
+---What happens when you the login is successful
+----- what do you get back? what is in the cookie
+----- how is that cookie used afterwards i.e. in the session?
+
 --------------------Kuppuswamy--------------------------------------
 
 1. Flatten a nested iterator; how would you handle cycles?
