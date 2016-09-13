@@ -1286,6 +1286,15 @@ STATIC TREE -
  * ------- if the 2 sides return different non null value, return the current node value.
  * ------- else return the non-value returned from any one side.
  
+ 
+17. A binary tree - can have COMMON-VALUE-SUBTREES or CST, 
+-- Each leaf is a CST
+-- 3
+  / \
+  3  3
+  The above is a CST. there are 3 CSTs in that tree
+ -- Write a function to count the number of CSTs in a tree. 
+ 
  TRIE:-
  
  Given a list of Strings, find longest commont prefix (not subsequence)
