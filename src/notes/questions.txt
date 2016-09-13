@@ -1,3 +1,13 @@
+------------------ Jatin Java -----------------
+
+1. Make a map immutable
+2. Implement a concurrentHashMap
+3. Difference between immutable and unmodifiable collection
+4. ConcurrentHashMap vs Synchronized Map
+5. ClassNotFoundException vs NoClassDefFoundError
+6. Immutability and Concurrency
+
+
 -------------------Evernote----------------
 
 1. THINGKING TRAP:- Binary search can be deceptive at times, check the mechanism of sorting before saying "Binary search"
