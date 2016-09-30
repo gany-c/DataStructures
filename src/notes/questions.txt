@@ -1,3 +1,15 @@
+------------------ Design questions--------------
+
+http://blog.gainlo.co/index.php/category/system-design-interview-questions/
+
+http://blog.gainlo.co/index.php/2016/03/08/system-design-interview-question-create-tinyurl-system/
+http://blog.gainlo.co/index.php/2016/03/01/system-design-interview-question-create-a-photo-sharing-app/
+http://blog.gainlo.co/index.php/2016/02/17/system-design-interview-question-how-to-design-twitter-part-1/
+http://blog.gainlo.co/index.php/2016/02/24/system-design-interview-question-how-to-design-twitter-part-2/
+http://blog.gainlo.co/index.php/2016/09/30/uber-interview-question-delimiter-matching/ - not design
+http://blog.gainlo.co/index.php/2016/06/14/design-a-key-value-store-part-i/
+http://blog.gainlo.co/index.php/2016/06/21/design-key-value-store-part-ii/
+
 ------------------ Jatin Java -----------------
 
 1. Make a map immutable
@@ -18,8 +30,9 @@
 ----- load the file or the file's tail -100
 --- You will need a directory of user ids, indexed by name, email etc
 --- When the connection is made, you create a file
---- How do you transmit User name and Password securely?
----What happens when you the login is successful
+--- How do you transmit User name and Password securely? HTTPS and SSL
+https://www.youtube.com/watch?v=JCvPnwpWVUQ
+---What happens when you the login is successful - HTTP Session, cookie?
 ----- what do you get back? what is in the cookie
 ----- how is that cookie used afterwards i.e. in the session?
 
@@ -40,7 +53,13 @@ http://www.ibm.com/developerworks/library/j-jtp05236/
 
 1. Cassandra doesn't offer immediate consistency: he claims
 2. what was the read count + write count > Replication factor?
-https://docs.datastax.com/en/cassandra/2.0/cassandra/dml/dml_about_transactions_c.html
+
+https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html
+
+If consistency is a top priority, you can ensure that a read always reflects the most recent write by using the following formula:
+(nodes_written + nodes_read) > replication_factor 
+
+
 3. Don't give the Etrade to Bank example - That is because of FCC :) Can be done in Milliseconds
 4. How do you build a Database with immediate consistency and scalability
 ---- use an RDBMS and partition it e.g. by user names
@@ -75,6 +94,17 @@ SHEKHAR RAJ:- ARRAY:-
 
 4. Design:- Given disk speed, file size, what will be request time? How will cache Help? 
 How to implement LRU cache?
+
+http://www.geeksforgeeks.org/implement-lru-cache/
+
+We use two data structures to implement an LRU Cache.
+
+Queue which is implemented using a doubly linked list. The maximum size of the queue will be equal to the total number of frames available (cache size).The most recently used pages will be near front end and least recently pages will be near rear end.
+A Hash with page number as key and address of the corresponding queue node as value.
+When a page is referenced, the required page may be in the memory. If it is in the memory, we need to detach the node of the list and bring it to the front of the queue.
+If the required page is not in the memory, we bring that in memory. In simple words, we add a new node to the front of the queue and update the corresponding node address in the hash. If the queue is full, i.e. all the frames are full, we remove a node from the rear of queue, and add the new node to the front of queue.
+
+Note: Initially no page is in the memory.
 
 SUBRAMANI'S QUESTIONS:
 
@@ -274,6 +304,8 @@ MATHEMATICS - RAMANUJAN'S PARTITIONS :)
 
  -- find the middle element.
  -- check for cycles
+ -- Switch every 3rd element
+ -- Need for header; what if there is an internal pointer; doubly linked?
  
  3. INSERT INTO A ORDERED LINKED LIST WHERE THERE IS NO HEADER NODE, BUT A HEADER POINTER IS AVAILABLE
  
