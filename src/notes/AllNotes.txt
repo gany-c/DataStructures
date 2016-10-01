@@ -464,6 +464,17 @@ only the other closest elements are required.
  
  https://www.youtube.com/watch?v=ddTC4Zovtbc 
  
+ GRAPHS - Is course structure valid? i.e. given a list of courses, with prerequiste courses
+ 
+  * 1. Create a map of course to down stream courses
+ * 2. Create a list of starting courses i.e. have no prerequisites
+ * 
+ *  iterate until - all course are covered, i.e. the course list becomes empty,
+ * 3. If the starting courses are empty, and list has uncovered courses, then return false; 
+ * 4. -- Cover, the starting courses i.e. remove them from the list of courses,
+ * 5. -- identify their immediate descendants using the map and remove the covered courses from their pre-req
+ * 6. -- if the above step creates courses without prereq, they become new starting courses for the next iteration of the loop
+ 
  GRAPHS - DJIKSTRA'S ALGORITHM
  
  	 https://github.com/gany-c/Algos/blob/master/src/Assign5/NewDjikstra.java
@@ -631,6 +642,11 @@ Solution:-
 --- create tuples for each key value and add it to a priority queue
 --- If the priority queue exceeds K in size, remove from the front.
 --- at the end you'll have the top K items but in reverse order
+
+STRING - PARENTHESES MATCHING 
+
+-- stack based approach
+-- will work even if there are multiple delimiters and interleaving them is equivalent to a bad formation.
 
 STRING - PARENTHESES
 

@@ -1,3 +1,13 @@
+------------------Uber-------------------
+
+1. Given n arrays of integers find the cartesian product
+-- In one output element -first element is always from 1st array, nth element in output is from the nth array
+2. Rotated binary search - shame on you
+3. Given courses with other courses as prerequisite - check if this ordering is valid
+i.e. are cycles available?
+4. How will model location search in a database - find the drivers in your location. find restaurants in your location
+
+
 ------------------ Design questions--------------
 
 http://blog.gainlo.co/index.php/category/system-design-interview-questions/
