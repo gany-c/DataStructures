@@ -6,6 +6,18 @@ HASHMAP:-
 HASHMAP:- implement as array of linkedlists; what will be the structure of the node in the list? 
 Value only? key and value? why do you need the key?
 
+HASHMAP:- Implement an LRU CACHE - 
+
+-- http://www.geeksforgeeks.org/implement-lru-cache/
+
+We use two data structures to implement an LRU Cache.
+
+Queue which is implemented using a doubly linked list. 
+The maximum size of the queue will be equal to the total number of frames available (cache size).
+The most recently used pages will be near front end and least recently pages will be near rear end.
+A Hash with page number as key and address of the corresponding queue node as value.
+
+
 BLOOM FILTER:
 
  * BloomFilter is a data structure for quick boolean lookups with a small chance of false positives
@@ -203,6 +215,10 @@ LIST - Shortest distance in a dictionary
  * 4. If you are passed 2 different words, present as keys, then merge the 2 lists and find the shortest gap.
  * 4.1. You could either merge them as a tuple or you could negate the numbers of one list. and find the largest gap
  * between a positive and negative number.	 
+ 
+ARRAY:- 1. Given n arrays of integers find the cartesian product
+-- In one output element -first element is always from 1st array, nth element in output is from the nth array
+
  
 ARRAY:- Given an array such that the values are always lesser than size and greater than -1
 ---- rearrange the array such that a[i] = a[a[i]]
