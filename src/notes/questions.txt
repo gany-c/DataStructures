@@ -13,12 +13,14 @@ i.e. are cycles available?
 http://blog.gainlo.co/index.php/category/system-design-interview-questions/
 
 http://blog.gainlo.co/index.php/2016/03/08/system-design-interview-question-create-tinyurl-system/
-http://blog.gainlo.co/index.php/2016/03/01/system-design-interview-question-create-a-photo-sharing-app/
-http://blog.gainlo.co/index.php/2016/02/17/system-design-interview-question-how-to-design-twitter-part-1/
-http://blog.gainlo.co/index.php/2016/02/24/system-design-interview-question-how-to-design-twitter-part-2/
-http://blog.gainlo.co/index.php/2016/09/30/uber-interview-question-delimiter-matching/ - not design
+
 http://blog.gainlo.co/index.php/2016/06/14/design-a-key-value-store-part-i/
 http://blog.gainlo.co/index.php/2016/06/21/design-key-value-store-part-ii/
+
+How do you design a SAX XML parser?
+
+https://www.extreme.indiana.edu/xgws/papers/xml_push_pull.pdf
+https://www.quora.com/What-does-the-design-of-a-XML-Parser-look-like
 
 ------------------ Jatin Java -----------------
 
