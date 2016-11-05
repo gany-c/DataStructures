@@ -1,0 +1,76 @@
+1. Design a TinyUrl system http://blog.gainlo.co/index.php/2016/03/08/system-design-interview-question-create-tinyurl-system/
+    1. given a URL, how can we find hash function F that maps URL to a short alias: F(URL) = alias
+    2.  We can either store the id and value in the DB or have a system that calculates it every time on the fly. 
+    3. The latter should guarantee no collisions, not used.
+    4. we can assume the alias is something like http://tinyurl.com/<alias_hash> and alias_hash is a fixed length string. 
+    Say, of length 7
+    5. If the length is 7 containing [A-Z, a-z, 0-9], we can serve 62 ^ 7 ~= 3500 billion URLs. 
+    It’s said that there are ~644 million URLs at the time of this writing.
+    6. The web api can translate the id into an integer (sequential integer key, url as value), 
+    which can be stored as the key in the db 
+    7. The algorithm for above is http://www.geeksforgeeks.org/how-to-design-a-tiny-url-or-url-shortener/
+    8. Scaling this system - Load balanced Web api, and cassandra database
+        1. takes car of sequential keys, replicas, scaling etc.
+
+        
+2. Incrementally design a game system - LinkedIn
+
+1. Simple Hangman game for 1000 users; no persistence
+-- put the session in HttpSession
+2. What if you want to see your cummulative score
+-- persistence layer, score table
+3.  What if you want to see top ranked players in another page
+-- Kafka not needed here for offline rank calculation
+-- A simple api on the score table, with order by
+4.  How would you calculate the user's rank?
+-- it will not be in the top 100 or so - calculating rank will be expensive
+-- how do you approximate the rank? correlate rank and score and periodically correct the rank?
+5. Now, what if you have to load balance this system?
+-- Will you create a new table for rank apart from score and constantly update this?
+-- What will be the model of the table in nosql
+6. Now, what if you want to add friends, and friends rank to the screen?
+-- Will you have a friends to friends table and invoke this as a separate ajax API?
+-- Will you have a single denormalized table? of friend ranks?
+7. How will you ensure that people don't see the same games/ words again and again?
+-- Use a random number generator?
+-- If there are 50,000 words and 10,000 users at a time; How often will a user see repetitions
+
+Solution
+
+-- Constraint = Joins not allowed, secondary indexes aren't allowed
+-- advantage = Create as many tables as you want.
+
+-- Top scorer and Rank table
+--- Create 2 tables - <Player(pk), Score> and <Score, Player> (combined pk)
+--- Whenever a player gets a new score, update in the first table
+---- take the old score and player id combo and update the new table.
+---- Top scorers = get 100 records from the result set in the second table
+---- Rank of a player = in the second table, select count(*) from "second-table" where score > my-score
+---- Friends and friends rank - Keep a <Player,player> mapping table with player 1 as primary key
+------- Get all such players i.e. friends and get their ranks      
+
+
+3. How will you sell Linkedin's premium membership on Walmart? 
+What would be the interfaces? 
+What requirements, or specifications will you reauest?
+
+4. Why not have a persistent layer at IRO itself? 
+How will you fill up this DB?
+When will you access or refresh it, if the RTs are the source of truth?
+
+4.5. Micro-Services cause a lot of chatter and network latency; why use that model? why not put everything together?
+-- If each functionality needs to be scaled independently, why not put everything together and scale up the number of nodes
+-- I guess the reason could be that the microservices could have additional clients besides IRO i.e. your aggregator.
+
+-- If there is another level of persistence at the aggregator, how will you sync it with the RTs or Micro Service DBs 
+
+
+5. Distributed Cache design - BoX
+--- How do you prevent different load balanced nodes from overwriting values in the Cache?
+----- Use DB timestamp and accept only the latest value for a write
+----- Where does the lock exist in Cache's map? DB level or Bucket level
+----- How will you implement timeouts in a distributed system? 
+----- Lock is acquired and not returned? e.g. How does a ZK ephemeral node handle this?
+----- How are new nodes added in Cassandra?
+----------How is the token range redistribution done?
+----------How can this done while serving live traffic?
