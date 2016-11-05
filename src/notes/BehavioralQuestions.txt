@@ -1,0 +1,43 @@
+1. When have you gone above and beyond your job for the Customer
+
+--- When I was building my DFM system. I built an automated reported system for the ingestion process.
+--- When feeds came from the upstream catalog system, they were missing certain fields. This was causing problems for 
+	downstream clients.
+--- Team was responding with queries and localhost scripts after problems were reported.
+--- I aggregated and automated the process of verification. 
+    This highlighted the problem that the customer was facing and reports were going to everyone.
+--- It compelled the upstream folks to solve the problem.
+
+2. Example of Championing Customer viewpoint
+
+--- India DFM team
+--- They were building a services oriented version of the same application 
+--- They needed all the data and were making us send giant feeds to them, breaking the underlying result set
+--- I told them that they could consume the same input as us, instead of consuming our output.
+--- Advantage in terms of 1. points of failure, 2. Saving data ingestion time. 3. Direct interaction with upstream for data
+
+3. Example of Disagreed, but committed after the collective decision?
+
+--- Trending page scheduler, infinite scroll
+--- small amount of data, read only and common to all users
+--- My solution, use RDBMS.. Keep polling the DB from the web layer 
+------ and then serve all requests directly from the web layer
+--- built hackday prototype - OMS DB dashboard, was a sensitive DB, so hit it with just 1 call every 30 secs
+--- poor man's caching.
+
+--- Others wanted Cassandra, said it had inbuilt caching 
+--- When the decision was made, I was happy about learing Cassandra, will be useful for downstream.
+
+4. How do you deal with underestimated projects?
+
+--- Understand the customer requirements
+--- Identify the Minimum viable product and deliver it first
+--- Then keep evolving and delivering value
+
+5. Junior Developer vs Senior Developer 
+
+--- Building the right solution (Senior) vs Just addressing it as a Technical Problem (Senior)
+--- Senior should ask the right questions when presented with an ambiguous problem 
+    and build the solution for the right requirements.
+
+     	

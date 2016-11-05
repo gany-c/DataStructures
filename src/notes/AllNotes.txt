@@ -6,7 +6,7 @@ HASHMAP:-
 HASHMAP:- implement as array of linkedlists; what will be the structure of the node in the list? 
 Value only? key and value? why do you need the key?
 
-HASHMAP:- Implement an LRU CACHE - 
+HASHMAP:- Implement an LRU CACHE - TO BE DONE
 
 -- http://www.geeksforgeeks.org/implement-lru-cache/
 
@@ -201,7 +201,7 @@ BINARY SEARCH - Return the smallest character that is strictly larger than the s
 	 * 2.a. mid equals end, only if start and end are the same number.
 	 * 2.b. mid can equal start both if start and end have merged and start is one lesser than end.	 
 	 
-BINARY SEARCH -	 Search in a sorted but, rotated array.	 
+BINARY SEARCH -	 Search in a sorted but, rotated array.	 - TO BE DONE
 	 
 LIST - Shortest distance in a dictionary 
 
@@ -406,8 +406,9 @@ only the other closest elements are required.
  * 2. It changes the state of the input array.
  * 3. So, don't call it multiple times expecting the same result, call it and store the results in a temporary array.
  
-2. Longest common sub sequence? Classical Dynamic programming problem.
-----http://www.geeksforgeeks.org/dynamic-programming-set-4-longest-common-subsequence/ 
+ DYNAMIC PROGRAMMING - Longest common sub sequence? Classical Dynamic programming problem.
+---- TO BE DONE
+---- http://www.geeksforgeeks.org/dynamic-programming-set-4-longest-common-subsequence/ 
  
  LIST - ARRAY: FIND THE SMALLEST ABSENT NUMBER
  
@@ -1342,7 +1343,7 @@ STATIC TREE -
  * ------- else return the non-value returned from any one side.
  
  
-17. A binary tree - can have COMMON-VALUE-SUBTREES or CST, 
+17. A binary tree - can have COMMON-VALUE-SUBTREES or CST, - TO BE DONE
 -- Each leaf is a CST
 -- 3
   / \
@@ -1350,7 +1351,7 @@ STATIC TREE -
   The above is a CST. there are 3 CSTs in that tree
  -- Write a function to count the number of CSTs in a tree. 
  
- 18. Print the Top view of a binary tree, i.e. the outer most outline of a tree
+ 18. Print the Top view of a binary tree, i.e. the outer most outline of a tree - TO BE DONE
 ---- Mistake made: didn't consider the zig zaging of the outer most branch.
  
  TRIE:-
