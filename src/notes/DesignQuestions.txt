@@ -78,6 +78,10 @@ Solution
 
 --- Analyze basket data and orders and build Association rules
 ------- collaborative filtering, apriori algorithm
+--------- collaborative filtering https://www.youtube.com/watch?v=h9gpufJFF-0
+------------ can be item to item or user to user collaborative filtering
+------------ for an item, find similar items => use centered cosine = pearson coefficient.
+------------- Then use the similar items rated by that to predict  that user's rating/liking for something he didn't rate
 --- The DB will have to be constantly refreshed by an ingestion system.
 ------- read basket data, build rules and store in DB
 --- The DB table can have rows like  product1 => product2, product3
