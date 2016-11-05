@@ -15,25 +15,25 @@
         
 2. Incrementally design a game system - LinkedIn
 
-1. Simple Hangman game for 1000 users; no persistence
--- put the session in HttpSession
-2. What if you want to see your cummulative score
--- persistence layer, score table
-3.  What if you want to see top ranked players in another page
--- Kafka not needed here for offline rank calculation
--- A simple api on the score table, with order by
-4.  How would you calculate the user's rank?
--- it will not be in the top 100 or so - calculating rank will be expensive
--- how do you approximate the rank? correlate rank and score and periodically correct the rank?
-5. Now, what if you have to load balance this system?
--- Will you create a new table for rank apart from score and constantly update this?
--- What will be the model of the table in nosql
-6. Now, what if you want to add friends, and friends rank to the screen?
--- Will you have a friends to friends table and invoke this as a separate ajax API?
--- Will you have a single denormalized table? of friend ranks?
-7. How will you ensure that people don't see the same games/ words again and again?
--- Use a random number generator?
--- If there are 50,000 words and 10,000 users at a time; How often will a user see repetitions
+		1. Simple Hangman game for 1000 users; no persistence
+		-- put the session in HttpSession
+		2. What if you want to see your cummulative score
+		-- persistence layer, score table
+		3.  What if you want to see top ranked players in another page
+		-- Kafka not needed here for offline rank calculation
+		-- A simple api on the score table, with order by
+		4.  How would you calculate the user's rank?
+		-- it will not be in the top 100 or so - calculating rank will be expensive
+		-- how do you approximate the rank? correlate rank and score and periodically correct the rank?
+		5. Now, what if you have to load balance this system?
+		-- Will you create a new table for rank apart from score and constantly update this?
+		-- What will be the model of the table in nosql
+		6. Now, what if you want to add friends, and friends rank to the screen?
+		-- Will you have a friends to friends table and invoke this as a separate ajax API?
+		-- Will you have a single denormalized table? of friend ranks?
+		7. How will you ensure that people don't see the same games/ words again and again?
+		-- Use a random number generator?
+		-- If there are 50,000 words and 10,000 users at a time; How often will a user see repetitions
 
 Solution
 
@@ -51,18 +51,17 @@ Solution
 
 
 3. How will you sell Linkedin's premium membership on Walmart? 
-What would be the interfaces? 
-What requirements, or specifications will you reauest?
+		What would be the interfaces? 
+		What requirements, or specifications will you reauest?
 
 4. Why not have a persistent layer at IRO itself? 
-How will you fill up this DB?
-When will you access or refresh it, if the RTs are the source of truth?
+	How will you fill up this DB?
+	When will you access or refresh it, if the RTs are the source of truth?
 
 4.5. Micro-Services cause a lot of chatter and network latency; why use that model? why not put everything together?
--- If each functionality needs to be scaled independently, why not put everything together and scale up the number of nodes
--- I guess the reason could be that the microservices could have additional clients besides IRO i.e. your aggregator.
-
--- If there is another level of persistence at the aggregator, how will you sync it with the RTs or Micro Service DBs 
+	-- If each functionality needs to be scaled independently, why not put everything together and scale up the number of nodes
+	-- I guess the reason could be that the microservices could have additional clients besides IRO i.e. your aggregator.
+	-- If there is another level of persistence at the aggregator, how will you sync it with the RTs or Micro Service DBs 
 
 
 5. Distributed Cache design - BoX
@@ -74,3 +73,16 @@ When will you access or refresh it, if the RTs are the source of truth?
 ----- How are new nodes added in Cassandra?
 ----------How is the token range redistribution done?
 ----------How can this done while serving live traffic?
+
+6. Design - "people who bought also bought"
+
+--- Analyze basket data and orders and build Association rules
+------- collaborative filtering, apriori algorithm
+--- The DB will have to be constantly refreshed by an ingestion system.
+------- read basket data, build rules and store in DB
+--- The DB table can have rows like  product1 => product2, product3
+--- The DB rows can be served using a web service, which reads this table
+--- An async module on the item page can serve use this web service.
+--- The remaining information (thumbnail, price, heading), 
+    for each recommended item can be served using a near real time cache
+ 
