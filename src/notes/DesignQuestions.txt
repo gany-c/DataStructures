@@ -90,3 +90,18 @@ Solution
 --- The remaining information (thumbnail, price, heading), 
     for each recommended item can be served using a near real time cache
  
+ 
+ 7. Design a Sax parser
+ 
+ -- Sax parser unlike a DOM parser, processes the xml on the fly. So it can be used for processing large XML files
+ -- You can create a sax parser, but the user will have to extend it, to parse his own custom xml structure
+ -- So, the Sax parser will consist of 1. a file reader 2. a tokenizer
+ -- The tokenizer or the class reading it will have to recognize the following events
+ --- start tag, end tag, content, end of document etc. and provide callback methods for handling these events
+ --- i.e. they will be abstract methods in the parser, and will be implemented by the user's sub class of the parser.
+ --- The user's sub class will maintain any state regarding which specific tags have been seen, how are they nested etc.
+ --- This is a "push" model in which the parser's method act as the controller and delegate control to the user methods when events are encountered.
+ --- Alternatively, the parser can be implemented as a "pull model" where an abstraction of the parser is provided to the user method
+ ------ this parser object is just like an iterator, and each time the user class invokes a "next" method, you get an event and event type
+ ------ Based on the event type = START TAG, END TAG, CONTENT, END OF DOCUMENT etc, the user class can decide what to do
+ --- Which approach is better - depends on how much control needs to be given to the user once the data has been read from the file and buffered.
