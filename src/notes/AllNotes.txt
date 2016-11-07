@@ -1,23 +1,6 @@
 ALL NOTES:-
 
 
-HASHMAP:-
-
-HASHMAP:- implement as array of linkedlists; what will be the structure of the node in the list? 
-Value only? key and value? why do you need the key?
-
-HASHMAP:- Implement an LRU CACHE - TO BE DONE
-
--- http://www.geeksforgeeks.org/implement-lru-cache/
-
-We use two data structures to implement an LRU Cache.
-
-Queue which is implemented using a doubly linked list. 
-The maximum size of the queue will be equal to the total number of frames available (cache size).
-The most recently used pages will be near front end and least recently pages will be near rear end.
-A Hash with page number as key and address of the corresponding queue node as value.
-
-
 BLOOM FILTER:
 
  * BloomFilter is a data structure for quick boolean lookups with a small chance of false positives
@@ -409,6 +392,14 @@ only the other closest elements are required.
  DYNAMIC PROGRAMMING - Longest common sub sequence? Classical Dynamic programming problem.
 ---- TO BE DONE
 ---- http://www.geeksforgeeks.org/dynamic-programming-set-4-longest-common-subsequence/ 
+-- Youtube videos suck :) above is very easy
+-- 1. do the cursory checks for null and size 0  - for the 2 input strings
+-- 2. If either one of the string is of size 1, then check if the other string contains this character 
+----- return the character as output, if it is present.
+----- else return an empty string.
+-- 3. Check if the last characters in both strings are the same
+----- if yes, then solution = LCS(input1-last char, input2 - last char) + last char
+----- if no, then solution = longer(LCS(input1-last char, input2), LCS(input1,input2-last char))
  
  LIST - ARRAY: FIND THE SMALLEST ABSENT NUMBER
  
@@ -549,13 +540,27 @@ only the other closest elements are required.
  * 2. treat each successive character as an increasing digit (duplicates allowed)
  * 3. return the next number in this number world:- process(“bca”)
  
- HASHING - IMPLEMENT A HASH-TABLE
+ HASHING - IMPLEMENT A HASH-TABLE/HASHMAP
  
- * 1. The easiest way is to implement this as an array of lists.
+ * 1. The easiest way is to implement this as an array of linkedlists.
  * 2. Each list is a bucket
  * 3. The number of buckets is a prime number, to lower the number of hash collisions.
  * 4. Assign bucket using hashcode of the object being passed in (divide by number of buckets)
  * 5. Use the equals method to traverse the list of objects/ buckets.
+ 
+what will be the structure of the node in the list? 
+Value only? key and value? why do you need the key?
+
+HASHMAP:- Implement an LRU CACHE - TO BE DONE
+
+-- http://www.geeksforgeeks.org/implement-lru-cache/
+
+We use two data structures to implement an LRU Cache.
+
+Queue which is implemented using a doubly linked list. 
+The maximum size of the queue will be equal to the total number of frames available (cache size).
+The most recently used pages will be near front end and least recently pages will be near rear end.
+A Hash with page number as key and address of the corresponding queue node as value.
  
  HEAP 
  
