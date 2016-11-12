@@ -1,4 +1,51 @@
-------------------Uber-------------------
+---------------- River Sea, 2016 Nov--------------
+I - DESIGN A PAYPAL SERVICE
+1. Design a Paypal like service - Transferring money from 1 user to another.
+2. How would you model this in  no-SQL?
+3. The transfer will have one credit and one debit: How do you make them transactional?
+--- These may be 2 different DAO methods, invoked by 1 service method. 
+--- This method will have to be transactional, e.g. what Spring provides
+4. What will the transactions lock on? the table or the rows?
+--- it has to be the rows, because you don't stop everyone
+5. If you lock at the row level, what if 2 users send money to one another?
+--- wouldn't that cause a deadlock? 2 row locks are needed for each user.
+--- How would you resolve this? 
+------ one possible solution can be both threads relinquish their RESPECTIVE row locks
+------- both will try after a random time. (Optimistic locking)
+
+II - GIVEN A LOG FILE OF <CUSTOMER-ID, PAGE-ID> FIND THE MOST POPULAR 3 PAGE CONSEQUTIVE SEQUENCE 
+VISITED BY ANY USER.
+
+1. What if the whole log file fits in memory?  CODING
+-- read from file into list of strings
+-- convert list to map of <user-id,<page-ids>>
+-- convert above map to <pageId1-pageId2-pageId3, count>
+-- get max from map
+2. What if it is a giant Stream? DESIGN
+--- jobs scrape logs - create tables.
+
+III - LRU CACHE
+---- The code involves a doubly linked list and a map
+---- Struggled around Generics
+---- How do you make it thread safe? The part where you move to the front of a list.
+
+IV - CASSANDRA 
+
+1. How do you add capacity to cassandra, because new nodes will require data rebalancing
+--- Have 2 node rings - make one primary and add to the other, then make the other primary
+--- add capacity to the first one.
+
+2. Suppose you have a table
+--- Location id, rack id, sku, quantity
+--- The original queries will get skus by location and rack
+--- But skus can repeat across locations
+------ a new query/ api is needed which gets the quanity by sku for all locations.
+------SOLUTION:- create a new table <sku,quantity>
+---------------- The quantity in this table will be the aggregate by sku 
+					of all quantities for that sku in the original table.
+----------------- when APIs write to table 1, they'll have to write to table 2.
+
+------------------Taxi-------------------
 
 1. Given n arrays of integers find the cartesian product
 -- In one output element -first element is always from 1st array, nth element in output is from the nth array
