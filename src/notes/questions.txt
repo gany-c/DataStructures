@@ -1,3 +1,10 @@
+----------------River Sea, Mar 2017--------------
+
+1. Given a dictionary, get the list of characters in the correct order
+---- take first characters? if the dictionary is a real life one
+2. Balance a binary search tree
+---- put in an array, make the middle element the root, recursively call on the left and right 
+
 ---------------- River Sea, 2016 Nov--------------
 I - DESIGN A PAYPAL SERVICE
 1. Design a Paypal like service - Transferring money from 1 user to another.
