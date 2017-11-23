@@ -82,7 +82,7 @@ https://www.quora.com/What-does-the-design-of-a-XML-Parser-look-like
 2. Implement a concurrentHashMap
 3. Difference between immutable and unmodifiable collection
 4. ConcurrentHashMap vs Synchronized Map
-5. ClassNotFoundException vs NoClassDefFoundError
+5. ClassNotFoundException vs NoClassDefFoundError - https://www.youtube.com/watch?v=pZw6T-hNhjM super comedy :)
 6. Immutability and Concurrency
 
 
