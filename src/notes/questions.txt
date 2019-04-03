@@ -1,7 +1,7 @@
 --------- River Sea --- Mar 2019 -------
 
 1. Flatten and Sort a 2 dimensional linked list
-2. Find largest distance from node in a binary tree
+2. Find largest distance from node in a binary tree - same as max distance from root, parent link needs to be there in each node
 
 ----------------River Sea, Mar 2017--------------
 
