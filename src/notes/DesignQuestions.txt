@@ -105,3 +105,6 @@ Solution
  ------ this parser object is just like an iterator, and each time the user class invokes a "next" method, you get an event and event type
  ------ Based on the event type = START TAG, END TAG, CONTENT, END OF DOCUMENT etc, the user class can decide what to do
  --- Which approach is better - depends on how much control needs to be given to the user once the data has been read from the file and buffered.
+ 
+ 8. Design an air traffic control system
+ Distributed control, resiliency, message passing
