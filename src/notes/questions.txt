@@ -2,6 +2,7 @@
 
 1. Flatten and Sort a 2 dimensional linked list
 2. Find largest distance from node in a binary tree - same as max distance from root, parent link needs to be there in each node
+3. evaluate a BODMAS expression i.e. string - use a stack?
 
 ----------------River Sea, Mar 2017--------------
 
