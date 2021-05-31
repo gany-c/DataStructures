@@ -210,7 +210,7 @@ ARRAY:- Given an array such that the values are always lesser than size and grea
 		THEN FIND THE ALTERNATIVE.
 		
 1. Find the majority element in an array i.e. at least n+1/2 times it should appear
-		
+https://www.geeksforgeeks.org/majority-element/		
  
  LIST - ARRAY, KTH SMALLEST IN AN UNSORTED ARRAY
  
