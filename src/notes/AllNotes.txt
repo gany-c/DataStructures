@@ -402,17 +402,21 @@ only the other closest elements are required.
 ----- if no, then solution = longer(LCS(input1-last char, input2), LCS(input1,input2-last char))
  
  LIST - ARRAY: FIND THE SMALLEST ABSENT NUMBER
+ QUESTION - Given an unsorted array of positive non-zero numbers, find the smallest absent number
  
  * Given an array of size N, if the numbers are contiguous 1 to N, 
  * then the solution = N +1;
  * 
  * If any larger number replaces any of the contigous numbers in the list, 
- * then the replaced number will become the solution.
+ * then the replaced number (smaller) will become the solution.
+  1, 2, 3, 4, 5 - if 300 replaces 3 - then 3 becomes the solution
+  3, 2, 1, 5, 4 - if 300 replaces 3 - then 3 becomes the solution
  * 
  * So, regardless of the array's contents, 
- * it is enough to check from 1 to Length and report the first missing number.
+ * it is enough to traverse the integers from 1 to Array Length and report the first missing number missing in the array.
  * 
- * So, build a hashtable of all the numbers and then loop through the numbers from 1 to N to check if they are there
+ * So, build a hashtable of all the numbers in the Array and then loop through the integers from 1 to N to check if they are present in the hashtable
+ * The first non-present integer is the answer
  * This approach may take O(n) time on average, but it requires O(n) extra space.
  * 
  * An even better approach is described here: 
