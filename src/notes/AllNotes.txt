@@ -954,6 +954,13 @@ MATHEMATICS - RAMANUJAN'S PARTITIONS :)
  
  MATHEMATICS -  find the number of ways in which n elements can be arranged in a BST.
  
+ If there are n elements, result = sum of (number of topologies with i-th element as root of tree: i = 1 to n)
+ STEP 1 - Sort the elements
+ STEP 2 - Traverse the list - i as variable:
+ number of topologies = number of left topologies * number of right topologies
+ Left topology = all nodes smaller than i, or 1 if that number is lesser than 2
+ Right topology = all nodes greater than i, or 1 if that number is lesser than 2
+ 
  MISC - MERGE OVERLAPPING RANGES
  
   * Given tuples that represent ranges, merge overlapping tuples.
