@@ -953,6 +953,7 @@ MATHEMATICS - RAMANUJAN'S PARTITIONS :)
  * 3. for i starting at 1 and up to n/2, create pairs of i and n -i
  
  MATHEMATICS -  find the number of ways in which n elements can be arranged in a BST.
+ This is called a Catalan Sequence problem: https://youtu.be/0pTN0qzpt-Y 
  
  If there are n elements, result = sum of (number of topologies with i-th element as root of tree: i = 1 to n)
  STEP 1 - Sort the elements
