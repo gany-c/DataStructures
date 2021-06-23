@@ -830,7 +830,16 @@ STRING - SEARCH SUB STRING WITH REGULAR EXPRESSION, regexp
  
  	 * 1. Start with the small string's start overlapping the big one's start
 	 * 1.1. slide the small one until the ends overlap.
-	 * 2. at each point call startsWith	 
+	 * 2. at each point call startsWith
+
+STRING - TYPE HINT/ SUCCESSOR (Periya Enn Kelvi)
+
+given a list of sentences as input - build a method that recommends the next word..based on the frequency of 1 word succeeding another
+
+1. In the constructor, Build Frequency map - this will be a nested map of <String <String, Count>>
+2. In the constructor, Collapse the Frequency map to a Successor Map.
+3. In the getSuccessor() method - use the Successor Map.
+	 
  
  MATHEMATICS - POLYNOMIAL REPRESENTATION
  
