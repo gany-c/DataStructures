@@ -836,6 +836,17 @@ STRING - TYPE HINT/ SUCCESSOR (Periya Enn Kelvi)
 
 given a list of sentences as input - build a method that recommends the next word..based on the frequency of 1 word succeeding another
 
+basically - it is this:
+
+[
+ ["I", "am", "here"],
+["I", "like", "Coffee"],
+["i", "am", "Hungry"]
+]
+
+then predictor("I") -> "am"
+Predictor ('am') can be either here or hungry
+
 1. In the constructor, Build Frequency map - this will be a nested map of <String <String, Count>>
 2. In the constructor, Collapse the Frequency map to a Successor Map.
 3. In the getSuccessor() method - use the Successor Map.
