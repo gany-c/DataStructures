@@ -1,14 +1,19 @@
 
 # Enter your code here. Read input from STDIN. Print output to STDOUT
-# Hi Neil
 # if path is invalid, then we throw an error for write, read to do the same
 """
+Create an in memory file system - mkdir, read, write
+Paths will always start with / and can be assumed to be well formed
+If the parent directory is missing the above methods should throw an exception
+
 Solution - 
 
 1. directory set - has all the directories - if this redundant?
 2. file map - filepath to contents
 
 to make it efficient/eliminate the set - have a custom object as a key/ it has field for it being directory or file
+
+Had problems with python syntax i.e. set = (), def, typing - str vs string
 """
 #from typing import str
 print('hello')
