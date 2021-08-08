@@ -25,9 +25,12 @@
 		4.  How would you calculate the user's rank?
 		-- it will not be in the top 100 or so - calculating rank will be expensive
 		-- how do you approximate the rank? correlate rank and score and periodically correct the rank?
+		---- Will you create a new table for rank apart from score and constantly update this?
+		---- What will be the model of the table in nosql?
+		-- Solution - RDBMS supports "group by" clause, which will not be available in a NoSQL DB
+		-- You can have a separate table that has the user id and cummulative score and 
+		   you can run a simple "greater than" query to retrieve the rank.
 		5. Now, what if you have to load balance this system?
-		-- Will you create a new table for rank apart from score and constantly update this?
-		-- What will be the model of the table in nosql
 		6. Now, what if you want to add friends, and friends rank to the screen?
 		-- Will you have a friends to friends table and invoke this as a separate ajax API?
 		-- Will you have a single denormalized table? of friend ranks?
