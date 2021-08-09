@@ -68,6 +68,7 @@ Solution
 
 
 5. Distributed Cache design - BoX
+--- https://medium.com/rtkal/distributed-cache-design-348cbe334df1 
 --- How do you prevent different load balanced nodes from overwriting values in the Cache?
 ----- Use DB timestamp and accept only the latest value for a write
 ----- Where does the lock exist in Cache's map? DB level or Bucket level
