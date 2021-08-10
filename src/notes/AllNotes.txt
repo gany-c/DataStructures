@@ -469,6 +469,14 @@ only the other closest elements are required.
  	Else if the object is negative
  	-- if the mergeable object is not null, merge into it,
  	-- if the sum is negative, set the mergeable object to null.
+
+LIST - Sum of Integers
+
+Given 2 integers represented as 2 arrays of single digit integers, 
+add them together and output the result in the form of array of single digit integers. 
+For example:
+Input: [3, 4, 5] and [9, 4] (represent 345 and 94)
+Output: [4, 3, 9] (represents 439)	
  	
  7. Return the max zone object. 
  
@@ -850,7 +858,21 @@ Predictor ('am') can be either here or hungry
 1. In the constructor, Build Frequency map - this will be a nested map of <String <String, Count>>
 2. In the constructor, Collapse the Frequency map to a Successor Map.
 3. In the getSuccessor() method - use the Successor Map.
-	 
+
+STRING - Given an input string where all spaces have been removed, and an English dictionary, insert spaces back into the string so that it contains all valid words.
+Example:
+1.Input: s = "cathat", wordDict = ["cat","hat"] Output: "cat hat"
+2.Input: s = "applepenapple", wordDict = ["apple","pen"] Output: "apple pen apple"
+3.Input: s = "catshat", wordDict = ["cat","hat"] Output: ""
+4.Input: s = "catha", wordDict = ["cat","hat"] Output: ""
+5.Input: s = "pencathat", wordDict = ["cat","hat"] Output: ""
+6.Input: s = "pencathat", wordDict = ["cat","hat", "pen"] Output: "pen cat hat"
+This is the key test case, both cat and cater match
+7.Input: s = "caterhat", wordDict = ["cat", "cater","hat"] Output: "cater hat"
+8.Input: s = "caterhat", wordDict = ["cat", "cater","hat", "er"] Output: ["cater hat"] or ["cat er hat"]
+
+STRING - Given the current directory and a target path i.e. cwd and cd "...", get the full target path. The cd path can start with '/', have mulitiple dirs separated by '/' and . and .. operators
+
  
  MATHEMATICS - POLYNOMIAL REPRESENTATION
  
@@ -981,6 +1003,19 @@ MATHEMATICS - RAMANUJAN'S PARTITIONS :)
  number of topologies = number of left topologies * number of right topologies
  Left topology = all nodes smaller than i, or 1 if that number is lesser than 2
  Right topology = all nodes greater than i, or 1 if that number is lesser than 2
+ 
+ MATHEMATICS - Question: Find the next permutation
+Given a number, you can rearrange the digits of that number to make a bigger number. Among all such permutations that are greater, one of them is the smallest, find that one.
+Examples:
+next_permutation(12) = 21
+next_permutation(12389) = 12398
+next_permutation(34722641) = 34724126
+
+Solution - 
+
+Note - if the digits are in descending order or equal, you cannot create a greater number by swapping.
+1. Start from last 2 digits of number check if can create a greater number by swapping
+2. Keep moving towards the more significant digits, if you encounter a number smaller than any previously encountered, swap it with the nearest greater digit.
  
  MISC - MERGE OVERLAPPING RANGES
  
@@ -1391,6 +1426,20 @@ STATIC TREE -
  
  18. Print the Top view of a binary tree, i.e. the outer most outline of a tree - TO BE DONE
 ---- Mistake made: didn't consider the zig zaging of the outer most branch.
+
+19. Question: Get range sum
+You are given a binary search tree. Goal is to find sum of all elements in the tree which are in range [low, high].
+Input: binary search tree, and range [low, high]
+Example: Tree below, range [4, 7]. Output: 22
+Explanation: 22 = 4+5+6+7. You can have non-node values as range e.g. 1 and 13.
+     6
+    /   \
+  4     10
+ / \     / \
+3  5    7  12
+
+Soln - Inorder traversal - don't have to traverse the whole tree. If the curr node is smaller than range, don't have to explore the left node. Similarly if current node is greater than range, don't have to explore the right sub-tree
+
  
  TRIE:-
  
