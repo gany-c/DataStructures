@@ -12,12 +12,13 @@ class Solution:
         left_ptr = head
         prev_left = None
         
-        for _ in range(1, left):
-            prev_left = left_ptr
-            left_ptr = left_ptr.next
-            
-            if left_ptr == None:
-                return head
+        if left > 1:
+            for _ in range(1, left):
+                prev_left = left_ptr
+                left_ptr = left_ptr.next
+
+                if left_ptr == None:
+                    return head
          
            
         #This is the place to add while reversing
@@ -33,17 +34,20 @@ class Solution:
             
             # actual reversal here, attach the curr node to the front of the reversed list
             curr.next = add_point
-            add_point = curr            
+            add_point = curr   
+            
+            #continue to traverse
             curr = next_ptr            
             
         
-        # reversal is done, but the start of the new list needs to be attached to end of left - 1 
+        # reversal is done, now the start of the new list needs to be attached to end of left - 1 
         if prev_left:
-            prev_left.next = add_point        
+            prev_left.next = add_point
+         
+        # and end of new list needs to be attached to right + 1
         static_new_last.next = curr
 
         if left == 1:
             return add_point
         else:
-            return head   
-            
+            return head 
