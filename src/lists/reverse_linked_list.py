@@ -51,3 +51,15 @@ class Solution:
             return add_point
         else:
             return head 
+        
+  """
+  the range function in python gives (end - start) number of steps
+  e.g. range of (2, 4) gives 2 and 3
+  
+  here we want to reverse end - start + 1 number of nodes.  
+  so, the second range is end - start. 1 node is already in place, we need to reverse end - start more nodes.
+  
+  Similar logic for the first range usage. We are already at 1 and we need left-1 steps to arrive at the left-th node.
+  So, the range is set as range (1, left)
+  """
+        
