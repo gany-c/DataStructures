@@ -32,6 +32,8 @@ public List<StringPair> findPairCountSumsToTarget(String sentence, int target){
        wc.word = entry.getKey();
        wc.count = entry.getValue();
    }
+   //AFTER THOUGHT - you can include a  Map<int,List<String>> creation here
+    //compare with that
    
    List<StringPair> output = new ArrayList<StringPair>();   
    
