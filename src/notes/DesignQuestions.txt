@@ -1,3 +1,17 @@
+Design Resources:
+
+1. DynamoDb - https://www.allthingsdistributed.com/2007/10/amazons_dynamo.html
+2. Kafka - http://notes.stephenholiday.com/Kafka.pdf
+3. Paxos - https://www.microsoft.com/en-us/research/uploads/prod/2016/12/paxos-simple-Copy.pdf
+4. Google Big Table - https://research.google/pubs/pub27898/
+5. Gossip Protocol - http://highscalability.com/blog/2011/11/14/using-gossip-protocols-for-failure-detection-monitoring-mess.html
+6. Chubby - http://static.googleusercontent.com/media/research.google.com/en/us/archive/chubby-osdi06.pdf
+7. ZooKeeper - https://www.usenix.org/legacy/event/usenix10/tech/full_papers/Hunt.pdf
+8. Map Reduce - https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf
+9. HDFS - https://storageconference.us/2010/Papers/MSST/Shvachko.pdf
+
+
+
 1. Design a TinyUrl system http://blog.gainlo.co/index.php/2016/03/08/system-design-interview-question-create-tinyurl-system/
     1. given a URL, how can we find hash function F that maps URL to a short alias: F(URL) = alias
     2.  We can either store the id and value in the DB or have a system that calculates it every time on the fly. 
