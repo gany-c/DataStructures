@@ -10,6 +10,13 @@ Design Resources:
 8. Map Reduce - https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf
 9. HDFS - https://storageconference.us/2010/Papers/MSST/Shvachko.pdf
 
+Load balancer resources:
+
+[1] What is load balancing - https://avinetworks.com/what-is-load-balancing/
+[2] Introduction to architecting systems - https://lethain.com/introduction-to-architecting-systems-for-scale/ Blog called Irrational Exuberance; recommended by Bha
+
+
+QUESTIONS
 
 
 1. Design a TinyUrl system http://blog.gainlo.co/index.php/2016/03/08/system-design-interview-question-create-tinyurl-system/
