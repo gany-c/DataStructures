@@ -191,6 +191,10 @@ LIST (Kadavu chittu) - Find if the zig-zag sort of an array is sorted
 
 LIST (Kadav chittu) - Find the count of elements in an array which add up to a target
 - map confusion
+
+LIST (Kadavu chittu) - Sort an array of numbers with duplicates by frequency and first occurence
+-- You built the maps right
+-- But instead of using the maps to sort the original array, you tried deconstructing the maps into a sorted list
 	 
 LIST - Shortest distance in a dictionary 
 
