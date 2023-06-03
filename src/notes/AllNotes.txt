@@ -186,7 +186,7 @@ BINARY SEARCH - Return the smallest character that is strictly larger than the s
 	 
 BINARY SEARCH -	 Search in a sorted but, rotated array.	 - TO BE DONE
 
-LIST (Kadavu chittu) - Find if the zig-zag sort of an array is sorted
+LIST (Kadavu chittu) - Find if the zig-zag traversl of an array is sorted
 - Missed the corner case of the center element
 
 LIST (Kadav chittu) - Find the count of elements in an array which add up to a target
