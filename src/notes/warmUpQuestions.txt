@@ -1,9 +1,9 @@
 Do these by hand for warming up
 
 1. Inorder traversal
-2. Breadth First Sort
+2. Breadth First traversal
 3. Print levels
-4. Zig zag sort.
+4. Zig zag traversal.
 5. Linked list sort
 6. Tokenize without string buffer or builder.
 7. Regex search.
