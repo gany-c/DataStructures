@@ -6,5 +6,5 @@ Do these by hand for warming up
 4. Zig zag traversal.
 5. Linked list sort
 6. Tokenize without string buffer or builder.
-7. Regex search.
+7. Regex search.  - only '.' and '*'
 8. Merge sort.
