@@ -1,3 +1,8 @@
+------- Mukanool, Mar 2025 -----------
+1. Given a list of characters and a string representing the order of characters, Sort the first list in the order represented by the second list
+2. Given a linked list, where each node has Val, Next and Other (can be pointing to any node in the list), create a perfect clone of the list.
+
+
 --------- River Sea --- Mar 2019 -------
 
 1. Flatten and Sort a 2 dimensional linked list
