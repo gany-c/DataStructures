@@ -1,3 +1,9 @@
+------ Bangkok Prayana Sandhai 2026 -------------
+Through HackerRank
+
+1. Given an unsorted list of integers, return the pairs with lowest absolute difference. If there are many pairs, return a list of pairs - Coded this but took 45 mins
+2. Given a list of unsorted numbers, for each number return the index of the closest smaller number to the right - Couldn't code this, but mentioned the correct data structure = STACK
+
 ------- Mukanool, Mar 2025 -----------
 1. Given a list of characters and a string representing the order of characters, Sort the first list in the order represented by the second list
 2. Given a linked list, where each node has Val, Next and Other (can be pointing to any node in the list), create a perfect clone of the list.
