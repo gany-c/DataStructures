@@ -1,3 +1,26 @@
+--------- Un America prayana niruvanathin Thai niruvanam ------
+Question:
+
+Implement a variation of a key value store, or cache
+
+1. get is the same get(key)
+2. put has two types - base put, which is the same as any dictionary put(key, value)
+3. compute put - put(key, dependencies[dependent-key1, ....., dependent-keyN], function: [dependent-key1, ....., dependent-keyN] -> value)
+
+dependent keys can be base keys or dependent keys themselves. If the a base key is changed, all the dependent functions should become stale and recalculated.
+
+Example:
+
+cache.put("amount", 100);
+cache.compute("doubled", List.of("amount"), args -> (int)args[0] * 2);
+cache.compute("quadrupled", List.of("doubled"), args -> (int)args[0] * 2);
+
+cache.get("quadrupled"); // → 400
+
+cache.put("amount", 10);
+cache.get("quadrupled"); // → 40
+
+
 ------ Bangkok Prayana Sandhai 2026 -------------
 Through HackerRank
 
